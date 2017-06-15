@@ -56,8 +56,8 @@ class Migration_fixtures_and_related extends CI_Migration {
         'constraint' => '9',
       ),
       /**
-       * Example values      Attacks, Corners, Dangerous Attacks
-       */
+      * Example values      Attacks, Corners, Dangerous Attacks
+      */
       'stat_name' => array(
         'type' => 'VARCHAR',
         'constraint' => '100',
@@ -131,8 +131,8 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'TEXT',
       ),
       /**
-       *  Possible values     completed, final, ongoing, etc
-       */
+      *  Possible values     completed, final, ongoing, etc
+      */
       'match_progress' => array(
         'type' => 'VARCHAR',
         'constraint' => '150',
@@ -187,8 +187,8 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'TEXT',
       ),
       /**
-       * Possible values           first_half, second_half
-       */
+      * Possible values           first_half, second_half
+      */
       'coverage_type' => array(
         'type' => 'VARCHAR',
         'constraint' => '100',
