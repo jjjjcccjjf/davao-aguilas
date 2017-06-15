@@ -57,6 +57,6 @@ class Migration_crud_table extends CI_Migration {
 
   public function down()
   {
-    $this->dbforge->drop_table('crud');
+    $this->dbforge->drop_table('crud', true);
   }
 }
