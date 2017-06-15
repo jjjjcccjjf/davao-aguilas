@@ -59,8 +59,10 @@ $route['translate_uri_dashes'] = FALSE;
 | -------------------------------------------------------------------------
 */
 
-# My routes
-$route['api/crud/(:num)'] = 'api/crud/crud/$1';
+# Videos
+$route['api/videos/(:num)'] = 'api/videos/videos/$1';
+
+# Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';
 
 # Restserver default examples
