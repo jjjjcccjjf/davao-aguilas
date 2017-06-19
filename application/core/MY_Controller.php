@@ -26,7 +26,7 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   function single_get($id)
   {
     $res = $this->model->get($id);
-    if($res){
+    if($res || $res !== []){
       $this->response($res, 200);
     }else{
       $this->response(['message' => 'Not found'], 404);
