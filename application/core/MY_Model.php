@@ -1,8 +1,9 @@
 <?php
 
-class MY_Model extends CI_model{
+class MY_Model extends CI_model
+{
   # Just need to declare this but not needing it
-  # I prefer more declarative class names than `MY_Model`
+  # I prefer more declarative class names than `MY_*`
 }
 
 class Crud_model extends CI_model
