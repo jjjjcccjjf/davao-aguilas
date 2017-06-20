@@ -63,6 +63,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['api/videos/(:num)'] = 'api/videos/single/$1';
 $route['api/news/(:num)'] = 'api/news/single/$1';
 $route['api/partners/(:num)'] = 'api/partners/single/$1';
+$route['api/teams/(:num)'] = 'api/teams/single/$1';
 
 # Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';

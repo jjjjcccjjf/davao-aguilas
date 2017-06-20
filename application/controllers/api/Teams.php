@@ -1,12 +1,12 @@
 <?php
 
-class Partners extends Crud_controller
+class Teams extends Crud_controller
 {
 
   function __construct()
   {
     parent::__construct();
-    $this->load->model('Partners_model', 'model');
+    $this->load->model('Teams_model', 'model');
 
   }
 
@@ -44,5 +44,6 @@ class Partners extends Crud_controller
       $this->response(['message' => 'Malformed syntax'], 400);
     }
   }
+
 
 }

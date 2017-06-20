@@ -14,7 +14,9 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   function __construct()
   {
     parent::__construct();
-    // $this->load->model('Crud_model', 'model');
+    # Do not forget to load your model in your child class
+    # $this->load->model('Example_model', 'model');
+    # Do not change the 2nd parameter because we need a generic model name for this
   }
 
   function index_get()
@@ -26,7 +28,7 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   function single_get($id)
   {
     $res = $this->model->get($id);
-    if($res || $res !== []){
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
       $this->response(['message' => 'Not found'], 404);
@@ -58,7 +60,6 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   */
   function single_post($id)
   {
-
     # If upload failed, just set default post data
     if(($upload_arr = $this->model->upload('some_text_field')) === [])
     $data = $this->input->post();
@@ -67,11 +68,13 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
 
     $res = $this->model->update($id, $data);
 
-    if($res){
+    if ($res || $res === 0) {
       $res = $this->model->get($id);
       $this->response_header('Location', api_url($this) .  $id); # Set the newly created object's location
       $this->response($res, 200);
-    }else{
+    } elseif ($res === null) {
+      $this->response(['message' => 'Not found'], 404);
+    } else {
       $this->response(['message' => 'Malformed syntax'], 400);
     }
   }

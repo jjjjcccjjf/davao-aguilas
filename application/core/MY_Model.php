@@ -71,7 +71,11 @@ class Crud_model extends CI_model
   */
   public function update($id, $data)
   {
-    return $this->db->update($this->table, $data, ['id' => $id]);
+    if ($this->get($id) === [])
+    return null; # Return null if entry is not existing
+
+    $this->db->update($this->table, $data, ['id' => $id]);
+    return $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
   }
 
   /**
@@ -120,10 +124,10 @@ class Crud_model extends CI_model
   }
 
   /**
-   * Upload single file. Returns an empty array on failure
-   * @param  string    $file_key   [description]
-   * @return array                 [description]
-   */
+  * Upload single file. Returns an empty array on failure
+  * @param  string    $file_key   [description]
+  * @return array                 [description]
+  */
   public function upload($file_key)
   {
     @$file = $_FILES[$file_key];

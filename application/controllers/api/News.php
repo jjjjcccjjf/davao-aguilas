@@ -26,7 +26,6 @@ class News extends Crud_controller
 
   function single_post($id)
   {
-
     # If upload failed, just set default post data
     if(($upload_arr = $this->model->upload('image_url')) === [])
     $data = $this->input->post();
@@ -35,11 +34,13 @@ class News extends Crud_controller
 
     $res = $this->model->update($id, $data);
 
-    if($res){
+    if ($res || $res === 0) {
       $res = $this->model->get($id);
       $this->response_header('Location', api_url($this) .  $id); # Set the newly created object's location
       $this->response($res, 200);
-    }else{
+    } elseif ($res === null) {
+      $this->response(['message' => 'Not found'], 404);
+    } else {
       $this->response(['message' => 'Malformed syntax'], 400);
     }
   }
