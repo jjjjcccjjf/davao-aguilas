@@ -41,7 +41,7 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
     // $data = array_merge($this->input->post(), $this->model->batch_upload($_FILES['input_name']));
 
     # NOTE: This is an example usage of single upload
-    // $data = array_merge($this->input->post(), $this->model->upload('some_text_field'));
+    // $data = array_merge($this->input->post(), $this->model->upload('image_url'));
 
     $data = $this->input->post();
 
@@ -61,7 +61,7 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   function single_post($id)
   {
     # If upload failed, just set default post data
-    if(($upload_arr = $this->model->upload('some_text_field')) === [])
+    if(($upload_arr = $this->model->upload('image_url')) === [])
     $data = $this->input->post();
     else # If upload was successful, merge array
     $data = array_merge($this->input->post(), $upload_arr);

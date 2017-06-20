@@ -14,10 +14,17 @@ class Crud_model extends CI_model
   */
   protected $table;
 
+  /**
+   * The directory you want to upload to whose parent dir is `uploads` folder
+   * @var [type]
+   */
+  protected $upload_dir;
+
   public function __construct()
   {
     parent::__construct();
     $this->table = 'crud';
+    $this->upload_dir = 'your_dir';
   }
 
   /**
@@ -93,7 +100,7 @@ class Crud_model extends CI_model
     $k = key($files); # Gets the `key` of the uplaoded thing on your form
 
     $uploaded_files = []; # Initialize empty return array
-    $upload_path = 'uploads/your_dir'; # Your upload path starting from the `root folder`. NOTE: Change this as needed
+    $upload_path = 'uploads/' . $this->upload_dir; # Your upload path starting from the `root folder`. NOTE: Change this as needed
 
     # Configs
     $config['upload_path'] = $upload_path; # Set upload path
@@ -131,8 +138,8 @@ class Crud_model extends CI_model
   public function upload($file_key)
   {
     @$file = $_FILES[$file_key];
-    $upload_path = "uploads/your_dir";
-
+    $upload_path = "uploads/" . $this->upload_dir;
+    
     $config['upload_path'] = $upload_path; # NOTE: Change your directory as needed
     $config['allowed_types'] = 'gif|jpg|jpeg|png'; # NOTE: Change file types as needed
     $config['file_name'] = time() . '_' . $file['name']; # Set the new filename
