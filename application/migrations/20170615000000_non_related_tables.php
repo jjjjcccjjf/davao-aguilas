@@ -39,6 +39,9 @@ class Migration_non_related_tables extends CI_Migration {
       'url' => array(
         'type' => 'TEXT',
       ),
+      'image_url' => array(
+        'type' => 'TEXT',
+      ),
       'type' => array(
         'type' => 'VARCHAR',
         'constraint' => '150',
