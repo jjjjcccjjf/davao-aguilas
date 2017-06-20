@@ -8,6 +8,7 @@ class Videos_model extends Crud_model
   {
     parent::__construct();
     $this->table = 'videos';
+    $this->upload_dir = 'video_thumbnails';
 
     #TODO: Duration
   }
