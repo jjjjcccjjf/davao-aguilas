@@ -8,6 +8,7 @@ class Partners_model extends Crud_model
   {
     parent::__construct();
     $this->table = 'partners';
+    $this->upload_dir = 'partners';
 
   }
 

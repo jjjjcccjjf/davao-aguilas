@@ -8,6 +8,8 @@ class News_model extends Crud_model
   {
     parent::__construct();
     $this->table = 'news';
+    $this->upload_dir = 'news'; # Will be under the `uploads` parent folder
+
 
   }
 

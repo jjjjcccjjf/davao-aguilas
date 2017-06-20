@@ -8,6 +8,7 @@ class Teams_model extends Crud_model
   {
     parent::__construct();
     $this->table = 'teams';
+    $this->upload_dir = 'teams';  
 
   }
 
