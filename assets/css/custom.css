@@ -1,0 +1,38 @@
+.btn-file > input {
+  transform: inherit;
+  width: 100px;
+}
+
+.fa {
+  /*margin-top: 10px;
+  color: #FF6C60;
+  margin-left: -20px;*/
+}
+
+.delete-ingre {
+	margin-top: 7px;
+    margin-bottom: 24px;
+}
+
+.btn, .btn:focus, .btn:active, .btn.active {
+	background-color: #D49E00;
+	border-color: #D49E00;
+	outline: 0px;
+}
+
+.btn:hover {
+	background-color: #a77d02;
+	border-color: #a77d02;
+}
+
+.modal-header {
+	background: #D49E00;
+}
+
+ul.sidebar-menu li a.active i {
+    color: #D49E00;
+}
+
+.dropdown-menu.extended.logout > li:last-child {
+	background: #D49E00;
+}
