@@ -11,17 +11,17 @@ class Cms extends CI_Controller {
 	{
 		parent::__construct();
 
-		$includes['dynamic_table'] = $this->dynamic_table;
- 		$includes['time_picker'] = $this->time_picker;
- 		$includes['multiple_select'] = $this->multiple_select;
 	}
 
 	public function index()
 	{
 
-
+		$includes['dynamic_table'] = $this->dynamic_table;
+ 		$includes['time_picker'] = $this->time_picker;
+ 		$includes['multiple_select'] = $this->multiple_select;
 
 		$this->load->view('partials/header', $includes);
+		$this->load->view('partials/left-sidebar', $includes);
 		$this->load->view('partials/footer', $includes);
 	}
 }

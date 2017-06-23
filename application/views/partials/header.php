@@ -8,7 +8,7 @@
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Puratos</title>
+    <title>Davao Aguilas CMS</title>
 
     <!-- Bootstrap core CSS -->
     <link href="<?php echo base_url('assets/css/bootstrap.min.css') ?>" rel="stylesheet">
@@ -75,7 +75,7 @@
               </div>
             <!--logo start-->
             <!-- <a href="index.html" class="logo">Flat<span>lab</span></a> -->
-            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="<?php echo base_url('assets/img/custom/img_ph_logo_noname.png') ?>" /></a>
+            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="http://www.pwpix.net/wp/wp-content/uploads/2015/12/john-cena-28457131.jpg" /></a>
 
             <!--logo end-->
 
@@ -86,7 +86,7 @@
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <!-- <img alt="" src="assets/img/avatar1_small.jpg"> -->
-                            <span class="username"><?php echo $_SESSION['fname'] . " " . $_SESSION['lname']; ?></span>
+                            <span class="username"><?php echo @$_SESSION['fname'] . " " . @$_SESSION['lname']; ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
