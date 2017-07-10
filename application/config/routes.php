@@ -71,6 +71,11 @@ $route['api/player_stats/(:num)'] = 'api/player_stats/single/$1';
 $route['api/leagues/(:num)'] = 'api/leagues/single/$1';
 $route['api/ladders/(:num)'] = 'api/ladders/single/$1';
 $route['api/fixtures/(:num)'] = 'api/fixtures/single/$1';
+$route['api/commentary/(:num)'] = 'api/commentary/single/$1';
+$route['api/cpm/(:num)'] = 'api/cpm/single/$1';
+$route['api/match_stats/(:num)'] = 'api/match_stats/single/$1';
+$route['api/lineups/(:num)'] = 'api/lineups/single/$1';
+$route['api/actions/(:num)'] = 'api/actions/single/$1';
 
 # Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';
