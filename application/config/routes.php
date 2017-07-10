@@ -69,6 +69,7 @@ $route['api/icons/(:num)'] = 'api/icons/single/$1';
 $route['api/team_stats/(:num)'] = 'api/team_stats/single/$1';
 $route['api/player_stats/(:num)'] = 'api/player_stats/single/$1';
 $route['api/leagues/(:num)'] = 'api/leagues/single/$1';
+$route['api/ladders/(:num)'] = 'api/ladders/single/$1';
 
 # Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';
