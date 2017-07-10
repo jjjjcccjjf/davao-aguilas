@@ -120,8 +120,11 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'INTEGER',
         'constraint' => '9',
       ),
+      /**
+      *  Example values     #DonaldTrump, etc
+      */
       'hash_tag' => array(
-        'type' => 'VARCHAR', /** mysql bool */
+        'type' => 'VARCHAR',
         'constraint' => '100',
       ),
       'match_date' => array(
@@ -131,7 +134,7 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'TEXT',
       ),
       /**
-      *  Possible values     completed, final, ongoing, etc
+      *  Possible values     finished, upcoming, ongoing, etc
       */
       'match_progress' => array(
         'type' => 'VARCHAR',

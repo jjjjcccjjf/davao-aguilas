@@ -91,6 +91,9 @@ class Migration_core_tables extends CI_Migration {
         'type' => 'INTEGER',
         'constraint' => '9',
       ),
+      /**
+      * Possible values    away, home
+      */
       'court_type' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
