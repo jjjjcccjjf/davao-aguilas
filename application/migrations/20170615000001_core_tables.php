@@ -15,6 +15,7 @@ class Migration_core_tables extends CI_Migration {
       'stat_key' => array(
         'type' => 'VARCHAR',
         'constraint' => '250',
+        'unique' => TRUE
       ),
       'stat_value' => array(
         'type' => 'DOUBLE',
