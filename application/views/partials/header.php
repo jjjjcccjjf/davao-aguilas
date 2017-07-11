@@ -49,7 +49,7 @@
     <!-- END file upload -->
 
     <!-- multiple select -->
-    <?php if ($multiple_select == true): ?>
+    <?php if ($multi_select == true): ?>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/assets/bootstrap-fileupload/bootstrap-fileupload.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/assets/bootstrap-wysihtml5/bootstrap-wysihtml5.css'); ?>" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/assets/bootstrap-datepicker/css/datepicker.css'); ?>" />
