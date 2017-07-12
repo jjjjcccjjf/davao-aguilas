@@ -144,7 +144,7 @@ class Migration_core_tables extends CI_Migration {
       'image_url' => array(
         'type' => 'TEXT',
       ),
-      'role' => array(
+      'position' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
       ),

@@ -49,6 +49,7 @@
             </div>
           </div>
 
+          <!-- TODO: make dynamic -->
           <div class="form-group">
               <label class="col-sm-2 control-label col-sm-2" for="inputSuccess">Type</label>
               <div class="col-sm-10">
