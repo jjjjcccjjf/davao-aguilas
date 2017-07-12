@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 	*/
 	public function wrapper($body, $data = null)
 	{
-		if (isset($this->session->userdata['logged_in'])) {
+		if (isset($this->session->userdata['is_logged_in'])) {
 			$this->load->view('partials/header', $this->includes);
 			$this->load->view('partials/left-sidebar');
 			$this->load->view($body, $data);
@@ -49,7 +49,19 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-		echo "hello wirld";
+		$this->session->set_userdata('is_logged_in', 1);
+		redirect('admin/news');
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect(base_url());
+	}
+
+	public function news()
+	{
+		$this->wrapper('news');
 	}
 
 }
