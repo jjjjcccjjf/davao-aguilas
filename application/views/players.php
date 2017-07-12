@@ -3,7 +3,7 @@
   <div class="col-lg-12">
     <section class="panel">
       <header class="panel-heading">
-        Videos
+        Players
         <a href="#add_modal" data-toggle="modal" class="btn btn-xs btn-info pull-right"> + Add New </a>
         <br>
         <div><sub style="color:green;" id="custom_message"></sub></div>
@@ -29,41 +29,35 @@
         <form action="#" class="form-horizontal" id="add_form">  <!-- form -->
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Title</label>
+            <label class="col-sm-2 control-label col-sm-2">Player name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" required></input>
+              <input type="text" class="form-control" name="name" required></input>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Duration</label>
+            <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="duration" placeholder="HH:MM:SS" pattern="([0-5][0-9]):([0-5][0-9]):([0-5][0-9])" title="HH:MM:SS Example: 01:32:59" required>
+              <input type="number" min="0" max="99" class="form-control" name="jersey_num" required></input>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">URL</label>
+            <label class="col-sm-2 control-label">Position</label>
             <div class="col-sm-10">
-              <input class="form-control" type="url" name="url" required>
+              <select class="form-control" name="position" required>
+                <option>Goalkeeper</option>
+                <option>Defender</option>
+                <option>Midfielder</option>
+                <option>Forward</option>
+              </select>
             </div>
           </div>
 
-          <!-- TODO: make dynamic -->
           <div class="form-group">
-              <label class="col-sm-2 control-label">Type</label>
-              <div class="col-sm-10">
-                  <select class="form-control" name="type" required>
-                      <option>Club Videos</option>
-                      <option>News &amp; Highlights</option>
-                  </select>
-              </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-md-2">Thumbnail</label>
+            <label class="control-label col-md-2">Player photo</label>
             <div class="controls col-md-10">
-              <input type="file" name="image_url" required />
+              <input type="file" name="image_url" required/>
             </div>
           </div>
 
@@ -93,40 +87,23 @@
         <form action="#" class="form-horizontal" id="edit_form">  <!-- form -->
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Title</label>
+            <label class="col-sm-2 control-label col-sm-2">Player name</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" required id="_title"></input>
+              <input type="text" class="form-control" name="title" id="_name" required></input>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Duration</label>
+            <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="duration" id="_duration" placeholder="HH:MM:SS" pattern="([0-5][0-9]):([0-5][0-9]):([0-5][0-9])" title="HH:MM:SS Example: 01:32:59" required>
+              <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">URL</label>
-            <div class="col-sm-10">
-              <input class="form-control" type="url" name="url" required id="_url">
-            </div>
-          </div>
-
-          <div class="form-group">
-              <label class="col-sm-2 control-label col-sm-2" for="inputSuccess">Type</label>
-              <div class="col-sm-10">
-                  <select class="form-control" name="type" required id="_type">
-                      <option>Club Videos</option>
-                      <option>News &amp; Highlights</option>
-                  </select>
-              </div>
-          </div>
-
-          <div class="form-group">
-            <label class="control-label col-md-2">Thumbnail</label>
+            <label class="control-label col-md-2">Player Photo</label>
             <div class="controls col-md-10">
-              <input type="file" name="image_url" id="_thumbnail" />
+              <input type="file" name="image_url"/>
             </div>
           </div>
 
@@ -136,7 +113,6 @@
               <button type="submit" class="btn btn-white">Submit</button>
             </div>
           </div>
-
         </form> <!-- / form -->
       </div>
     </div>
@@ -149,11 +125,11 @@ $(document).ready(function(){
   var table;
 
   var base_url = "<?php echo base_url(); ?>";
-  var api_segment = 'api/videos/';
+  var api_segment = 'api/players/';
   var api_url = base_url + api_segment;
 
-  var upload_dir = '../uploads/video_thumbnails/';
-  var table_headers = ['Title', 'Duration', 'Embed URL (?)', 'Type', 'Image URL'];
+  var upload_dir = '../uploads/players/';
+  var table_headers = ['Player name', 'Position', 'Jersey number', 'Player photo'];
 
   /**---------------------------------------------
   -------------------POST add---------------------
@@ -239,9 +215,7 @@ $(document).ready(function(){
   editItem = function(id) {
     $.getJSON(api_url + id, function(result){
       $('#_title').val(result[0].title);
-      $('#_duration').val(result[0].duration);
-      $('#_url').val(result[0].url);
-      $('#_type').find('option:contains("'+ result[0].type +'")').prop('selected', true);
+      $('#_body').val(result[0].body);
     });
     $('#edit_id').html('');
     $('#edit_id').html(id);
@@ -277,10 +251,9 @@ $(document).ready(function(){
         table += '<tr>';
 
         table += '<td>' + id +'</td>'; // id
-        table += '<td>' + result[x].title +'</td>';
-        table += '<td>' + result[x].duration +'</td>';
-        table += '<td>' + result[x].url +'</td>';
-        table += '<td>' + result[x].type +'</td>';
+        table += '<td>' + result[x].name +'</td>';
+        table += '<td>' + result[x].position +'</td>';
+        table += '<td>' + result[x].jersey_num +'</td>';
         table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
         table +=
         `<td>

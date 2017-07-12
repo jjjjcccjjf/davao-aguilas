@@ -74,4 +74,9 @@ class Admin extends CI_Controller {
 		$this->wrapper('partners');
 	}
 
+	public function players()
+	{
+		$this->wrapper('players');
+	}
+
 }
