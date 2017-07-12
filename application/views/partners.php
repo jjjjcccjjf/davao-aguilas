@@ -77,14 +77,14 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Title</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" id="_title"></input>
+              <input type="text" class="form-control" name="title" id="_title" required></input>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Site URL</label>
             <div class="col-sm-10">
-              <input type="url" class="form-control" name="site_url" id="_site_url"></input>
+              <input type="url" class="form-control" name="site_url" id="_site_url" required></input>
             </div>
           </div>
 
