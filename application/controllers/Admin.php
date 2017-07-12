@@ -64,4 +64,14 @@ class Admin extends CI_Controller {
 		$this->wrapper('news');
 	}
 
+	public function videos()
+	{
+		$this->wrapper('videos');
+	}
+
+	public function partners()
+	{
+		$this->wrapper('partners');
+	}
+
 }
