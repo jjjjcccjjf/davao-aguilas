@@ -75,7 +75,7 @@
               </div>
             <!--logo start-->
             <!-- <a href="index.html" class="logo">Flat<span>lab</span></a> -->
-            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="http://www.pwpix.net/wp/wp-content/uploads/2015/12/john-cena-28457131.jpg" /></a>
+            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="" /></a>
 
             <!--logo end-->
 

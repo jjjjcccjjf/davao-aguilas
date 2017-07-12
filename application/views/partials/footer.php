@@ -63,9 +63,14 @@
  * @param  string     msg    custom message string
  * @return void
  */
-function custom_message(msg){
+function customMessage(msg){
   $('#custom_message').empty();
   $('#custom_message').html(msg);
+}
+
+function clearAllForms() {
+  $('form')[0].reset();
+  $('input[type=file]').val('');
 }
 
 </script>

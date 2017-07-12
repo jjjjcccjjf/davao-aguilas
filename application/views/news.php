@@ -45,17 +45,10 @@
           <div class="form-group">
             <label class="control-label col-md-2">Banner</label>
             <div class="controls col-md-10">
-              <div class="fileupload fileupload-new" data-provides="fileupload">
-                <span class="btn btn-white btn-file">
-                  <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select file</span>
-                  <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                  <input type="file" class="default" name="image_url"/>
-                </span>
-                <span class="fileupload-preview" style="margin-left:5px;"></span>
-                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
-              </div>
+              <input type="file" name="image_url"/>
             </div>
           </div>
+
           <div class="form-group">
             <label class="control-label col-md-2"></label>
             <div class="controls col-md-10">
@@ -98,17 +91,10 @@
           <div class="form-group">
             <label class="control-label col-md-2">Banner</label>
             <div class="controls col-md-10">
-              <div class="fileupload fileupload-new" data-provides="fileupload">
-                <span class="btn btn-white btn-file">
-                  <span class="fileupload-new"><i class="fa fa-paper-clip"></i> Select file</span>
-                  <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                  <input type="file" class="default" name="image_url" id="_image_url"/>
-                </span>
-                <span class="fileupload-preview" style="margin-left:5px;"></span>
-                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
-              </div>
+              <input type="file" name="image_url"/>
             </div>
           </div>
+
           <div class="form-group">
             <label class="control-label col-md-2"></label>
             <div class="controls col-md-10">
@@ -144,9 +130,9 @@ $(document).ready(function(){
       success: function (data, textStatus, xhr) {
         if(xhr.status == 201){
           initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
-          $('form')[0].reset();
           $('#add_modal').modal('toggle');
-          custom_message('Item added successfully');
+          clearAllForms();
+          customMessage('Item added successfully');
         }
       },
       cache: false,
@@ -170,9 +156,9 @@ $(document).ready(function(){
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
           initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
-          $('form')[0].reset();
+          clearAllForms();
           $('#edit_modal').modal('toggle');
-          custom_message('Changes saved successfully');
+          customMessage('Changes saved successfully');
         }
       },
       cache: false,
@@ -199,7 +185,7 @@ $(document).ready(function(){
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
             initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
-            custom_message('Item deleted successfully');
+            customMessage('Item deleted successfully');
           }
         }
       });
@@ -208,9 +194,9 @@ $(document).ready(function(){
   }
 
   /**
-   * function for populating the edit modal
-   * @var int   id
-   */
+  * function for populating the edit modal
+  * @var int   id
+  */
   editItem = function(id) {
     $.getJSON(api_url + id, function(result){
       $('#_title').val(result[0].title);
