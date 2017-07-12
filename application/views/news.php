@@ -31,21 +31,21 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Title</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title"></input>
+              <input type="text" class="form-control" name="title" required></input>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Body</label>
             <div class="col-sm-10">
-              <textarea class="form-control" name="body" rows="6"></textarea>
+              <textarea class="form-control" name="body" rows="6" required></textarea>
             </div>
           </div>
 
           <div class="form-group">
             <label class="control-label col-md-2">Banner</label>
             <div class="controls col-md-10">
-              <input type="file" name="image_url"/>
+              <input type="file" name="image_url" required/>
             </div>
           </div>
 
@@ -116,6 +116,9 @@ $(document).ready(function(){
   var api_segment = 'api/news/';
   var api_url = base_url + api_segment;
 
+  var upload_dir = '../uploads/news/';
+  var table_headers = ['Title', 'Body', 'Image URL'];
+
   /**---------------------------------------------
   -------------------POST add---------------------
   ---------------------------------------------**/
@@ -129,7 +132,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 201){
-          initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
+          initializeTable('#table_div', table_headers);
           $('#add_modal').modal('toggle');
           clearAllForms();
           customMessage('Item added successfully');
@@ -155,7 +158,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
-          initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
+          initializeTable('#table_div', table_headers);
           clearAllForms();
           $('#edit_modal').modal('toggle');
           customMessage('Changes saved successfully');
@@ -184,7 +187,7 @@ $(document).ready(function(){
         type: 'DELETE',
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
-            initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
+            initializeTable('#table_div', table_headers);
             customMessage('Item deleted successfully');
           }
         }
@@ -238,7 +241,7 @@ $(document).ready(function(){
         table += '<td>' + id +'</td>'; // id
         table += '<td>' + result[x].title +'</td>';
         table += '<td>' + result[x].body +'</td>';
-        table += '<td><a href="../uploads/news/'+ result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
+        table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
         table +=
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
@@ -255,7 +258,7 @@ $(document).ready(function(){
 
   }
 
-  initializeTable('#table_div', ['Title', 'Body', 'Image URL']);
+  initializeTable('#table_div', table_headers);
 
 }); // End document ready
 </script>
