@@ -56,7 +56,19 @@
   <script src="<?php echo base_url('assets/js/advanced-form-components.js'); ?>"></script>
   <!-- multiple select END -->
 <?php endif ?>
+<script type="text/javascript">
 
+/**
+ * changes the value of #custom_message span
+ * @param  string     msg    custom message string
+ * @return void
+ */
+function custom_message(msg){
+  $('#custom_message').empty();
+  $('#custom_message').html(msg);
+}
+
+</script>
 
 </body>
 </html>
