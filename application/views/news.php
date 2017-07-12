@@ -77,14 +77,14 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Title</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" id="_title"></input>
+              <input type="text" class="form-control" name="title" id="_title" required></input>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">Body</label>
             <div class="col-sm-10">
-              <textarea class="form-control" name="body" rows="6" id="_body"></textarea>
+              <textarea class="form-control" name="body" rows="6" id="_body" required></textarea>
             </div>
           </div>
 
@@ -240,7 +240,7 @@ $(document).ready(function(){
 
         table += '<td>' + id +'</td>'; // id
         table += '<td>' + result[x].title +'</td>';
-        table += '<td>' + result[x].body +'</td>';
+        table += '<td>' + (((result[x].body).length > 140) ? (result[x].body).substr(0,140) + '...' : result[x].body) +'</td>'; // chop off string and add ellipses when exceeding 140 characters
         table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
         table +=
         `<td>
