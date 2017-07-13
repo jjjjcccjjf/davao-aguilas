@@ -141,7 +141,6 @@ $(document).ready(function(){
   var api_segment = 'api/players/';
   var api_url = base_url + api_segment;
 
-  var upload_dir = '../uploads/players/';
   var table_headers = ['Player name', 'Position', 'Jersey number', 'Player photo'];
 
   /**---------------------------------------------
@@ -268,7 +267,7 @@ $(document).ready(function(){
         table += '<td>' + result[x].name +'</td>';
         table += '<td>' + result[x].position +'</td>';
         table += '<td>' + result[x].jersey_num +'</td>';
-        table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
+        table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
         table +=
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>

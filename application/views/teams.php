@@ -102,7 +102,6 @@ $(document).ready(function(){
   var api_segment = 'api/teams/';
   var api_url = base_url + api_segment;
 
-  var upload_dir = '../uploads/teams/';
   var table_headers = ['Team name', 'Image URL'];
 
   /**---------------------------------------------
@@ -226,7 +225,7 @@ $(document).ready(function(){
 
         table += '<td>' + id +'</td>'; // id
         table += '<td>' + result[x].name +'</td>';
-        table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
+        table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>';
         table +=
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>

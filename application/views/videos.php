@@ -152,7 +152,6 @@ $(document).ready(function(){
   var api_segment = 'api/videos/';
   var api_url = base_url + api_segment;
 
-  var upload_dir = '../uploads/video_thumbnails/';
   var table_headers = ['Title', 'Duration', 'Embed URL (?)', 'Type', 'Image URL'];
 
   /**---------------------------------------------
@@ -281,7 +280,7 @@ $(document).ready(function(){
         table += '<td>' + result[x].duration +'</td>';
         table += '<td>' + result[x].url +'</td>';
         table += '<td>' + result[x].type +'</td>';
-        table += '<td><a href="' + upload_dir + result[x].image_url + '" target="_blank">' + result[x].image_url +'</a></td>';
+        table += '<td><a href="' +  result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>';
         table +=
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
