@@ -133,7 +133,11 @@ class Migration_core_tables extends CI_Migration {
   {
     $this->dbforge->add_field('id');
     $this->dbforge->add_field(array(
-      'name' => array(
+      'fname' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '250',
+      ),
+      'lname' => array(
         'type' => 'VARCHAR',
         'constraint' => '250',
       ),
@@ -144,6 +148,12 @@ class Migration_core_tables extends CI_Migration {
       'image_url' => array(
         'type' => 'TEXT',
       ),
+      'image_url' => array(
+        'type' => 'TEXT',
+      ),
+      'full_body_image_url' => array(
+        'type' => 'TEXT',
+      ),
       'position' => array(
         'type' => 'VARCHAR',
         'constraint' => '200',
@@ -151,6 +161,25 @@ class Migration_core_tables extends CI_Migration {
       'jersey_num' => array(
         'type' => 'VARCHAR',
         'constraint' => '10',
+      ),
+      'birth_date' => array(
+        'type' => 'DATETIME',
+      ),
+      'birth_place' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '250',
+      ),
+      'nationality' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '250',
+      ),
+      'height' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '50',
+      ),
+      'weight' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '50',
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
