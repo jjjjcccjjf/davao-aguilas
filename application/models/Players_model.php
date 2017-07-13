@@ -23,6 +23,7 @@ class Players_model extends Crud_model
 
      foreach ($res as $item){
        $item->image_url =  $this->full_up_path . $item->image_url;
+       $item->full_body_image_url =  $this->full_up_path . $item->full_body_image_url;
      }
 
      return $res;
@@ -39,6 +40,7 @@ class Players_model extends Crud_model
     $res = $this->db->get($this->table)->result();
 
     $res[0]->image_url = $this->full_up_path . $res[0]->image_url;
+    $res[0]->full_body_image_url = $this->full_up_path . $res[0]->full_body_image_url;
     return $res;
   }
 
