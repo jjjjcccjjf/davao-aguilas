@@ -16,6 +16,9 @@
       <li><a class="<?php echo ($this->uri->segment(2) == 'players') ? 'active' : ''; ?>" href="<?php echo base_url('admin/players'); ?>">
         <i class="fa fa-users"></i>Players
       </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'teams') ? 'active' : ''; ?>" href="<?php echo base_url('admin/teams'); ?>">
+        <i class="fa fa-users"></i>Teams
+      </a></li>
 
     </ul>
     <!-- sidebar menu end-->
