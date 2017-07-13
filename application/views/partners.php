@@ -10,7 +10,9 @@
       </header>
 
       <div class="panel-body">
-        <div id="table_div"></div>
+        <div class="table-responsive" id="table_div">
+          <!-- table appended via ajax -->
+        </div>
       </div>
     </section>
   </div>

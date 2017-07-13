@@ -10,7 +10,9 @@
       </header>
 
       <div class="panel-body">
-        <div id="table_div"></div>
+        <div class="table-responsive" id="table_div">
+          <!-- table appended via ajax -->
+        </div>
       </div>
     </section>
   </div>
@@ -51,13 +53,13 @@
 
           <!-- TODO: make dynamic -->
           <div class="form-group">
-              <label class="col-sm-2 control-label">Type</label>
-              <div class="col-sm-10">
-                  <select class="form-control" name="type" required>
-                      <option>Club Videos</option>
-                      <option>News &amp; Highlights</option>
-                  </select>
-              </div>
+            <label class="col-sm-2 control-label">Type</label>
+            <div class="col-sm-10">
+              <select class="form-control" name="type" required>
+                <option>Club Videos</option>
+                <option>News &amp; Highlights</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">
@@ -114,13 +116,13 @@
           </div>
 
           <div class="form-group">
-              <label class="col-sm-2 control-label col-sm-2" for="inputSuccess">Type</label>
-              <div class="col-sm-10">
-                  <select class="form-control" name="type" required id="_type">
-                      <option>Club Videos</option>
-                      <option>News &amp; Highlights</option>
-                  </select>
-              </div>
+            <label class="col-sm-2 control-label col-sm-2" for="inputSuccess">Type</label>
+            <div class="col-sm-10">
+              <select class="form-control" name="type" required id="_type">
+                <option>Club Videos</option>
+                <option>News &amp; Highlights</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-group">

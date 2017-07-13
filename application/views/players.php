@@ -10,281 +10,282 @@
       </header>
 
       <div class="panel-body">
-        <div id="table_div"></div>
-      </div>
-    </section>
+        <div class="table-responsive" id="table_div">
+          <!-- table appended via ajax -->
+        </div>
+      </section>
+    </div>
   </div>
-</div>
 
-<!-- Add Modal -->
-<div aria-hidden="true" aria-labelledby="add_modal_label" role="dialog" tabindex="-1" id="add_modal" class="modal fade">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-        <h4 class="modal-title">Add</h4>
-      </div>
-      <div class="modal-body">
+  <!-- Add Modal -->
+  <div aria-hidden="true" aria-labelledby="add_modal_label" role="dialog" tabindex="-1" id="add_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Add</h4>
+        </div>
+        <div class="modal-body">
 
-        <form action="#" class="form-horizontal" id="add_form">  <!-- form -->
+          <form action="#" class="form-horizontal" id="add_form">  <!-- form -->
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Player name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="name" required></input>
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Player name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" required></input>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
-            <div class="col-sm-10">
-              <input type="number" min="0" max="99" class="form-control" name="jersey_num" required></input>
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
+              <div class="col-sm-10">
+                <input type="number" min="0" max="99" class="form-control" name="jersey_num" required></input>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">Position</label>
-            <div class="col-sm-10">
-              <select class="form-control" name="position" required>
-                <option>Goalkeeper</option>
-                <option>Defender</option>
-                <option>Midfielder</option>
-                <option>Forward</option>
-              </select>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Position</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="position" required>
+                  <option>Goalkeeper</option>
+                  <option>Defender</option>
+                  <option>Midfielder</option>
+                  <option>Forward</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label class="control-label col-md-2">Player photo</label>
-            <div class="controls col-md-10">
-              <input type="file" name="image_url" required/>
+            <div class="form-group">
+              <label class="control-label col-md-2">Player photo</label>
+              <div class="controls col-md-10">
+                <input type="file" name="image_url" required/>
+              </div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label class="control-label col-md-2"></label>
-            <div class="controls col-md-10">
-              <button type="submit" class="btn btn-white">Submit</button>
+            <div class="form-group">
+              <label class="control-label col-md-2"></label>
+              <div class="controls col-md-10">
+                <button type="submit" class="btn btn-white">Submit</button>
+              </div>
             </div>
-          </div>
-        </form> <!-- / form -->
+          </form> <!-- / form -->
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Add Modal end -->
+  <!-- Add Modal end -->
 
-<!-- Edit Modal -->
-<div aria-hidden="true" aria-labelledby="add_modal_label" role="dialog" tabindex="-1" id="edit_modal" class="modal fade">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-        <h4 class="modal-title">Edit item #<span id="edit_id"></span></h4>
-      </div>
-      <div class="modal-body">
+  <!-- Edit Modal -->
+  <div aria-hidden="true" aria-labelledby="add_modal_label" role="dialog" tabindex="-1" id="edit_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Edit item #<span id="edit_id"></span></h4>
+        </div>
+        <div class="modal-body">
 
-        <form action="#" class="form-horizontal" id="edit_form">  <!-- form -->
+          <form action="#" class="form-horizontal" id="edit_form">  <!-- form -->
 
 
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label col-sm-2">Player name</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" name="name" required id="_name"></input>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
-                      <div class="col-sm-10">
-                        <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">Position</label>
-                      <div class="col-sm-10">
-                        <select class="form-control" name="position" required id="_position">
-                          <option>Goalkeeper</option>
-                          <option>Defender</option>
-                          <option>Midfielder</option>
-                          <option>Forward</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div class="form-group">
-                      <label class="control-label col-md-2">Player photo</label>
-                      <div class="controls col-md-10">
-                        <input type="file" name="image_url" />
-                      </div>
-                    </div>
-
-          <div class="form-group">
-            <label class="control-label col-md-2"></label>
-            <div class="controls col-md-10">
-              <button type="submit" class="btn btn-white">Submit</button>
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Player name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="name" required id="_name"></input>
+              </div>
             </div>
-          </div>
-        </form> <!-- / form -->
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
+              <div class="col-sm-10">
+                <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Position</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="position" required id="_position">
+                  <option>Goalkeeper</option>
+                  <option>Defender</option>
+                  <option>Midfielder</option>
+                  <option>Forward</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2">Player photo</label>
+              <div class="controls col-md-10">
+                <input type="file" name="image_url" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2"></label>
+              <div class="controls col-md-10">
+                <button type="submit" class="btn btn-white">Submit</button>
+              </div>
+            </div>
+          </form> <!-- / form -->
+        </div>
       </div>
     </div>
   </div>
-</div>
-<!-- Edit Modal end -->
+  <!-- Edit Modal end -->
 
-<script>
-$(document).ready(function(){
-  var table;
+  <script>
+  $(document).ready(function(){
+    var table;
 
-  var base_url = "<?php echo base_url(); ?>";
-  var api_segment = 'api/players/';
-  var api_url = base_url + api_segment;
+    var base_url = "<?php echo base_url(); ?>";
+    var api_segment = 'api/players/';
+    var api_url = base_url + api_segment;
 
-  var table_headers = ['Player name', 'Position', 'Jersey number', 'Player photo'];
+    var table_headers = ['Player name', 'Position', 'Jersey number', 'Birth date', 'Birth place', 'Player photo', 'Fully body photo',];
 
-  /**---------------------------------------------
-  -------------------POST add---------------------
-  ---------------------------------------------**/
-  $("#add_form").submit(function(e){
-    var form_data = new FormData($(this)[0]);
+    /**---------------------------------------------
+    -------------------POST add---------------------
+    ---------------------------------------------**/
+    $("#add_form").submit(function(e){
+      var form_data = new FormData($(this)[0]);
 
-    $.ajax({
-      url: api_url,
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 201){
-          initializeTable('#table_div', table_headers);
-          $('#add_modal').modal('toggle');
-          clearAllForms();
-          customMessage('Item added successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
-
-    e.preventDefault();
-  });
-  /**---------------------------------------------
-  -------------------POST edit---------------------
-  ---------------------------------------------**/
-  $("#edit_form").submit(function(e){
-    var form_data = new FormData($(this)[0]);
-
-    $.ajax({
-      url: api_url + $('#edit_id').html(),
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 200){
-          initializeTable('#table_div', table_headers);
-          clearAllForms();
-          $('#edit_modal').modal('toggle');
-          customMessage('Changes saved successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
-
-    e.preventDefault();
-  });
-
-  /**---------------------------------------------
-  -------------------DELETE-----------------------
-  ---------------------------------------------**/
-  /**
-  * delete an item by id using api
-  * @var int    id
-  */
-  deleteItem = function(id){
-
-    if(confirm('Are you sure you want to do this?')){
       $.ajax({
-        url: api_url + id,
-        type: 'DELETE',
+        url: api_url,
+        type: 'POST',
+        data: form_data,
+        async: false,
         success: function (data, textStatus, xhr) {
-          if(xhr.status == 204){
+          if(xhr.status == 201){
             initializeTable('#table_div', table_headers);
-            customMessage('Item deleted successfully');
+            $('#add_modal').modal('toggle');
+            clearAllForms();
+            customMessage('Item added successfully');
           }
-        }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
       });
+
+      e.preventDefault();
+    });
+    /**---------------------------------------------
+    -------------------POST edit---------------------
+    ---------------------------------------------**/
+    $("#edit_form").submit(function(e){
+      var form_data = new FormData($(this)[0]);
+
+      $.ajax({
+        url: api_url + $('#edit_id').html(),
+        type: 'POST',
+        data: form_data,
+        async: false,
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            initializeTable('#table_div', table_headers);
+            clearAllForms();
+            $('#edit_modal').modal('toggle');
+            customMessage('Changes saved successfully');
+          }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+
+      e.preventDefault();
+    });
+
+    /**---------------------------------------------
+    -------------------DELETE-----------------------
+    ---------------------------------------------**/
+    /**
+    * delete an item by id using api
+    * @var int    id
+    */
+    deleteItem = function(id){
+
+      if(confirm('Are you sure you want to do this?')){
+        $.ajax({
+          url: api_url + id,
+          type: 'DELETE',
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 204){
+              initializeTable('#table_div', table_headers);
+              customMessage('Item deleted successfully');
+            }
+          }
+        });
+      }
+
     }
 
-  }
+    /**
+    * function for populating the edit modal
+    * @var int   id
+    */
+    editItem = function(id) {
+      $.getJSON(api_url + id, function(result){
+        $('#_name').val(result[0].name);
+        $('#_jersey_num').val(result[0].jersey_num);
+        $('#_position').find('option:contains("'+ result[0].position +'")').prop('selected', true);
+      });
+      $('#edit_id').html('');
+      $('#edit_id').html(id);
+      $('#edit_modal').modal('toggle');
+    }
 
-  /**
-  * function for populating the edit modal
-  * @var int   id
-  */
-  editItem = function(id) {
-    $.getJSON(api_url + id, function(result){
-      $('#_name').val(result[0].name);
-      $('#_jersey_num').val(result[0].jersey_num);
-      $('#_position').find('option:contains("'+ result[0].position +'")').prop('selected', true);
-    });
-    $('#edit_id').html('');
-    $('#edit_id').html(id);
-    $('#edit_modal').modal('toggle');
-  }
+    /**---------------------------------------------
+    --------------------GET all--------------------
+    ---------------------------------------------**/
+    /**
+    * initialize a table using an api endpoint
+    * @var selector           string      element to append our table ex. '#some_id'
+    * @var table_headers      array       headers to use excluding the number counter header ex. ['Some header', 'Another one', 'And another one']
+    */
+    initializeTable = function(selector, table_headers){
+      $(selector).empty();
 
-  /**---------------------------------------------
-  --------------------GET all--------------------
-  ---------------------------------------------**/
-  /**
-  * initialize a table using an api endpoint
-  * @var selector           string      element to append our table ex. '#some_id'
-  * @var table_headers      array       headers to use excluding the number counter header ex. ['Some header', 'Another one', 'And another one']
-  */
-  initializeTable = function(selector, table_headers){
-    $(selector).empty();
+      $.getJSON(api_url, function(result){
+        table = `
+        <table class="table table-bordered">
+        <thead><tr>
+        <th>#</th>`;
 
-    $.getJSON(api_url, function(result){
-      table = `
-      <table class="table table-bordered">
-      <thead><tr>
-      <th>#</th>`;
+        for(var x in table_headers){
+          table += '<th>' + table_headers[x] + '</th>';
+        }
 
-      for(var x in table_headers){
-        table += '<th>' + table_headers[x] + '</th>';
-      }
+        table += `<th>Options</th></tr></thead><tbody>`;
 
-      table += `<th>Options</th></tr></thead><tbody>`;
+        for(var x in result){
+          id = parseInt(x) + 1;
 
-      for(var x in result){
-        id = parseInt(x) + 1;
+          table += '<tr>';
 
-        table += '<tr>';
+          table += '<td>' + id +'</td>'; // id
+          table += '<td>' + result[x].name +'</td>';
+          table += '<td>' + result[x].position +'</td>';
+          table += '<td>' + result[x].jersey_num +'</td>';
+          table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
+          table +=
+          `<td>
+          <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
+          <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
+          </td>`;
 
-        table += '<td>' + id +'</td>'; // id
-        table += '<td>' + result[x].name +'</td>';
-        table += '<td>' + result[x].position +'</td>';
-        table += '<td>' + result[x].jersey_num +'</td>';
-        table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
-        table +=
-        `<td>
-        <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
-        <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
-        </td>`;
+          table += '</tr>';
+        }
 
-        table += '</tr>';
-      }
+        table += '</tbody></table>';
 
-      table += '</tbody></table>';
+        $(selector).append(table);
+      });
 
-      $(selector).append(table);
-    });
+    }
 
-  }
+    initializeTable('#table_div', table_headers);
 
-  initializeTable('#table_div', table_headers);
-
-}); // End document ready
-</script>
+  }); // End document ready
+  </script>
