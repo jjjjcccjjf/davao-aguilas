@@ -86,26 +86,39 @@
 
         <form action="#" class="form-horizontal" id="edit_form">  <!-- form -->
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Player name</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="title" id="_name" required></input>
-            </div>
-          </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
-            <div class="col-sm-10">
-              <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
-            </div>
-          </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label col-sm-2">Player name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" name="name" required id="_name"></input>
+                      </div>
+                    </div>
 
-          <div class="form-group">
-            <label class="control-label col-md-2">Player Photo</label>
-            <div class="controls col-md-10">
-              <input type="file" name="image_url"/>
-            </div>
-          </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
+                      <div class="col-sm-10">
+                        <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label">Position</label>
+                      <div class="col-sm-10">
+                        <select class="form-control" name="position" required id="_position">
+                          <option>Goalkeeper</option>
+                          <option>Defender</option>
+                          <option>Midfielder</option>
+                          <option>Forward</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="control-label col-md-2">Player photo</label>
+                      <div class="controls col-md-10">
+                        <input type="file" name="image_url" />
+                      </div>
+                    </div>
 
           <div class="form-group">
             <label class="control-label col-md-2"></label>
@@ -214,8 +227,9 @@ $(document).ready(function(){
   */
   editItem = function(id) {
     $.getJSON(api_url + id, function(result){
-      $('#_title').val(result[0].title);
-      $('#_body').val(result[0].body);
+      $('#_name').val(result[0].name);
+      $('#_jersey_num').val(result[0].jersey_num);
+      $('#_position').find('option:contains("'+ result[0].position +'")').prop('selected', true);
     });
     $('#edit_id').html('');
     $('#edit_id').html(id);
