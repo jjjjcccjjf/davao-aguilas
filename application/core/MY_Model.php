@@ -25,6 +25,7 @@ class Crud_model extends CI_model
     parent::__construct();
     $this->table = 'crud';
     $this->upload_dir = 'your_dir';
+    $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/"; # override this on your child class. just redeclare it
   }
 
   /**
@@ -139,7 +140,7 @@ class Crud_model extends CI_model
   {
     @$file = $_FILES[$file_key];
     $upload_path = "uploads/" . $this->upload_dir;
-    
+
     $config['upload_path'] = $upload_path; # NOTE: Change your directory as needed
     $config['allowed_types'] = 'gif|jpg|jpeg|png'; # NOTE: Change file types as needed
     $config['file_name'] = time() . '_' . $file['name']; # Set the new filename
