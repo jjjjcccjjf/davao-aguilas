@@ -161,4 +161,31 @@ class Crud_model extends CI_model
 
   }
 
+  /* Custom scripts for Davao Aguilas only */
+
+  /**
+   * return team name based on team_id
+   * @param  int       $id      players.team_id
+   * @return string             team name
+   */
+  public function getTeamName($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get('teams')->result();
+
+    return @$res[0]->name;
+  }
+  /**
+   * return league name based on league_id
+   * @param  int       $id      players.league_id
+   * @return string             team name
+   */
+  public function getLeagueName($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get('leagues')->result();
+
+    return @$res[0]->name;
+  }
+
 }
