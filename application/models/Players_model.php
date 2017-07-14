@@ -54,17 +54,4 @@ class Players_model extends Crud_model
     return $res;
   }
 
-  /**
-   * return team name based on team_id
-   * @param  int       $id      players.team_id
-   * @return string             team name
-   */
-  public function getTeamName($id)
-  {
-    $this->db->where('id', $id);
-    $res = $this->db->get('teams')->result();
-
-    return @$res[0]->name;
-  }
-
 }
