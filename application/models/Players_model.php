@@ -10,7 +10,6 @@ class Players_model extends Crud_model
     $this->table = 'players';
     $this->upload_dir = 'players';
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
-
   }
 
   /**
@@ -24,6 +23,9 @@ class Players_model extends Crud_model
      foreach ($res as $item){
        $item->image_url =  $this->full_up_path . $item->image_url;
        $item->full_body_image_url =  $this->full_up_path . $item->full_body_image_url;
+
+       $item->birth_date_f = date('F j, Y', strtotime($item->birth_date));
+       $item->team_name = $this->getTeamName($item->team_id);
      }
 
      return $res;
@@ -41,7 +43,22 @@ class Players_model extends Crud_model
 
     $res[0]->image_url = $this->full_up_path . $res[0]->image_url;
     $res[0]->full_body_image_url = $this->full_up_path . $res[0]->full_body_image_url;
+    $res[0]->birth_date_f = date('F j, Y', strtotime($res[0]->birth_date));
+
     return $res;
+  }
+
+  /**
+   * return team name based on team_id
+   * @param  int       $id      players.team_id
+   * @return string             team name
+   */
+  public function getTeamName($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get('teams')->result();
+
+    return @$res[0]->name;
   }
 
 }
