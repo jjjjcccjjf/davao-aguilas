@@ -88,6 +88,7 @@ Status: 200 OK
 
 ##### Response
 ```json
+Status: 200 OK
 [
     {
         "id": "1",
@@ -109,6 +110,7 @@ Status: 200 OK
 
 ##### Response
 ```json
+Status: 200 OK
 [
     {
         "id": "1",
@@ -129,6 +131,7 @@ Status: 200 OK
 
 ##### Response
 ```json
+Status: 200 OK
 [
     {
         "id": "3",
