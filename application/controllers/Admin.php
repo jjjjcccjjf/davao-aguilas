@@ -96,4 +96,36 @@ class Admin extends CI_Controller {
 		$this->wrapper('teams');
 	}
 
+	public function leagues()
+	{
+		$this->wrapper('leagues');
+	}
+
+	public function team_stats()
+	{
+		$this->wrapper('team_stats');
+	}
+
+	public function player_stats()
+	{
+		$this->wrapper('player_stats');
+	}
+
+	public function ladders()
+	{
+
+		$res = $this->client->request('GET', base_url() . 'api/teams');
+		$data['teams'] = json_decode($res->getBody());
+
+		$res = $this->client->request('GET', base_url() . 'api/leagues');
+		$data['leagues'] = json_decode($res->getBody());
+
+		$this->wrapper('ladders', $data);
+	}
+
+	public function fixtures()
+	{
+		$this->wrapper('fixtures');
+	}
+
 }
