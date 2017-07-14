@@ -24,6 +24,7 @@ class Players_model extends Crud_model
        $item->image_url =  $this->full_up_path . $item->image_url;
        $item->full_body_image_url =  $this->full_up_path . $item->full_body_image_url;
 
+       $item->birth_date = date('Y-m-d', strtotime($item->birth_date));
        $item->birth_date_f = date('F j, Y', strtotime($item->birth_date));
        $item->team_name = $this->getTeamName($item->team_id);
      }
@@ -43,6 +44,7 @@ class Players_model extends Crud_model
 
     $res[0]->image_url = $this->full_up_path . $res[0]->image_url;
     $res[0]->full_body_image_url = $this->full_up_path . $res[0]->full_body_image_url;
+    $res[0]->birth_date = date('Y-m-d', strtotime($res[0]->birth_date));
     $res[0]->birth_date_f = date('F j, Y', strtotime($res[0]->birth_date));
     $res[0]->team_name = $this->getTeamName($res[0]->team_id);
 
