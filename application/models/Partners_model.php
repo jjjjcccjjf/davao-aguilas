@@ -19,13 +19,13 @@ class Partners_model extends Crud_model
   */
   public function all()
   {
-     $res = $this->db->get($this->table)->result();
+    $res = $this->db->get($this->table)->result();
 
-     foreach ($res as $item){
-       $item->image_url =  $this->full_up_path . $item->image_url;
-     }
+    foreach ($res as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+    }
 
-     return $res;
+    return $res;
   }
 
   /**
@@ -38,7 +38,10 @@ class Partners_model extends Crud_model
     $this->db->where('id', $id);
     $res = $this->db->get($this->table)->result();
 
-    $res[0]->image_url = $this->full_up_path . $res[0]->image_url;
+    foreach ($res as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+    }
+
     return $res;
   }
 
