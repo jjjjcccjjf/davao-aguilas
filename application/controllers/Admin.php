@@ -9,6 +9,12 @@ class Admin extends CI_Controller {
 	*/
 	public $includes = [];
 
+	/**
+	 * GuzzleHttp Client
+	 * @var object
+	 */
+	public $client;
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,6 +22,8 @@ class Admin extends CI_Controller {
 		$this->includes['dynamic_table'] = false;
 		$this->includes['time_picker'] = false;
 		$this->includes['multi_select'] = false;
+
+		$this->client = new GuzzleHttp\Client();
 	}
 
 	public function index()
@@ -76,7 +84,11 @@ class Admin extends CI_Controller {
 
 	public function players()
 	{
-		$this->wrapper('players');
+
+		$res = $this->client->request('GET', base_url() . 'api/teams');
+		$data['teams'] = json_decode($res->getBody());
+
+		$this->wrapper('players', $data);
 	}
 
 	public function teams()
