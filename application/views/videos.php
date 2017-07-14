@@ -155,7 +155,7 @@ $(document).ready(function(){
   var api_segment = 'api/videos/';
   var api_url = base_url + api_segment;
 
-  var table_headers = ['Title', 'Duration', 'Embed URL (?)', 'Type', 'Image URL'];
+  var table_headers = ['Title', 'Duration', 'Video URL', 'Type', 'Image URL'];
 
   /**---------------------------------------------
   -------------------POST add---------------------
