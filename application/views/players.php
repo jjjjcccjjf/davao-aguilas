@@ -47,9 +47,9 @@
               <label class="col-sm-2 control-label col-sm-2">Team</label>
               <div class="col-sm-10">
                 <select class="form-control" name="team_id" required>
-                  <?php /* foreach($teams as $team): # Find this in `application/config/constants.php` ?>
+                  <?php foreach($teams as $team): # Find this in the controller ?>
                     <option value="<?= $team->id ?>"><?= $team->name ?></option>
-                  <?php endforeach;  */?>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -148,23 +148,76 @@
 
 
             <div class="form-group">
-              <label class="col-sm-2 control-label col-sm-2">Player name</label>
+              <label class="col-sm-2 control-label col-sm-2">Player first name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" required id="_name"></input>
+                <input type="text" class="form-control" name="fname" id="_fname" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Player last name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="lname" id="_lname" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Team</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="team_id" id="_team_id" required>
+                  <?php foreach($teams as $team): # Find this in the controller ?>
+                    <option value="<?= $team->id ?>"><?= $team->name ?></option>
+                  <?php endforeach; ?>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Height</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="height" id="_height" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Weight</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="weight" id="_weight" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Birth date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" name="birth_date" id="_birth_date" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Birth place</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="birth_place" id="_birth_place" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Nationality</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="nationality" id="_nationality" required></input>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label col-sm-2">Jersey number</label>
               <div class="col-sm-10">
-                <input type="number" min="0" max="99" class="form-control" name="jersey_num" required id="_jersey_num"></input>
+                <input type="number" min="0" max="99" class="form-control" name="jersey_num" id="_jersey_num" required></input>
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-sm-2 control-label">Position</label>
               <div class="col-sm-10">
-                <select class="form-control" name="position" required id="_position">
+                <select class="form-control" name="position" id="_position" required>
                   <?php foreach(PLAYER_POSITIONS as $option): # Find this in `application/config/constants.php` ?>
                     <option><?= $option ?></option>
                   <?php endforeach; ?>
@@ -175,7 +228,14 @@
             <div class="form-group">
               <label class="control-label col-md-2">Player photo</label>
               <div class="controls col-md-10">
-                <input type="file" name="image_url" />
+                <input type="file" name="image_url" id="_image_url" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2">Full body photo</label>
+              <div class="controls col-md-10">
+                <input type="file" name="full_body_image_url" id="_full_body_image_url" />
               </div>
             </div>
 
@@ -285,9 +345,16 @@
     */
     editItem = function(id) {
       $.getJSON(api_url + id, function(result){
-        $('#_name').val(result[0].name);
+        $('#_fname').val(result[0].fname);
+        $('#_lname').val(result[0].lname);
+        $('#_height').val(result[0].height);
+        $('#_weight').val(result[0].weight);
         $('#_jersey_num').val(result[0].jersey_num);
+        $('#_birth_date').val(result[0].birth_date);
+        $('#_birth_place').val(result[0].birth_place);
+        $('#_nationality').val(result[0].nationality);
         $('#_position').find('option:contains("'+ result[0].position +'")').prop('selected', true);
+        $('#_team_id').find('option[value="' + result[0].team_id + '"]').prop('selected', true);
       });
       $('#edit_id').html('');
       $('#edit_id').html(id);
