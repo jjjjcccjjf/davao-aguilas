@@ -51,13 +51,13 @@
             </div>
           </div>
 
-          <!-- TODO: make dynamic -->
           <div class="form-group">
             <label class="col-sm-2 control-label">Type</label>
             <div class="col-sm-10">
               <select class="form-control" name="type" required>
-                <option>Club Videos</option>
-                <option>News &amp; Highlights</option>
+                <?php foreach(VIDEO_TYPES as $option): # Find this in `application/config/constants.php` ?>
+                  <option><?= $option ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
           </div>
@@ -119,8 +119,9 @@
             <label class="col-sm-2 control-label col-sm-2" for="inputSuccess">Type</label>
             <div class="col-sm-10">
               <select class="form-control" name="type" required id="_type">
-                <option>Club Videos</option>
-                <option>News &amp; Highlights</option>
+                <?php foreach(VIDEO_TYPES as $option): # Find this in `application/config/constants.php` ?>
+                  <option><?= $option ?></option>
+                <?php endforeach; ?>
               </select>
             </div>
           </div>
