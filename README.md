@@ -4,11 +4,11 @@ Lorem ipsum dolor sit amet
 
 1. Blablabla
 1. [API Documentation](#api-documentation)
-  1. [News](#news)
-  1. [Videos](#videos)
-  1. [Partners](#partners)
-  1. [Teams](#teams)
-  1. [Players](#players)
+   1. [News](#news)
+   1. [Videos](#videos)
+   1. [Partners](#partners)
+   1. [Teams](#teams)
+   1. [Players](#players)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
 ## Requirements and Dependencies
