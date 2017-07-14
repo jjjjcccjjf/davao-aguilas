@@ -19,6 +19,21 @@
       <li><a class="<?php echo ($this->uri->segment(2) == 'teams') ? 'active' : ''; ?>" href="<?php echo base_url('admin/teams'); ?>">
         <i class="fa fa-users"></i>Teams
       </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'leagues') ? 'active' : ''; ?>" href="<?php echo base_url('admin/leagues'); ?>">
+        <i class="fa fa-users"></i>Leagues
+      </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'ladders') ? 'active' : ''; ?>" href="<?php echo base_url('admin/ladders'); ?>">
+        <i class="fa fa-signal"></i>Ladders
+      </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'team_stats') ? 'active' : ''; ?>" href="<?php echo base_url('admin/team_stats'); ?>">
+        <i class="fa fa-tasks"></i>Team Statistics
+      </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'player_stats') ? 'active' : ''; ?>" href="<?php echo base_url('admin/player_stats'); ?>">
+        <i class="fa fa-tasks"></i>Player Statistics
+      </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'fixtures') ? 'active' : ''; ?>" href="<?php echo base_url('admin/fixtures'); ?>">
+        <i class="fa fa-trophy"></i>Fixtures
+      </a></li>
 
     </ul>
     <!-- sidebar menu end-->
