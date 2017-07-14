@@ -30,9 +30,62 @@
           <form action="#" class="form-horizontal" id="add_form">  <!-- form -->
 
             <div class="form-group">
-              <label class="col-sm-2 control-label col-sm-2">Player name</label>
+              <label class="col-sm-2 control-label col-sm-2">Player first name</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="name" required></input>
+                <input type="text" class="form-control" name="fname" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Player last name</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="lname" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Team</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="team_id" required>
+                  <?php /* foreach($teams as $team): # Find this in `application/config/constants.php` ?>
+                    <option value="<?= $team->id ?>"><?= $team->name ?></option>
+                  <?php endforeach;  */?>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Height</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="height" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Weight</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="weight" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Birth date</label>
+              <div class="col-sm-10">
+                <input type="date" class="form-control" name="birth_date" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Birth place</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="birth_place" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Nationality</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="nationality" required></input>
               </div>
             </div>
 
@@ -47,10 +100,9 @@
               <label class="col-sm-2 control-label">Position</label>
               <div class="col-sm-10">
                 <select class="form-control" name="position" required>
-                  <option>Goalkeeper</option>
-                  <option>Defender</option>
-                  <option>Midfielder</option>
-                  <option>Forward</option>
+                  <?php foreach(PLAYER_POSITIONS as $option): # Find this in `application/config/constants.php` ?>
+                    <option><?= $option ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -59,6 +111,13 @@
               <label class="control-label col-md-2">Player photo</label>
               <div class="controls col-md-10">
                 <input type="file" name="image_url" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2">Full body photo</label>
+              <div class="controls col-md-10">
+                <input type="file" name="full_body_image_url" required/>
               </div>
             </div>
 
@@ -106,10 +165,9 @@
               <label class="col-sm-2 control-label">Position</label>
               <div class="col-sm-10">
                 <select class="form-control" name="position" required id="_position">
-                  <option>Goalkeeper</option>
-                  <option>Defender</option>
-                  <option>Midfielder</option>
-                  <option>Forward</option>
+                  <?php foreach(PLAYER_POSITIONS as $option): # Find this in `application/config/constants.php` ?>
+                    <option><?= $option ?></option>
+                  <?php endforeach; ?>
                 </select>
               </div>
             </div>
@@ -142,7 +200,7 @@
     var api_segment = 'api/players/';
     var api_url = base_url + api_segment;
 
-    var table_headers = ['Player name', 'Position', 'Jersey number', 'Birth date', 'Birth place', 'Player photo', 'Fully body photo',];
+    var table_headers = ['Player name', 'Team', 'Position', 'Jersey number', 'Birth date', 'Birth place', 'Nationality', 'Weight', 'Height', 'Player photo', 'Fully body photo'];
 
     /**---------------------------------------------
     -------------------POST add---------------------
@@ -265,10 +323,17 @@
           table += '<tr>';
 
           table += '<td>' + id +'</td>'; // id
-          table += '<td>' + result[x].name +'</td>';
+          table += '<td>' + result[x].fname + " " + result[x].lname +'</td>';
+          table += '<td>' + result[x].team_name +'</td>';
           table += '<td>' + result[x].position +'</td>';
           table += '<td>' + result[x].jersey_num +'</td>';
+          table += '<td>' + result[x].birth_date_f +'</td>';
+          table += '<td>' + result[x].birth_place +'</td>';
+          table += '<td>' + result[x].nationality +'</td>';
+          table += '<td>' + result[x].weight +'</td>';
+          table += '<td>' + result[x].height +'</td>';
           table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
+          table += '<td><a href="' + result[x].full_body_image_url + '" target="_blank">' + (result[x].full_body_image_url.split("/")).pop() +'</a></td>'; // get only file  name
           table +=
           `<td>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
