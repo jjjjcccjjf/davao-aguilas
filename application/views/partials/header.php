@@ -75,7 +75,7 @@
               </div>
             <!--logo start-->
             <!-- <a href="index.html" class="logo">Flat<span>lab</span></a> -->
-            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="" /></a>
+            <a href="" class="logo"><img style="max-width:70px; margin-right:10px" src="<?php echo base_url('assets/img/logo.png') ?>" /></a>
 
             <!--logo end-->
 
