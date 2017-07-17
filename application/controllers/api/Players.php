@@ -22,5 +22,19 @@ class Players extends Crud_controller
       $this->response(['message' => 'Malformed syntax'], 400);
     }
   }
+  
+  /**
+  * get players by team id
+  * @param  [type] $team_id [description]
+  * @return [type]          [description]
+  */
+  function team_get($team_id = null){
+    $res = $this->model->getPlayersByTeamId($team_id);
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($res, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
+  }
 
 }
