@@ -91,6 +91,6 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 * @author: @jjjjcccjjf
 */
 defined('DEFAULT_FOLDER_PERMISSIONS') OR define('DEFAULT_FOLDER_PERMISSIONS', 755); // highest automatically-assigned error code
-const PLAYER_POSITIONS = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward']; # We're using this syntax because 5.6 doesn't support the one above!
+const PLAYER_POSITIONS = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward', "Manager"]; # We're using this syntax because 5.6 doesn't support the one above!
 const COURT_TYPES = ['Home', 'Away']; # We're using this syntax because 5.6 doesn't support the one above!
 const VIDEO_TYPES = ['Club Videos', 'News &amp; Highlights']; # We're using this syntax because 5.6 doesn't support the one above!

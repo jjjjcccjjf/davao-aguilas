@@ -132,6 +132,21 @@ Status: 200 OK
 #### List all players from a team
 `GET /players/team/:id`
 
+#### List all Goalkeepers from a team
+`GET /players/team/:id/goalkeepers`
+
+#### List all Defenders from a team
+`GET /players/team/:id/defenders`
+
+#### List all Midfielders from a team
+`GET /players/team/:id/midfielders`
+
+#### List all Forwards from a team
+`GET /players/team/:id/forwards`
+
+#### List all Managers from a team
+`GET /players/team/:id/managers`
+
 ##### Response
 ```json
 Status: 200 OK

@@ -50,6 +50,31 @@ class Players_model extends Crud_model
     return $res;
   }
 
+  public function getPlayersByTeamIdAndPosition($team_id, $position)
+  {
+
+    foreach(PLAYER_POSITIONS as $pos){
+      /**
+      * if a string matches an element in our PLAYER_POSITIONS constant, use that element
+      * as our position search query. For ex., if strtolower('Goalkeeper') is present in `goalkeepers`
+      * query string, use it
+      */
+      if (strpos($position, strtolower($pos) ) !== false){
+        $position_q = $pos; break;
+      }else{
+        $position_q = null;
+      }
+    }
+
+    $this->db->where('team_id', $team_id);
+    $this->db->where('position', $position_q);
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
+
+    return $res;
+  }
+
   function formatFields($res){
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
