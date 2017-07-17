@@ -198,7 +198,7 @@ class Crud_model extends CI_model
   public function paginate()
   {
     if ($this->input->get('page')){
-      $per_page = ($this->input->get('per_page')) ? $this->input->get('per_page') : 10; # Make 10 default $per_page if per_page is not set
+      $per_page = ($this->input->get('per_page')) ? $this->input->get('per_page') : 10; # Make 10 default $per_page if $per_page is not set
       $offset = ($_GET['page'] - 1) * $per_page;
       $this->db->limit($per_page, $offset);
     }

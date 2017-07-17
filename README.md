@@ -4,6 +4,7 @@ Lorem ipsum dolor sit amet
 
 1. Blablabla
 1. [API Documentation](#api-documentation)
+   1. [Pagination](#pagination)
    1. [News](#news)
    1. [Videos](#videos)
    1. [Partners](#partners)
@@ -24,13 +25,21 @@ Lorem ipsum dolor sit amet
 1. Do something about player_stats possible to duplicate? For ex. (1, assists, 99, 1 assists, 1212)
 1. remove file every submit
 1. ~~Constants array for static fields such as Type in videos, Role in players~~
-1. Pagination of webservice
+1. ~~Pagination of webservice~~
 1. Configure server time
 1. While uploading loading
 
 ---
 ## API Documentation
 All API access is accessed from `http://TODO.com/api`
+
+### Pagination
+Requests with `?page` query string will be paginated to 10 items by default. You can also set a custom page size with the `?per_page` parameter. See examples below:
+
+`http://example.com/api/?page=1`  
+`http://example.com/api?page=1` // you can omit the trailing slash just fine  
+`http://example.com/api/?page=2&per_page=30`
+
 ### News
 
 #### List all news  
