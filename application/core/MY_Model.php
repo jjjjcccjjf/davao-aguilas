@@ -189,6 +189,18 @@ class Crud_model extends CI_model
 
     return @$res[0]->name;
   }
+  /**
+  * return image_url based on image_id
+  * @param  int       $id      teams.id
+  * @return string             teams.image_url
+  */
+  public function getTeamImageUrl($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get('teams')->result();
+
+    return @$res[0]->image_url;
+  }
 
   /**
    * this is for pagination
