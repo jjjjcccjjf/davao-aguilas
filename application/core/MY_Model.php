@@ -15,9 +15,9 @@ class Crud_model extends CI_model
   protected $table;
 
   /**
-   * The directory you want to upload to whose parent dir is `uploads` folder
-   * @var [type]
-   */
+  * The directory you want to upload to whose parent dir is `uploads` folder
+  * @var [type]
+  */
   protected $upload_dir;
 
   public function __construct()
@@ -26,6 +26,8 @@ class Crud_model extends CI_model
     $this->table = 'crud';
     $this->upload_dir = 'your_dir';
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/"; # override this on your child class. just redeclare it
+
+    $this->paginate(); # apply pagination to all methods
   }
 
   /**
@@ -164,10 +166,10 @@ class Crud_model extends CI_model
   /* Custom scripts for Davao Aguilas only */
 
   /**
-   * return team name based on team_id
-   * @param  int       $id      players.team_id
-   * @return string             team name
-   */
+  * return team name based on team_id
+  * @param  int       $id      players.team_id
+  * @return string             team name
+  */
   public function getTeamName($id)
   {
     $this->db->where('id', $id);
@@ -176,16 +178,30 @@ class Crud_model extends CI_model
     return @$res[0]->name;
   }
   /**
-   * return league name based on league_id
-   * @param  int       $id      players.league_id
-   * @return string             team name
-   */
+  * return league name based on league_id
+  * @param  int       $id      players.league_id
+  * @return string             team name
+  */
   public function getLeagueName($id)
   {
     $this->db->where('id', $id);
     $res = $this->db->get('leagues')->result();
 
     return @$res[0]->name;
+  }
+
+  /**
+   * this is for pagination
+   * uses $this->input->get('page') and $this->input->get('per_page')
+   * @return [type] [description]
+   */
+  public function paginate()
+  {
+    if ($this->input->get('page')){
+      $per_page = ($this->input->get('per_page')) ? $this->input->get('per_page') : 10; # Make 10 default $per_page if per_page is not set
+      $offset = ($_GET['page'] - 1) * $per_page;
+      $this->db->limit($per_page, $offset);
+    }
   }
 
 }
