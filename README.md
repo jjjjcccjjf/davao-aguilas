@@ -129,6 +129,9 @@ Status: 200 OK
 #### Get a player
 `GET /players/:id`
 
+#### List all players from a team
+`GET /players/team/:id`
+
 ##### Response
 ```json
 Status: 200 OK
