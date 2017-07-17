@@ -32,7 +32,7 @@ class Players extends Crud_controller
 
     if($position == null){ # Return everyone if position is blank
       $res = $this->model->getPlayersByTeamId($team_id);
-    }else{ 
+    }else{
       $res = $this->model->getPlayersByTeamIdAndPosition($team_id, $position);
     }
 
@@ -41,6 +41,21 @@ class Players extends Crud_controller
     }else{
       $this->response(['message' => 'Not found'], 404);
     }
+  }
+
+  public function squad_get($team_id)
+  {
+    $res = $this->model->getSquad($team_id);
+
+    $squad = [];
+
+    foreach($res as $item){
+      if(in_array($item->position, PLAYER_POSITIONS)){
+        $squad[$item->position]['players'][] = $item;
+      }
+    }
+
+    $this->response($squad, 200);
   }
 
 }

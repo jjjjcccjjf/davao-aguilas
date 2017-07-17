@@ -65,6 +65,7 @@ $route['api/news/(:num)'] = 'api/news/single/$1';
 $route['api/partners/(:num)'] = 'api/partners/single/$1';
 $route['api/teams/(:num)'] = 'api/teams/single/$1';
 $route['api/players/(:num)'] = 'api/players/single/$1';
+$route['api/squad/(:num)'] = 'api/players/squad/$1';
 $route['api/icons/(:num)'] = 'api/icons/single/$1';
 $route['api/team_stats/(:num)'] = 'api/team_stats/single/$1';
 $route['api/player_stats/(:num)'] = 'api/player_stats/single/$1';

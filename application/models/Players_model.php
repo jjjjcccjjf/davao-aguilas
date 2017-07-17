@@ -75,6 +75,17 @@ class Players_model extends Crud_model
     return $res;
   }
 
+  /**
+  * Get all squad by id
+  * @return array
+  */
+  public function getSquad($id)
+  {
+    $res = $this->getPlayersByTeamId($id);
+
+    return $res;
+  }
+
   function formatFields($res){
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
