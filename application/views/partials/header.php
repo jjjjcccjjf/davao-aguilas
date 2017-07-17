@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mosaddek">
     <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png') ?>">
 
     <title>Davao Aguilas CMS</title>
 

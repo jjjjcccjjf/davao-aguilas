@@ -10,6 +10,7 @@ class Players_model extends Crud_model
     $this->table = 'players';
     $this->upload_dir = 'players';
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
+
   }
 
   /**
@@ -19,7 +20,6 @@ class Players_model extends Crud_model
   public function all()
   {
     $res = $this->db->get($this->table)->result();
-
     $this->formatFields($res);
 
     return $res;
