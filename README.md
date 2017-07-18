@@ -28,6 +28,8 @@ Lorem ipsum dolor sit amet
 1. ~~Pagination of webservice~~
 1. Configure server time
 1. While uploading loading
+1. Flag for disabling current timestamp
+1. Datetime vs Timestamp (????)
 
 ---
 ## API Documentation
