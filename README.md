@@ -38,6 +38,12 @@ Production `http://TODO.com/api`
 
 ---
 
+### Entity Relationship Diagram
+
+https://www.lucidchart.com/invitations/accept/ea1b0347-04b3-4234-9b23-1b4ede980756
+
+---
+
 ### Authentication
 TODO
 
