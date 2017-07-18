@@ -34,12 +34,19 @@ Lorem ipsum dolor sit amet
 Development: `http://betaprojex.com/davao-aguilas/api`  
 Production `http://TODO.com/api`
 
+---
+
 ### Pagination
 Requests with `?page` query string will be paginated to 10 items by default. You can also set a custom page size with the `?per_page` parameter. See examples below:
 
 `http://example.com/api/?page=1`  
 `http://example.com/api?page=1` // you can omit the trailing slash just fine  
 `http://example.com/api/?page=2&per_page=30`
+
+##### Note:
+If query string `?page` is omitted, the api will return **all items** from a resource!
+
+---
 
 ### News
 
