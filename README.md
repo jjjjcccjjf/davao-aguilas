@@ -134,7 +134,7 @@ Status: 200 OK
 
 
 #### List a squad
-`GET /squad/:id`
+`GET /squad/:team_id`
 
 ```json
 Status: 200 OK
@@ -194,22 +194,22 @@ Status: 200 OK
 `GET /players/:id`
 
 #### List all players from a team
-`GET /players/team/:id`
+`GET /players/team/:team_id`
 
 #### List all Goalkeepers from a team
-`GET /players/team/:id/goalkeepers`
+`GET /players/team/:team_id/goalkeepers`
 
 #### List all Defenders from a team
-`GET /players/team/:id/defenders`
+`GET /players/team/:team_id/defenders`
 
 #### List all Midfielders from a team
-`GET /players/team/:id/midfielders`
+`GET /players/team/:team_id/midfielders`
 
 #### List all Forwards from a team
-`GET /players/team/:id/forwards`
+`GET /players/team/:team_id/forwards`
 
 #### List all Managers from a team
-`GET /players/team/:id/managers`
+`GET /players/team/:team_id/managers`
 
 ##### Response
 ```json
