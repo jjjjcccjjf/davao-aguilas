@@ -23,6 +23,29 @@ class Players extends Crud_controller
     }
   }
 
+
+  /**
+  * edit single
+  * we override MY_Model's because we need to include full_body_image_url too
+  * @param  int $id [description]
+  */
+  function single_post($id)
+  {
+    $data = array_merge($this->input->post(), array_merge($this->model->upload('image_url'), $this->model->upload('full_body_image_url')));
+    
+    $res = $this->model->update($id, $data);
+
+    if ($res || $res === 0) {
+      $res = $this->model->get($id);
+      $this->response_header('Location', api_url($this) .  $id); # Set the newly created object's location
+      $this->response($res, 200);
+    } elseif ($res === null) {
+      $this->response(['message' => 'Not found'], 404);
+    } else {
+      $this->response(['message' => 'Malformed syntax'], 400);
+    }
+  }
+
   /**
   * get players by team id
   * @param  [type] $team_id [description]
@@ -44,10 +67,10 @@ class Players extends Crud_controller
   }
 
   /**
-   * return squad based on param.
-   * @param  int | string   $param [description]
-   * @return arr            result
-   */
+  * return squad based on param.
+  * @param  int | string   $param [description]
+  * @return arr            result
+  */
   public function squad_get($param)
   {
     if($param == 'default'){

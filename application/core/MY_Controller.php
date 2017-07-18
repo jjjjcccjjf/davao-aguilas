@@ -60,11 +60,7 @@ class Crud_controller extends \Restserver\Libraries\REST_Controller
   */
   function single_post($id)
   {
-    # If upload failed, just set default post data
-    if(($upload_arr = $this->model->upload('image_url')) === [])
-    $data = $this->input->post();
-    else # If upload was successful, merge array
-    $data = array_merge($this->input->post(), $upload_arr);
+    $data = array_merge($this->input->post(), $this->model->upload('image_url'));
 
     $res = $this->model->update($id, $data);
 
