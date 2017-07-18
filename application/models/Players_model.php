@@ -82,9 +82,25 @@ class Players_model extends Crud_model
   public function getSquad($id)
   {
     $res = $this->getPlayersByTeamId($id);
+    return $res;
+  }
+
+  /**
+  * Get all squad by id
+  * @return array
+  */
+  public function getDefaultSquad()
+  {
+    $team_id = $this->getTeamIdByName(DEFAULT_SQUAD);
+
+    $this->db->where('team_id', $team_id);
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
 
     return $res;
   }
+
 
   function formatFields($res){
     foreach ($res as $item){

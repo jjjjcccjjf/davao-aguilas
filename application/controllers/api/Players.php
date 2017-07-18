@@ -43,9 +43,18 @@ class Players extends Crud_controller
     }
   }
 
-  public function squad_get($team_id)
+  /**
+   * return squad based on param.
+   * @param  int | string   $param [description]
+   * @return arr            result
+   */
+  public function squad_get($param)
   {
-    $res = $this->model->getSquad($team_id);
+    if($param == 'default'){
+      $res = $this->model->getDefaultSquad();
+    }else{
+      $res = $this->model->getSquad($param);
+    }
 
     $squad = [];
 

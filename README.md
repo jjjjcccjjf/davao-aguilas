@@ -150,6 +150,10 @@ Status: 200 OK
 #### List a squad
 `GET /squad/:team_id`
 
+#### List default squad (in our case, `Davao Aguilas`)
+
+`GET /squad/default`
+
 ```json
 Status: 200 OK
 {

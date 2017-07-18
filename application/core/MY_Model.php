@@ -201,6 +201,18 @@ class Crud_model extends CI_model
 
     return @$res[0]->image_url;
   }
+  /**
+  * return image_url based on image_id
+  * @param  string       $needle      teams.id
+  * @return int                       teams.id
+  */
+  public function getTeamIdByName($team_name)
+  {
+    $this->db->like('name', $team_name);
+    $res = $this->db->get('teams')->result();
+
+    return @$res[0]->id;
+  }
 
   /**
    * this is for pagination
