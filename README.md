@@ -38,6 +38,11 @@ Production `http://TODO.com/api`
 
 ---
 
+### Authentication
+TODO
+
+---
+
 ### Pagination
 Requests with `?page` query string will be paginated to 10 items by default. You can also set a custom page size with the `?per_page` parameter. See examples below:
 
