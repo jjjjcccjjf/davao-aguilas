@@ -55,7 +55,11 @@ class Players extends Crud_controller
       }
     }
 
-    $this->response($squad, 200);
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($squad, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
   }
 
 }

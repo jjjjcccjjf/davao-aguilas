@@ -31,7 +31,8 @@ Lorem ipsum dolor sit amet
 
 ---
 ## API Documentation
-All API access is accessed from `http://TODO.com/api`
+Development: `http://betaprojex.com/davao-aguilas/api`  
+Production `http://TODO.com/api`
 
 ### Pagination
 Requests with `?page` query string will be paginated to 10 items by default. You can also set a custom page size with the `?per_page` parameter. See examples below:
@@ -131,6 +132,60 @@ Status: 200 OK
 ]
 ```
 
+
+#### List a squad
+`GET /squad/:id`
+
+```json
+Status: 200 OK
+{
+    "Midfielder": {
+        "players": [
+            {
+                "id": "1",
+                "fname": "Danil",
+                "lname": "Ishutin",
+                "team_id": "1",
+                "image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345529_2016-12-09.jpg",
+                "full_body_image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345529_aDaHvdy.png",
+                "position": "Midfielder",
+                "jersey_num": "13",
+                "birth_date": "1994-11-29",
+                "birth_place": "Denmark",
+                "nationality": "Swedish",
+                "height": "123cm",
+                "weight": "123kg",
+                "created_at": "2017-07-17 21:38:49",
+                "birth_date_f": "November 29, 1994",
+                "team_name": "Natus Vincere"
+            }
+        ]
+    },
+    "Defender": {
+        "players": [
+            {
+                "id": "11",
+                "fname": "Bruno",
+                "lname": "Buccariati",
+                "team_id": "1",
+                "image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345888_11139958_1079252412094268_8281657439582323313_n.jpg",
+                "full_body_image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345888_a2b09ed22479262cc03e3b76fc913780.png",
+                "position": "Defender",
+                "jersey_num": "00",
+                "birth_date": "2017-07-14",
+                "birth_place": "somewhere",
+                "nationality": "nigga",
+                "height": "99cm",
+                "weight": "123kg",
+                "created_at": "2017-07-17 21:44:48",
+                "birth_date_f": "July 14, 2017",
+                "team_name": "Natus Vincere"
+            }
+        ]
+    }
+}
+```
+
 ### Players
 #### List all players
 `GET /players/`
@@ -181,3 +236,12 @@ Status: 200 OK
     }
 ]
 ```
+
+### Leagues TODO
+
+#### List all leagues
+`GET /leagues/`
+
+#### Get a league
+`GET /leagues/:id`
+ `
