@@ -245,19 +245,37 @@ Status: 200 OK
         "fname": "Dio",
         "lname": "Brando",
         "team_id": "1",
-        "image_url": "http://localhost/davao-aguilas/uploads/players/1499935050_aDaHvdy.png",
-        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1499935050_2016-12-09.jpg",
+        "image_url": "http://localhost/davao-aguilas/uploads/players/1500367032_547al.gif",
+        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1500367032_547al1.gif",
         "position": "Forward",
         "jersey_num": "11",
         "birth_date": "2017-07-14",
         "birth_place": "Spain",
         "nationality": "Spaniard",
-        "height": "196cm",
-        "weight": "123kg",
+        "height": "6'2''",
+        "weight": "162kg",
         "created_at": "2017-07-13 16:37:30",
-        "updated_at": "2017-07-14 11:46:20",
+        "updated_at": "2017-07-18 16:37:12",
         "birth_date_f": "July 14, 2017",
-        "team_name": "Za warudo"
+        "team_name": "Za warudoo",
+        "stats": [
+            {
+                "stat_key": "Shots outside penalty box",
+                "stat_value": 60
+            },
+            {
+                "stat_key": "Crosses",
+                "stat_value": "22"
+            },
+            {
+                "stat_key": "Assists",
+                "stat_value": 55
+            },
+            {
+                "stat_key": "Shot Accuracy",
+                "stat_value": "13%"
+            }
+        ]
     }
 ]
 ```

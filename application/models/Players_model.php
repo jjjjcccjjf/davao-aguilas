@@ -101,6 +101,23 @@ class Players_model extends Crud_model
     return $res;
   }
 
+public function getPlayerStatistics($player_id)
+{
+  $this->db->where('player_id', $player_id);
+  $res = $this->db->get('player_stats')->result();
+
+  foreach($res as $val) {
+    if(is_numeric($val->stat_value))
+    $val->stat_value = floatval($val->stat_value);
+
+    unset($val->created_at);
+    unset($val->updated_at);
+    unset($val->player_id);
+    unset($val->id);
+  }
+
+  return $res;
+}
 
   function formatFields($res){
     foreach ($res as $item){
@@ -110,6 +127,8 @@ class Players_model extends Crud_model
       $item->birth_date = date('Y-m-d', strtotime($item->birth_date));
       $item->birth_date_f = date('F j, Y', strtotime($item->birth_date));
       $item->team_name = $this->getTeamName($item->team_id);
+
+      $item->stats = $this->getPlayerStatistics($item->id);
     }
   }
 
