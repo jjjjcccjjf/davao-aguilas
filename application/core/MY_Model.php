@@ -215,10 +215,23 @@ class Crud_model extends CI_model
   }
 
   /**
-   * this is for pagination
-   * uses $this->input->get('page') and $this->input->get('per_page')
-   * @return [type] [description]
-   */
+  * return player name based on player_id
+  * @param  int       $player_id      player.id
+  * @return string                    player.fname . " " . player.lname
+  */
+  public function getPlayerNameById($player_id)
+  {
+    $this->db->where('id', $player_id);
+    $res = $this->db->get('players')->result();
+
+    return (@$res[0]->fname . " " . @$res[0]->lname);
+  }
+
+  /**
+  * this is for pagination
+  * uses $this->input->get('page') and $this->input->get('per_page')
+  * @return [type] [description]
+  */
   public function paginate()
   {
     if ($this->input->get('page')){
