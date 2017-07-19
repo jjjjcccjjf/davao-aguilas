@@ -33,7 +33,7 @@ class Ladders_model extends Crud_model
   */
   public function get($id)
   {
-    $this->db->where('id', $id);
+    $this->db->where('league_id', $id);
     $res = $this->db->get($this->table)->result();
 
     $this->formatFields($res);

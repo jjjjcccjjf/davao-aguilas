@@ -261,11 +261,82 @@ Status: 200 OK
 ]
 ```
 
-### Leagues TODO
+### Leagues
 
 #### List all leagues
 `GET /leagues/`
 
 #### Get a league
 `GET /leagues/:id`
- `
+
+```json
+Status: 200 OK
+[
+    {
+        "id": "1",
+        "name": "Hyundai A-League",
+        "created_at": "2017-07-14 16:35:00",
+        "updated_at": "0000-00-00 00:00:00"
+    },
+    {
+        "id": "2",
+        "name": "Asian Championship League",
+        "created_at": "2017-07-14 16:35:32",
+        "updated_at": "0000-00-00 00:00:00"
+    },
+    {
+        "id": "3",
+        "name": "Westfield W-League",
+        "created_at": "2017-07-14 16:35:55",
+        "updated_at": "2017-07-14 16:35:58"
+    }
+]
+```
+
+### Ladders
+
+#### List all ladders
+`GET /leagues/`
+
+#### Get a ladder standings by league id
+`GET /leagues/:league_id/standings`
+
+```json
+{
+    "standings": [
+        {
+            "wins": 6,
+            "losses": 5,
+            "draws": 4,
+            "matches_played": 3,
+            "goal_difference": 13,
+            "points": 3,
+            "team_id": "1",
+            "team_name": "Za warudoo",
+            "team_image_url": "http://localhost/davao-aguilas/uploads/teams/1500014304_2016-12-09.jpg"
+        },
+        {
+            "wins": 7,
+            "losses": 8,
+            "draws": 6,
+            "matches_played": 10,
+            "goal_difference": 2,
+            "points": 13,
+            "team_id": "2",
+            "team_name": "Davao Aguilas",
+            "team_image_url": "http://localhost/davao-aguilas/uploads/teams/1500014310_2016-11-29.jpg"
+        }
+    ],
+    "league_name": "Asian Championship League"
+}
+```
+
+#### Get home standings ladder by league id
+`GET /leagues/:league_id/home`
+
+`TODO`
+
+#### Get away standings ladder by league id
+`GET /leagues/:league_id/home`
+
+`TODO`
