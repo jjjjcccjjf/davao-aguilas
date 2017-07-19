@@ -17,7 +17,10 @@ class Player_stats_model extends Crud_model
 
     /* we strip off useless zeros such as 60.00 to 60 or 79.70 to 79.9 */
     foreach($res as &$val) {
+      if(is_numeric($val->stat_value))
       $val->stat_value = floatval($val->stat_value);
+
+      $val->name = $this->getPlayerNameById($val->player_id);
     }
 
     return $res;

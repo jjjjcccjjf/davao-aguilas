@@ -108,7 +108,10 @@ class Admin extends CI_Controller {
 
 	public function player_stats()
 	{
-		$this->wrapper('player_stats');
+		$res = $this->client->request('GET', base_url() . 'api/players');
+		$data['players'] = json_decode($res->getBody());
+
+		$this->wrapper('player_stats', $data);
 	}
 
 	public function ladders()
