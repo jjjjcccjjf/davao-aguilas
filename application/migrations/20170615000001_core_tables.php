@@ -18,8 +18,8 @@ class Migration_core_tables extends CI_Migration {
         'unique' => TRUE
       ),
       'stat_value' => array(
-        'type' => 'DOUBLE',
-        'constraint' => '11,2',
+        'type' => 'VARCHAR',
+        'constraint' => '15',
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
@@ -39,8 +39,8 @@ class Migration_core_tables extends CI_Migration {
         'constraint' => '250',
       ),
       'stat_value' => array(
-        'type' => 'DOUBLE',
-        'constraint' => '11,2',
+        'type' => 'VARCHAR',
+        'constraint' => '15',
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
