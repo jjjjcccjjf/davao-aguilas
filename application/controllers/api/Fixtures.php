@@ -20,7 +20,7 @@ class Fixtures extends Crud_controller
 
     $res = $this->model->getFixtures($league_id, ucwords($type));
 
-    if($res || $res !== []){ # Respond with 404 when the resource is not found
+    if($res['matches'] !== [] && $res['league_name'] !== null){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
       $this->response(['message' => 'Not found'], 404);
