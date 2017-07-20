@@ -66,8 +66,14 @@ class Ladders_model extends Crud_model
       $res['standings'][] = $arr;
     }
 
-    $res['league_name'] = $this->getLeagueName($league_id);
-    return $res;
+    if(array_key_exists('standings', $res)){
+      $res['league_name'] = $this->getLeagueName($league_id);
+      return $res;
+    }
+    else{
+      return []; # handling for our 404
+    }
+
   }
 
   public function getStandingsByCourtType($league_id, $court_type)

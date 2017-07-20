@@ -23,7 +23,14 @@ class Ladders extends Crud_controller
 
   public function home_get($league_id)
   {
-    $res = $this->model->getStandingsByCourtType($league_id, 'home');
+    $ladders = $this->model->getStandingsByCourtType($league_id, 'home');
+
+    if($ladders !== []){
+      $res['standings'] = $ladders;
+      $res['league_name'] = $this->model->getLeagueName($league_id);
+    }else{
+      $res = [];
+    }
 
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
@@ -34,7 +41,14 @@ class Ladders extends Crud_controller
 
   public function away_get($league_id)
   {
-    $res = $this->model->getStandingsByCourtType($league_id, 'away');
+    $ladders = $this->model->getStandingsByCourtType($league_id, 'away');
+
+    if($ladders !== []){
+      $res['standings'] = $ladders;
+      $res['league_name'] = $this->model->getLeagueName($league_id);
+    }else{
+      $res = [];
+    }
 
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);

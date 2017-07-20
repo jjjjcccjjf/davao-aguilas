@@ -319,9 +319,16 @@ Status: 200 OK
 ### Ladders
 
 #### Get a ladder standings by league id
-`GET /leagues/:league_id/standings`
+`GET /ladders/league/:league_id/standings`
+
+#### Get home standings ladder by league id
+`GET /ladders/league/:league_id/home`
+
+#### Get away standings ladder by league id
+`GET /ladders/league/:league_id/away`
 
 ```json
+Status: 200 OK
 {
     "standings": [
         {
@@ -350,17 +357,6 @@ Status: 200 OK
     "league_name": "Asian Championship League"
 }
 ```
-
-#### Get home standings ladder by league id
-`GET /leagues/:league_id/home`
-
-`TODO`
-
-#### Get away standings ladder by league id
-`GET /leagues/:league_id/home`
-
-`TODO`
-
 
 ### Fixtures
 
