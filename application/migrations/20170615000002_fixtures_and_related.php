@@ -127,8 +127,15 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'VARCHAR',
         'constraint' => '100',
       ),
-      'match_date' => array(
-        'type' => 'DATETIME',
+      'round_num' => array(
+        'type' => 'INT',
+        'constraint' => '9',
+      ),
+      'match_schedule' => array(
+        'type' => 'DATE',
+      ),
+      'match_time' => array(
+        'type' => 'TIME',
       ),
       'location' => array(
         'type' => 'TEXT',
