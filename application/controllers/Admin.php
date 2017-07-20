@@ -128,7 +128,13 @@ class Admin extends CI_Controller {
 
 	public function fixtures()
 	{
-		$this->wrapper('fixtures');
+		$res = $this->client->request('GET', base_url() . 'api/teams');
+		$data['teams'] = json_decode($res->getBody());
+
+		$res = $this->client->request('GET', base_url() . 'api/leagues');
+		$data['leagues'] = json_decode($res->getBody());
+
+		$this->wrapper('fixtures', $data);
 	}
 
 }
