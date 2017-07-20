@@ -31,6 +31,9 @@
       <li><a class="<?php echo ($this->uri->segment(2) == 'player_stats') ? 'active' : ''; ?>" href="<?php echo base_url('admin/player_stats'); ?>">
         <i class="fa fa-tasks"></i>Player Statistics
       </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'match_stats') ? 'active' : ''; ?>" href="<?php echo base_url('admin/match_stats'); ?>">
+        <i class="fa fa-tasks"></i>Match Statistics
+      </a></li>
       <li><a class="<?php echo ($this->uri->segment(2) == 'fixtures') ? 'active' : ''; ?>" href="<?php echo base_url('admin/fixtures'); ?>">
         <i class="fa fa-trophy"></i>Fixtures
       </a></li>

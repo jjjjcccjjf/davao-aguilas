@@ -9,6 +9,8 @@ class Fixtures_model extends Crud_model
     parent::__construct();
     $this->table = 'fixtures';
 
+    $this->upload_dir = 'teams'; # REVIEW: Hmmm. Is this ok? Since there's no uploading, might as well use this (?)
+    $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
   }
 
   /**
@@ -44,6 +46,9 @@ class Fixtures_model extends Crud_model
       $item->match_schedule_f = date('l, d F Y', strtotime($item->match_schedule));
       $item->match_time = date('H:i:s', strtotime($item->match_schedule));
       $item->match_date = date('Y-m-d', strtotime($item->match_schedule));
+
+      $item->home_team_image_url = $this->full_up_path . $this->getTeamImageUrl($item->home_team_id);
+      $item->away_team_image_url = $this->full_up_path . $this->getTeamImageUrl($item->away_team_id);
 
       $item->league_name = $this->getLeagueName($item->league_id);
     }
