@@ -31,6 +31,7 @@ Lorem ipsum dolor sit amet
 1. Flag for disabling current timestamp
 1. Datetime vs Timestamp (????)
 1. Player stats duplicate issue
+1. Image make it just icon
 
 ---
 ## API Documentation

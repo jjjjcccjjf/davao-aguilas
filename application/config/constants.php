@@ -96,3 +96,4 @@ const PLAYER_POSITIONS = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward', "Ma
 const COURT_TYPES = ['Home', 'Away']; # We're using this syntax because 5.6 doesn't support the one above!
 const VIDEO_TYPES = ['Club Videos', 'News &amp; Highlights']; # We're using this syntax because 5.6 doesn't support the one above!
 const PLAYER_STATISTICS = ['Assists', 'Goals', 'Total Passes', 'Crosses', 'Shots on Target', 'Shots inside penalty box', 'Shots outside penalty box', 'Shot accuracy']; # We're using this syntax because 5.6 doesn't support the one above!
+const MATCH_PROGRESS_TYPES = ['Final', 'Upcoming', 'Ongoing']; # We're using this syntax because 5.6 doesn't support the one above!
