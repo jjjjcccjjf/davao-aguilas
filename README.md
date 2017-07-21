@@ -35,6 +35,7 @@ Lorem ipsum dolor sit amet
 1. Datetime vs Timestamp (????)
 1. Player stats duplicate issue
 1. Image make it just icon
+1. Last page
 
 ---
 ## API Documentation

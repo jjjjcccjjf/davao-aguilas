@@ -129,7 +129,7 @@
   <!-- Add Modal end -->
 
   <!-- Edit Modal -->
-  <div aria-hidden="true" aria-labelledby="add_modal_label" role="dialog" tabindex="-1" id="edit_modal" class="modal fade">
+  <div aria-hidden="true" aria-labelledby="edit_modal_label" role="dialog" tabindex="-1" id="edit_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -239,6 +239,62 @@
     </div>
   </div>
   <!-- Edit Modal end -->
+
+
+
+  <!-- Match stats Modal -->
+  <div aria-hidden="true" aria-labelledby="match_stats_modal_label" role="dialog" tabindex="-1" id="match_stats_modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Match statistics of fixture #<span id="match_stats_id"></span></h4>
+        </div>
+        <div class="modal-body">
+
+          <form action="#" class="form-horizontal" id="match_stats_form">  <!-- form -->
+
+            <div class="form-group">
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-6 text-center">
+                <h4>Match Statistics</h4>
+              </div>
+              <div class="col-sm-2">
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-success btn-xs" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-2">
+                <input type="text" class="form-control" name="location" id="_location" required></input>
+              </div>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="location" id="_location" required></input>
+              </div>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" name="location" id="_location" required></input>
+              </div>
+              <div class="col-sm-2" style="vertical-align">
+                <button class="btn btn-info btn-xs" title="Save"><i class="fa fa-check"></i></button>
+                <button class="btn btn-danger btn-xs" title="Remove"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2"></label>
+              <div class="controls col-md-10">
+                <button type="submit" class="btn btn-white">Submit</button>
+              </div>
+            </div>
+          </form> <!-- / form -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Match stats Modal end -->
 
   <script>
   $(document).ready(function(){
@@ -356,6 +412,20 @@
       $('#edit_modal').modal('toggle');
     }
 
+    /**
+    * function for populating the match_stats modal
+    * @var int   id
+    */
+    showStats = function(id) {
+      $.getJSON(api_url + id, function(result){
+
+        //
+      });
+      $('#match_stats_id').html('');
+      $('#match_stats_id').html(id);
+      $('#match_stats_modal').modal('toggle');
+    }
+
     /**---------------------------------------------
     --------------------GET all--------------------
     ---------------------------------------------**/
@@ -397,6 +467,7 @@
           table += '<td>' + result[x].match_progress +'</td>';
           table +=
           `<td>
+          <button onclick='showStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
           <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
           </td>`;
