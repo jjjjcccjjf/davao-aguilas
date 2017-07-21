@@ -273,13 +273,7 @@
             <div id="match_stats_forms">  <!-- forms -->
 
             </div> <!-- / forms -->
-
-            <div class="form-group">
-              <label class="control-label col-md-2"></label>
-              <div class="controls col-md-10">
-                <button type="submit" class="btn btn-white">Submit</button>
-              </div>
-            </div>
+ 
           </div>
         </div>
       </div>
@@ -292,17 +286,22 @@
     var table;
 
     var base_url = "<?php echo base_url(); ?>";
-    var api_segment = 'api/fixtures/';
-    var api_url = base_url + api_segment;
-
+    var api_url = base_url + 'api/fixtures/';
+    match_stat_api_url = base_url + 'api/match_stats/';
     var table_headers = ['League', 'Home Team', 'Away Team', 'Hash Tag', 'Round number', 'Home Score', 'Away Score', 'Match schedule', 'Location', 'Match Progress'];
-
 
     /**
     * function for populating the match_stats modal
     * @var int   id
     */
-    showStats = function(id) {
+    showMatchStats = function(id) {
+      initializeMatchStats(id);
+      $('#match_stats_id').html('');
+      $('#match_stats_id').html(id);
+      $('#match_stats_modal').modal('toggle');
+    }
+
+    initializeMatchStats = function(id){
       $("#match_stats_forms").empty();
 
       stat_names = '<select name="stat_name" class="form-control">';
@@ -313,7 +312,7 @@
       `;
       stat_names += '</select>';
 
-      $.getJSON(base_url + 'api/match_stats/fixtures/' + id, function(result){
+      $.getJSON(match_stat_api_url + 'fixtures/' + id, function(result){
 
         /* ------------------------------------------------- */
         /* -------------MAIN CONTENT WILL GO HERE----------- */
@@ -331,7 +330,7 @@
           </div>
           <div class="col-sm-2" style="vertical-align">
           <button class="btn btn-info btn-xs" title="Save"><i class="fa fa-check"></i></button>
-          <button class="btn btn-danger btn-xs" title="Remove"><i class="fa fa-times"></i></button>
+          <button class="btn btn-danger btn-xs" onclick="deleteMatchStat(` + result[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
           </div>
           </div>`);
 
@@ -341,11 +340,6 @@
         /* ----------- /MAIN CONTENT WILL GO HERE----------- */
         /* ------------------------------------------------- */
       });
-
-
-      $('#match_stats_id').html('');
-      $('#match_stats_id').html(id);
-      $('#match_stats_modal').modal('toggle');
     }
 
 
@@ -417,7 +411,7 @@
           type: 'DELETE',
           success: function (data, textStatus, xhr) {
             if(xhr.status == 204){
-              initializeTable('#table_div', table_headers);
+              showMatchStats(id);
               customMessage('Item deleted successfully');
             }
           }
@@ -496,7 +490,7 @@
           table += '<td>' + result[x].match_progress +'</td>';
           table +=
           `<td>
-          <button onclick='showStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
+          <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
           <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
           </td>`;
@@ -514,4 +508,21 @@
     initializeTable('#table_div', table_headers);
 
   }); // End document ready
+
+
+  function deleteMatchStat(match_stat_id, fixture_id){
+    if(confirm('Are you sure you want to do this?')){
+      $.ajax({
+        url: match_stat_api_url + match_stat_id,
+        type: 'DELETE',
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 204){
+            initializeMatchStats(fixture_id);
+            // customMessage('Item deleted successfully');
+          }
+        }
+      });
+    }
+  }
+
   </script>
