@@ -266,14 +266,14 @@
                 <h4>Away Score</h4>
               </div>
               <div class="col-sm-2">
-                <button class="btn btn-success btn-xs" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                <button class="btn btn-success btn-xs" id="add_match_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
               </div>
             </div>
 
             <div id="match_stats_forms">  <!-- forms -->
 
             </div> <!-- / forms -->
- 
+
           </div>
         </div>
       </div>
@@ -301,8 +301,27 @@
       $('#match_stats_modal').modal('toggle');
     }
 
+    newMatchStat = function(id){
+      $.ajax({
+        url: match_stat_api_url,
+        type: 'POST',
+        data: { fixture_id : id },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 201){
+            initializeMatchStats(id);
+          }
+        }
+      });
+    }
+
     initializeMatchStats = function(id){
-      $("#match_stats_forms").empty();
+      var $match_stat_forms = $("#match_stats_forms");
+      var $add_btn = $('#add_match_btn');
+
+      $match_stat_forms.empty();
+
+      $add_btn.removeAttr('onclick');
+      $add_btn.attr('onClick', 'newMatchStat('+ id +');');
 
       stat_names = '<select name="stat_name" class="form-control">';
       stat_names +=
@@ -318,7 +337,7 @@
         /* -------------MAIN CONTENT WILL GO HERE----------- */
         /* ------------------------------------------------- */
         for(var x in result){
-          $("#match_stats_forms").append(`<div class="form-group" id="match_stat_row_`+ result[x].id +`">
+          $match_stat_forms.append(`<div class="form-group" id="match_stat_row_`+ result[x].id +`">
           <div class="col-sm-2">
           <input type="text" class="form-control" name="home_score" placeholder="Home score" value="` + result[x].home_score + `" required></input>
           </div>
@@ -518,7 +537,7 @@
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
             initializeMatchStats(fixture_id);
-            // customMessage('Item deleted successfully');
+            // customMessage('Item deleted successfully'); FIXME
           }
         }
       });
