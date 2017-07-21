@@ -244,7 +244,7 @@
 
   <!-- Match stats Modal -->
   <div aria-hidden="true" aria-labelledby="match_stats_modal_label" role="dialog" tabindex="-1" id="match_stats_modal" class="modal fade">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
@@ -252,36 +252,27 @@
         </div>
         <div class="modal-body">
 
-          <form action="#" class="form-horizontal" id="match_stats_form">  <!-- form -->
+          <div class="form-horizontal">
+
 
             <div class="form-group">
-              <div class="col-sm-2">
+              <div class="col-sm-2 text-center">
+                <h4>Home Score</h4>
               </div>
               <div class="col-sm-6 text-center">
                 <h4>Match Statistics</h4>
               </div>
-              <div class="col-sm-2">
+              <div class="col-sm-2 text-center">
+                <h4>Away Score</h4>
               </div>
               <div class="col-sm-2">
                 <button class="btn btn-success btn-xs" title="Add new"><i class="fa fa-plus"></i> Add new</button>
               </div>
             </div>
 
-            <div class="form-group">
-              <div class="col-sm-2">
-                <input type="text" class="form-control" name="location" id="_location" required></input>
-              </div>
-              <div class="col-sm-6">
-                <input type="text" class="form-control" name="location" id="_location" required></input>
-              </div>
-              <div class="col-sm-2">
-                <input type="text" class="form-control" name="location" id="_location" required></input>
-              </div>
-              <div class="col-sm-2" style="vertical-align">
-                <button class="btn btn-info btn-xs" title="Save"><i class="fa fa-check"></i></button>
-                <button class="btn btn-danger btn-xs" title="Remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
+            <div id="match_stats_forms">  <!-- forms -->
+
+            </div> <!-- / forms -->
 
             <div class="form-group">
               <label class="control-label col-md-2"></label>
@@ -289,7 +280,7 @@
                 <button type="submit" class="btn btn-white">Submit</button>
               </div>
             </div>
-          </form> <!-- / form -->
+          </div>
         </div>
       </div>
     </div>
@@ -305,6 +296,58 @@
     var api_url = base_url + api_segment;
 
     var table_headers = ['League', 'Home Team', 'Away Team', 'Hash Tag', 'Round number', 'Home Score', 'Away Score', 'Match schedule', 'Location', 'Match Progress'];
+
+
+    /**
+    * function for populating the match_stats modal
+    * @var int   id
+    */
+    showStats = function(id) {
+      $("#match_stats_forms").empty();
+
+      stat_names = '<select name="stat_name" class="form-control">';
+      stat_names +=
+      `<?php foreach(MATCH_STAT_NAMES as $option):?>
+      <option><?= $option ?></option>
+      <?php endforeach; ?>
+      `;
+      stat_names += '</select>';
+
+      $.getJSON(base_url + 'api/match_stats/fixtures/' + id, function(result){
+
+        /* ------------------------------------------------- */
+        /* -------------MAIN CONTENT WILL GO HERE----------- */
+        /* ------------------------------------------------- */
+        for(var x in result){
+          $("#match_stats_forms").append(`<div class="form-group" id="match_stat_row_`+ result[x].id +`">
+          <div class="col-sm-2">
+          <input type="text" class="form-control" name="home_score" placeholder="Home score" value="` + result[x].home_score + `" required></input>
+          </div>
+          <div class="col-sm-6">` +
+          stat_names
+          + `</div>
+          <div class="col-sm-2">
+          <input type="text" class="form-control" name="away_score"  placeholder="Away score" value="` + result[x].away_score + `" required></input>
+          </div>
+          <div class="col-sm-2" style="vertical-align">
+          <button class="btn btn-info btn-xs" title="Save"><i class="fa fa-check"></i></button>
+          <button class="btn btn-danger btn-xs" title="Remove"><i class="fa fa-times"></i></button>
+          </div>
+          </div>`);
+
+          $("#match_stat_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
+        }
+        /* ------------------------------------------------- */
+        /* ----------- /MAIN CONTENT WILL GO HERE----------- */
+        /* ------------------------------------------------- */
+      });
+
+
+      $('#match_stats_id').html('');
+      $('#match_stats_id').html(id);
+      $('#match_stats_modal').modal('toggle');
+    }
+
 
     /**---------------------------------------------
     -------------------POST add---------------------
@@ -410,20 +453,6 @@
       $('#edit_id').html('');
       $('#edit_id').html(id);
       $('#edit_modal').modal('toggle');
-    }
-
-    /**
-    * function for populating the match_stats modal
-    * @var int   id
-    */
-    showStats = function(id) {
-      $.getJSON(api_url + id, function(result){
-
-        //
-      });
-      $('#match_stats_id').html('');
-      $('#match_stats_id').html(id);
-      $('#match_stats_modal').modal('toggle');
     }
 
     /**---------------------------------------------
