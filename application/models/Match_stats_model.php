@@ -11,4 +11,11 @@ class Match_stats_model extends Crud_model
 
   }
 
+  function getMatchStatsByFixtureId($fixture_id){
+    $this->db->where('fixture_id', $fixture_id);
+    $res = $this->db->get($this->table)->result();
+
+    return $res;
+  }
+
 }
