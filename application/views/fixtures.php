@@ -240,8 +240,6 @@
   </div>
   <!-- Edit Modal end -->
 
-
-
   <!-- Match stats Modal -->
   <div aria-hidden="true" aria-labelledby="match_stats_modal_label" role="dialog" tabindex="-1" id="match_stats_modal" class="modal fade">
     <div class="modal-dialog modal-lg">
@@ -337,211 +335,237 @@
         /* -------------MAIN CONTENT WILL GO HERE----------- */
         /* ------------------------------------------------- */
         for(var x in result){
-          $match_stat_forms.append(`<div class="form-group" id="match_stat_row_`+ result[x].id +`">
-          <div class="col-sm-2">
-          <input type="text" class="form-control" name="home_score" placeholder="Home score" value="` + result[x].home_score + `" required></input>
-          </div>
-          <div class="col-sm-6">` +
-          stat_names
-          + `</div>
-          <div class="col-sm-2">
-          <input type="text" class="form-control" name="away_score"  placeholder="Away score" value="` + result[x].away_score + `" required></input>
-          </div>
-          <div class="col-sm-2" style="vertical-align">
-          <button class="btn btn-info btn-xs" title="Save"><i class="fa fa-check"></i></button>
-          <button class="btn btn-danger btn-xs" onclick="deleteMatchStat(` + result[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
-          </div>
-          </div>`);
+          $match_stat_forms.append(`
+            <div class="form-group" id="match_stat_row_`+ result[x].id +`" data-from_match="`+id+`">
+            <div class="col-sm-2">
+            <input type="number" class="form-control" name="home_score" id="home_score-`+ result[x].id +`" placeholder="Home score" value="` + result[x].home_score + `" required></input>
+            </div>
+            <div class="col-sm-6">` +
+            stat_names
+            + `</div>
+            <div class="col-sm-2">
+            <input type="number" class="form-control" name="away_score"  id="away_score-`+ result[x].id +`" placeholder="Away score" value="` + result[x].away_score + `" required></input>
+            </div>
+            <div class="col-sm-2" style="vertical-align">
+            <button type="button" class="btn btn-info btn-xs save-btn" data-mstat_id="`+ result[x].id +`" id="save_btn-` + result[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-danger btn-xs" onclick="deleteMatchStat(` + result[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
+            </div>
+            </div>`);
 
-          $("#match_stat_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
+            $("#match_stat_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
+            $("#match_stat_row_" + result[x].id).find('select').attr('id', 'stat_name-' + result[x].id);
+          }
+
+
+          /* ------------------------------------------------- */
+          /* ----------- /MAIN CONTENT WILL GO HERE----------- */
+          /* ------------------------------------------------- */
+        });
+      }
+
+
+      /**---------------------------------------------
+      -------------------POST add---------------------
+      ---------------------------------------------**/
+      $("#add_form").submit(function(e){
+        var form_data = new FormData($(this)[0]);
+
+        $.ajax({
+          url: api_url,
+          type: 'POST',
+          data: form_data,
+          async: false,
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 201){
+              initializeTable('#table_div', table_headers);
+              $('#add_modal').modal('toggle');
+              clearAllForms();
+              customMessage('Item added successfully');
+            }
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+
+        e.preventDefault();
+      });
+
+      /**---------------------------------------------
+      -------------------POST edit---------------------
+      ---------------------------------------------**/
+      $("#edit_form").submit(function(e){
+        var form_data = new FormData($(this)[0]);
+
+        $.ajax({
+          url: api_url + $('#edit_id').html(),
+          type: 'POST',
+          data: form_data,
+          async: false,
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 200){
+              initializeTable('#table_div', table_headers);
+              clearAllForms();
+              $('#edit_modal').modal('toggle');
+              customMessage('Changes saved successfully');
+            }
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+
+        e.preventDefault();
+      });
+
+      /**---------------------------------------------
+      -------------------DELETE-----------------------
+      ---------------------------------------------**/
+      /**
+      * delete an item by id using api
+      * @var int    id
+      */
+      deleteItem = function(id){
+
+        if(confirm('Are you sure you want to do this?')){
+          $.ajax({
+            url: api_url + id,
+            type: 'DELETE',
+            success: function (data, textStatus, xhr) {
+              if(xhr.status == 204){
+                showMatchStats(id);
+                customMessage('Item deleted successfully');
+              }
+            }
+          });
         }
-        /* ------------------------------------------------- */
-        /* ----------- /MAIN CONTENT WILL GO HERE----------- */
-        /* ------------------------------------------------- */
-      });
-    }
 
+      }
 
-    /**---------------------------------------------
-    -------------------POST add---------------------
-    ---------------------------------------------**/
-    $("#add_form").submit(function(e){
-      var form_data = new FormData($(this)[0]);
+      /**
+      * function for populating the edit modal
+      * @var int   id
+      */
+      editItem = function(id) {
+        $.getJSON(api_url + id, function(result){
+          $('#_league_id').find('option[value="' + result[0].league_id + '"]').prop('selected', true);
+          $('#_home_team_id').find('option[value="' + result[0].home_team_id + '"]').prop('selected', true);
+          $('#_away_team_id').find('option[value="' + result[0].away_team_id + '"]').prop('selected', true);
+          $('#_hash_tag').val(result[0].hash_tag);
+          $('#_round_num').val(result[0].round_num);
+          $('#_home_score').val(result[0].home_score);
+          $('#_away_score').val(result[0].away_score);
 
-      $.ajax({
-        url: api_url,
-        type: 'POST',
-        data: form_data,
-        async: false,
-        success: function (data, textStatus, xhr) {
-          if(xhr.status == 201){
-            initializeTable('#table_div', table_headers);
-            $('#add_modal').modal('toggle');
-            clearAllForms();
-            customMessage('Item added successfully');
+          /* Very long code just to set default datetime-local in javascript */
+          Date.prototype.addHours= function(h){
+            this.setHours(this.getHours()+h);
+            return this;
           }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
-      });
 
-      e.preventDefault();
-    });
-    /**---------------------------------------------
-    -------------------POST edit---------------------
-    ---------------------------------------------**/
-    $("#edit_form").submit(function(e){
-      var form_data = new FormData($(this)[0]);
+          $('#_match_schedule').val(((new Date(result[0].match_schedule.replace(/-/g,"/"))).addHours(8)).toISOString().substring(0,19));
+          $('#_location').val(result[0].location);
+          $('#_match_progress').val(result[0].match_progress);
+        });
+        $('#edit_id').html('');
+        $('#edit_id').html(id);
+        $('#edit_modal').modal('toggle');
+      }
 
-      $.ajax({
-        url: api_url + $('#edit_id').html(),
-        type: 'POST',
-        data: form_data,
-        async: false,
-        success: function (data, textStatus, xhr) {
-          if(xhr.status == 200){
-            initializeTable('#table_div', table_headers);
-            clearAllForms();
-            $('#edit_modal').modal('toggle');
-            customMessage('Changes saved successfully');
+      /**---------------------------------------------
+      --------------------GET all--------------------
+      ---------------------------------------------**/
+      /**
+      * initialize a table using an api endpoint
+      * @var selector           string      element to append our table ex. '#some_id'
+      * @var table_headers      array       headers to use excluding the number counter header ex. ['Some header', 'Another one', 'And another one']
+      */
+      initializeTable = function(selector, table_headers){
+        $(selector).empty();
+
+        $.getJSON(api_url, function(result){
+          table = `
+          <table class="table table-bordered">
+          <thead><tr>
+          <th>#</th>`;
+
+          for(var x in table_headers){
+            table += '<th>' + table_headers[x] + '</th>';
           }
-        },
-        cache: false,
-        contentType: false,
-        processData: false
+
+          table += `<th>Options</th></tr></thead><tbody>`;
+
+          for(var x in result){
+            id = parseInt(x) + 1;
+
+            table += '<tr>';
+
+            table += '<td>' + id +'</td>'; // id
+            table += '<td>' + result[x].league_name +'</td>';
+            table += '<td>' + result[x].home_team_name +'</td>';
+            table += '<td>' + result[x].away_team_name +'</td>';
+            table += '<td>' + result[x].hash_tag +'</td>';
+            table += '<td>' + result[x].round_num +'</td>';
+            table += '<td>' + result[x].home_score +'</td>';
+            table += '<td>' + result[x].away_score +'</td>';
+            table += '<td>' + result[x].match_schedule +'</td>';
+            table += '<td>' + result[x].location +'</td>';
+            table += '<td>' + result[x].match_progress +'</td>';
+            table +=
+            `<td>
+            <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
+            <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
+            <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
+            </td>`;
+
+            table += '</tr>';
+          }
+
+          table += '</tbody></table>';
+
+          $(selector).append(table);
+        });
+
+      }
+
+      initializeTable('#table_div', table_headers);
+
+      $('body').on('click', '.save-btn', function(){
+        var elem_id = $(this).attr('id');
+        var match_stat_id = $("#" + elem_id).data('mstat_id'); // fixture id
+        var home_score = $("#home_score-" + match_stat_id).val();
+        var away_score = $("#away_score-" + match_stat_id).val();
+        var stat_name = $("#stat_name-" + match_stat_id).val();
+
+        $.ajax({
+          url: match_stat_api_url + match_stat_id,
+          type: 'POST',
+          data: { home_score : home_score, away_score: away_score, stat_name: stat_name  },
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 200){
+              initializeMatchStats($("#match_stat_row_" + match_stat_id).data('from_match'));
+              // customMessage('Item deleted successfully'); FIXME
+            }
+          }
+        });
+
       });
+    }); // End document ready
 
-      e.preventDefault();
-    });
 
-    /**---------------------------------------------
-    -------------------DELETE-----------------------
-    ---------------------------------------------**/
-    /**
-    * delete an item by id using api
-    * @var int    id
-    */
-    deleteItem = function(id){
 
+    function deleteMatchStat(match_stat_id, fixture_id){
       if(confirm('Are you sure you want to do this?')){
         $.ajax({
-          url: api_url + id,
+          url: match_stat_api_url + match_stat_id,
           type: 'DELETE',
           success: function (data, textStatus, xhr) {
             if(xhr.status == 204){
-              showMatchStats(id);
-              customMessage('Item deleted successfully');
+              initializeMatchStats(fixture_id);
+              // customMessage('Item deleted successfully'); FIXME
             }
           }
         });
       }
-
     }
 
-    /**
-    * function for populating the edit modal
-    * @var int   id
-    */
-    editItem = function(id) {
-      $.getJSON(api_url + id, function(result){
-        $('#_league_id').find('option[value="' + result[0].league_id + '"]').prop('selected', true);
-        $('#_home_team_id').find('option[value="' + result[0].home_team_id + '"]').prop('selected', true);
-        $('#_away_team_id').find('option[value="' + result[0].away_team_id + '"]').prop('selected', true);
-        $('#_hash_tag').val(result[0].hash_tag);
-        $('#_round_num').val(result[0].round_num);
-        $('#_home_score').val(result[0].home_score);
-        $('#_away_score').val(result[0].away_score);
-
-        /* Very long code just to set default datetime-local in javascript */
-        Date.prototype.addHours= function(h){
-          this.setHours(this.getHours()+h);
-          return this;
-        }
-
-        $('#_match_schedule').val(((new Date(result[0].match_schedule.replace(/-/g,"/"))).addHours(8)).toISOString().substring(0,19));
-        $('#_location').val(result[0].location);
-        $('#_match_progress').val(result[0].match_progress);
-      });
-      $('#edit_id').html('');
-      $('#edit_id').html(id);
-      $('#edit_modal').modal('toggle');
-    }
-
-    /**---------------------------------------------
-    --------------------GET all--------------------
-    ---------------------------------------------**/
-    /**
-    * initialize a table using an api endpoint
-    * @var selector           string      element to append our table ex. '#some_id'
-    * @var table_headers      array       headers to use excluding the number counter header ex. ['Some header', 'Another one', 'And another one']
-    */
-    initializeTable = function(selector, table_headers){
-      $(selector).empty();
-
-      $.getJSON(api_url, function(result){
-        table = `
-        <table class="table table-bordered">
-        <thead><tr>
-        <th>#</th>`;
-
-        for(var x in table_headers){
-          table += '<th>' + table_headers[x] + '</th>';
-        }
-
-        table += `<th>Options</th></tr></thead><tbody>`;
-
-        for(var x in result){
-          id = parseInt(x) + 1;
-
-          table += '<tr>';
-
-          table += '<td>' + id +'</td>'; // id
-          table += '<td>' + result[x].league_name +'</td>';
-          table += '<td>' + result[x].home_team_name +'</td>';
-          table += '<td>' + result[x].away_team_name +'</td>';
-          table += '<td>' + result[x].hash_tag +'</td>';
-          table += '<td>' + result[x].round_num +'</td>';
-          table += '<td>' + result[x].home_score +'</td>';
-          table += '<td>' + result[x].away_score +'</td>';
-          table += '<td>' + result[x].match_schedule +'</td>';
-          table += '<td>' + result[x].location +'</td>';
-          table += '<td>' + result[x].match_progress +'</td>';
-          table +=
-          `<td>
-          <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
-          <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
-          <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
-          </td>`;
-
-          table += '</tr>';
-        }
-
-        table += '</tbody></table>';
-
-        $(selector).append(table);
-      });
-
-    }
-
-    initializeTable('#table_div', table_headers);
-
-  }); // End document ready
-
-
-  function deleteMatchStat(match_stat_id, fixture_id){
-    if(confirm('Are you sure you want to do this?')){
-      $.ajax({
-        url: match_stat_api_url + match_stat_id,
-        type: 'DELETE',
-        success: function (data, textStatus, xhr) {
-          if(xhr.status == 204){
-            initializeMatchStats(fixture_id);
-            // customMessage('Item deleted successfully'); FIXME
-          }
-        }
-      });
-    }
-  }
-
-  </script>
+    </script>
