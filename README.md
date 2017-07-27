@@ -416,3 +416,55 @@ Status: 200 OK
     "league_name": "Asian Championship League"
 }
 ```
+
+#### Get fixture / match details by fixture id
+`GET /fixtures/:id`
+
+```json
+[
+    {
+        "id": "1",
+        "home_team_id": "2",
+        "away_team_id": "1",
+        "league_id": "2",
+        "home_score": "0",
+        "away_score": "0",
+        "hash_tag": "#DonaldForPresident",
+        "round_num": "1",
+        "match_schedule": "2017-07-19 23:11:00",
+        "location": "Pangasinan, Pilipinas",
+        "match_progress": "Upcoming",
+        "created_at": "2017-07-19 14:44:03",
+        "updated_at": "2017-07-20 11:09:00",
+        "match_stats": [
+            {
+                "id": "47",
+                "fixture_id": "1",
+                "stat_name": "Attacks",
+                "home_score": "4",
+                "away_score": "2",
+                "created_at": "2017-07-27 14:17:23",
+                "updated_at": "2017-07-27 14:17:27"
+            },
+            {
+                "id": "48",
+                "fixture_id": "1",
+                "stat_name": "Corners",
+                "home_score": "13",
+                "away_score": "2",
+                "created_at": "2017-07-27 14:17:28",
+                "updated_at": "2017-07-27 14:17:32"
+            },
+            {
+                "id": "50",
+                "fixture_id": "1",
+                "stat_name": "Free Kicks",
+                "home_score": "31",
+                "away_score": "13",
+                "created_at": "2017-07-27 14:18:04",
+                "updated_at": "2017-07-27 14:18:09"
+            }
+        ]
+    }
+]
+```

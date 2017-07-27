@@ -38,6 +38,27 @@ class Fixtures_model extends Crud_model
     return $res;
   }
 
+  /**
+  * Get specific row via id
+  * @param  int     $id
+  * @return array   associative array of data
+  * @override
+  */
+  public function get($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get($this->table)->result();
+
+    $this->load->model('match_stats_model');
+    $match_stats = $this->match_stats_model->getMatchStatsByFixtureId($id);
+
+    if($match_stats != []){
+      $res[0]->match_stats = $match_stats;
+    }
+
+    return $res;
+  }
+
   function formatFields($res){
     foreach ($res as $item){
       $item->home_team_name = $this->getTeamName($item->home_team_id);
