@@ -436,6 +436,14 @@ Status: 200 OK
         "match_progress": "Upcoming",
         "created_at": "2017-07-19 14:44:03",
         "updated_at": "2017-07-20 11:09:00",
+        "home_team_name": "Davao Aguilas",
+        "away_team_name": "Za warudoo",
+        "match_schedule_f": "Wednesday, 19 July 2017",
+        "match_time": "23:11",
+        "match_date": "2017-07-19",
+        "home_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1500014310_2016-11-29.jpg",
+        "away_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1500014304_2016-12-09.jpg",
+        "league_name": "Asian Championship League",
         "match_stats": [
             {
                 "id": "47",
