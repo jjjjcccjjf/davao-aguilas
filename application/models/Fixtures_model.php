@@ -38,6 +38,22 @@ class Fixtures_model extends Crud_model
     return $res;
   }
 
+  function getUpcoming(){
+
+  }
+
+  function getRecent(){
+    $this->db->where('match_progress', 'final');
+    $this->db->order_by('match_schedule', 'DESC');
+    $fixtures = array_slice($this->db->get($this->table)->result(), 0, 1);
+    $this->formatFields($fixtures);
+
+    $res['matches'] = $fixtures;
+
+    $res['league_name'] = $this->getLeagueName($fixtures[0]->league_id);
+    return $res;
+  }
+
   /**
   * Get specific row via id
   * @param  int     $id

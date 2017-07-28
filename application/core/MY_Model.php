@@ -27,7 +27,9 @@ class Crud_model extends CI_model
     $this->upload_dir = 'your_dir';
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/"; # override this on your child class. just redeclare it
 
-    $this->paginate(); # apply pagination to all methods
+    # Use `$this->db->reset_query();` on the child class to override these two. Then redeclare them as needed
+    // $this->db->order_by('id', 'DESC');
+    // $this->paginate(); # apply pagination to all methods
   }
 
   /**
