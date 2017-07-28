@@ -126,18 +126,45 @@ Status: 200 OK
 
 ```json
 Status: 200 OK
-[
-    {
-        "id": "1",
-        "title": "Never gonna give you up",
-        "duration": "11:11:11",
-        "url": "http://example.com/",
-        "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1500014234_7b9.png",
-        "type": "Club Videos",
-        "created_at": "2017-07-14 14:37:14",
-        "updated_at": "0000-00-00 00:00:00"
-    }
-]
+{
+    "videos": [
+        {
+            "id": "1",
+            "title": "Barack Obama",
+            "duration": "06:11:11",
+            "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501219419_C1S4Uv5W8AEfz9O.jpg",
+            "type": "News & Highlights",
+            "is_featured": "1",
+            "created_at": "2017-07-28 13:23:40",
+            "updated_at": "2017-07-28 13:39:13"
+        },
+        {
+            "id": "3",
+            "title": "hey",
+            "duration": "11:11:11",
+            "url": "qwqq",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501220342_600px-Natus_Vincere_(1).png",
+            "type": "Club Videos",
+            "is_featured": "0",
+            "created_at": "2017-07-28 13:39:02",
+            "updated_at": "2017-07-28 13:39:13"
+        }
+    ],
+    "featured": [
+        {
+            "id": "1",
+            "title": "Barack Obama",
+            "duration": "06:11:11",
+            "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501219419_C1S4Uv5W8AEfz9O.jpg",
+            "type": "News & Highlights",
+            "is_featured": "1",
+            "created_at": "2017-07-28 13:23:40",
+            "updated_at": "2017-07-28 13:39:13"
+        }
+    ]
+}
 ```
 
 ### Partners
