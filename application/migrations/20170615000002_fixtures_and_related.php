@@ -132,7 +132,7 @@ class Migration_fixtures_and_related extends CI_Migration {
         'constraint' => '9',
       ),
       'match_schedule' => array(
-        'type' => 'DATE',
+        'type' => 'DATETIME',
       ),
       'match_time' => array(
         'type' => 'TIME',

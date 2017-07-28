@@ -414,10 +414,10 @@ Status: 200 OK
 ### Fixtures
 
 #### Get all upcoming matches by league id
-`GET /fixtures/league/:league_id/upcoming`
+`GET /fixtures/leagues/:league_id/upcoming`
 
 #### Get all final/finished  matches by league id
-`GET /fixtures/league/:league_id/final`
+`GET /fixtures/leagues/:league_id/final`
 
 ```json
 Status: 200 OK
