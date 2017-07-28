@@ -237,6 +237,7 @@ $(document).ready(function(){
     $(selector).empty();
 
     $.getJSON(api_url, function(result){
+      result = result['news'];
       table = `
       <table class="table table-bordered">
       <thead><tr>
@@ -276,6 +277,8 @@ $(document).ready(function(){
   initializeFeatured = function(){
     var options = "<option disabled selected>-- Choose item --</option>";
     $.getJSON(api_url, function(result){
+      result = result['news'];
+
       for(var x in result){
         options += '<option value="'+ result[x].id +'">'+ result[x].title +'</option>';
       }
