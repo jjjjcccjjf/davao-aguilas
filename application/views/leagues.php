@@ -108,7 +108,7 @@ $(document).ready(function(){
           initializeTable('#table_div', table_headers);
           $('#add_modal').modal('toggle');
           clearAllForms();
-          customMessage('Item added successfully');
+          customMessage('#custom_message', 'Item added successfully');
         }
       },
       cache: false,
@@ -161,7 +161,7 @@ $(document).ready(function(){
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
             initializeTable('#table_div', table_headers);
-            customMessage('Item deleted successfully');
+            customMessage('#custom_message', 'Item deleted successfully');
           }
         }
       });

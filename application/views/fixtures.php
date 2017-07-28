@@ -380,7 +380,7 @@
               initializeTable('#table_div', table_headers);
               $('#add_modal').modal('toggle');
               clearAllForms();
-              customMessage('Item added successfully');
+              customMessage('#custom_message', 'Item added successfully');
             }
           },
           cache: false,
@@ -434,7 +434,7 @@
             success: function (data, textStatus, xhr) {
               if(xhr.status == 204){
                 showMatchStats(id);
-                customMessage('Item deleted successfully');
+                customMessage('#custom_message', 'Item deleted successfully');
               }
             }
           });
@@ -543,7 +543,7 @@
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
               initializeMatchStats($("#match_stat_row_" + match_stat_id).data('from_match'));
-              // customMessage('Item deleted successfully'); FIXME
+              // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }
         });
@@ -561,7 +561,7 @@
           success: function (data, textStatus, xhr) {
             if(xhr.status == 204){
               initializeMatchStats(fixture_id);
-              // customMessage('Item deleted successfully'); FIXME
+              // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }
         });

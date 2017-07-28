@@ -3,7 +3,8 @@
     <section class="panel">
       <header class="panel-heading">
         Featured News
-        <!-- <a href="#add_modal" data-toggle="modal" class="btn btn-xs btn-info pull-right"> + Add New </a> -->
+        <br>
+        <div><sub style="color:green;" id="custom_message_featured"></sub></div>
         <select class="form-control" style="margin-top:12px" id="featured_news" >
           <!-- options set by javascript -->
         </select>
@@ -150,7 +151,7 @@ $(document).ready(function(){
           initializeTable('#table_div', table_headers, initializeFeatured);
           $('#add_modal').modal('toggle');
           clearAllForms();
-          customMessage('Item added successfully');
+          customMessage('#custom_message', 'Item added successfully');
         }
       },
       cache: false,
@@ -203,7 +204,7 @@ $(document).ready(function(){
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
             initializeTable('#table_div', table_headers, initializeFeatured);
-            customMessage('Item deleted successfully');
+            customMessage('#custom_message', 'Item deleted successfully');
           }
         }
       });

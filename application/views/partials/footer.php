@@ -63,9 +63,13 @@
  * @param  string     msg    custom message string
  * @return void
  */
-function customMessage(msg){
-  $('#custom_message').empty();
-  $('#custom_message').html(msg);
+function customMessage(selector, msg){
+  $(selector).empty();
+  $(selector).html(msg);
+  $(selector).fadeIn(200);
+  setTimeout(function(){
+    $(selector).fadeOut(400);
+  }, 2800)
 }
 
 function clearAllForms() {
