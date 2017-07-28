@@ -527,3 +527,58 @@ Status: 200 OK
     }
 ]
 ```
+
+#### Get most recent finished match / fixture
+`GET /fixtures/recent`
+
+#### Get closest upcoming finished match / fixture
+`GET /fixtures/upcoming`
+
+```json
+{
+    "matches": [
+        {
+            "id": "9",
+            "home_team_id": "2",
+            "away_team_id": "3",
+            "league_id": "1",
+            "home_score": "3",
+            "away_score": "2",
+            "hash_tag": "#hohoho",
+            "round_num": "2",
+            "match_schedule": "2017-09-30 07:02:00",
+            "match_time": "07:02",
+            "location": "San Mateo",
+            "match_progress": "Final",
+            "created_at": "2017-07-28 16:48:04",
+            "updated_at": "2017-07-28 17:08:56",
+            "home_team_name": "Alliance",
+            "away_team_name": "Buddha",
+            "match_schedule_f": "Saturday, 30 September 2017",
+            "match_date": "2017-09-30",
+            "home_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225828_H7jhECD.png",
+            "away_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225837_cb3ebb54aeaaadf8a61893d0c2ad081c.jpg",
+            "league_name": "League A"
+        }
+    ],
+    "league_name": "League A"
+}
+```
+
+
+### Members
+#### Add new member
+`POST /members/`
+
+##### Parameters
+|     Name    |    Type    |    Description    |
+| ----------- | ---------- | ----------------- |
+|    fname    |   string   |  No description   |
+|    mname    |   string   |  No description   |
+|    lname    |   string   |  No description   |
+|  birthdate  |    date    |  No description   |
+|    email    |   string   |  No description   |    
+|   address   |   string   |  No description   |    
+|    mobile   |   string   |  No description   |    
+|   facebook  | url/string |  No description   |    
+|   twitter   | url/string |  No description   |    
