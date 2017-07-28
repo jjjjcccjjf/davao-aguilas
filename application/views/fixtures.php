@@ -512,9 +512,9 @@
             table += '<td>' + result[x].match_progress +'</td>';
             table +=
             `<td>
-            <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
             <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
             <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
+            <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
             </td>`;
 
             table += '</tr>';

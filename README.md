@@ -13,6 +13,7 @@ Lorem ipsum dolor sit amet
    1. [Leagues](#leagues)
    1. [Ladders](#ladders)
    1. [Fixtures](#fixtures)
+   1. [Members](#members)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
 ## Requirements and Dependencies
@@ -571,14 +572,13 @@ Status: 200 OK
 `POST /members/`
 
 ##### Parameters
-|     Name    |    Type    |    Description    |
-| ----------- | ---------- | ----------------- |
-|    fname    |   string   |  No description   |
-|    mname    |   string   |  No description   |
-|    lname    |   string   |  No description   |
-|  birthdate  |    date    |  No description   |
-|    email    |   string   |  No description   |    
-|   address   |   string   |  No description   |    
-|    mobile   |   string   |  No description   |    
-|   facebook  | url/string |  No description   |    
-|   twitter   | url/string |  No description   |    
+|     Name         |    Type    |    Description    |
+| ---------------- | ---------- | ----------------- |
+|      fname       |   string   |  No description   |
+|      mname       |   string   |  No description   |
+|     birthdate    |    date    |  No description   |
+|      email       |   string   |  No description   |    
+|     address      |   string   |  No description   |    
+|      mobile      |   string   |  No description   |    
+|   facebook_link  | url/string |  No description   |    
+|   twitter_link   | url/string |  No description   |    
