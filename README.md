@@ -37,6 +37,7 @@ Lorem ipsum dolor sit amet
 1. Image make it just icon
 1. Retain height fixture deleting
 1. News featured news flag
+1. News Button name +
 
 ---
 ## API Documentation

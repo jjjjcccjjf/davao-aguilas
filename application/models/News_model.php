@@ -18,9 +18,10 @@ class News_model extends Crud_model
   */
   public function all()
   {
-     $res = $this->db->get($this->table)->result();
+     $res['news'] = $this->db->get($this->table)->result();
+     $res['featured'] = $this->getFeatured();
 
-     foreach ($res as $item){
+     foreach ($res['news'] as $item){
        $item->image_url =  $this->full_up_path . $item->image_url;
      }
 
@@ -35,6 +36,23 @@ class News_model extends Crud_model
   public function get($id)
   {
     $this->db->where('id', $id);
+    $res = $this->db->get($this->table)->result();
+
+    foreach ($res as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+    }
+
+    return $res;
+  }
+
+  /**
+  * Get featured news
+  * @param  int     $id
+  * @return array   associative array of data
+  */
+  public function getFeatured()
+  {
+    $this->db->where('is_featured', 1);
     $res = $this->db->get($this->table)->result();
 
     foreach ($res as $item){

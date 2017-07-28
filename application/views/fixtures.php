@@ -338,13 +338,13 @@
           $match_stat_forms.append(`
             <div class="form-group" id="match_stat_row_`+ result[x].id +`" data-from_match="`+id+`">
             <div class="col-sm-2">
-            <input type="number" class="form-control" name="home_score" id="home_score-`+ result[x].id +`" placeholder="Home score" value="` + result[x].home_score + `" required></input>
+            <input type="number" min="0" class="form-control" name="home_score" id="home_score-`+ result[x].id +`" placeholder="Home score" value="` + result[x].home_score + `" required></input>
             </div>
             <div class="col-sm-6">` +
             stat_names
             + `</div>
             <div class="col-sm-2">
-            <input type="number" class="form-control" name="away_score"  id="away_score-`+ result[x].id +`" placeholder="Away score" value="` + result[x].away_score + `" required></input>
+            <input type="number" min="0" class="form-control" name="away_score"  id="away_score-`+ result[x].id +`" placeholder="Away score" value="` + result[x].away_score + `" required></input>
             </div>
             <div class="col-sm-2" style="vertical-align">
             <button type="button" class="btn btn-info btn-xs save-btn" data-mstat_id="`+ result[x].id +`" id="save_btn-` + result[x].id + `" title="Save" ><i class="fa fa-check"></i></button>

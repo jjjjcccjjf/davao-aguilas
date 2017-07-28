@@ -19,6 +19,7 @@ class Migration_non_related_tables extends CI_Migration {
         'type' => 'TEXT',
       ),
     ));
+    $this->dbforge->add_field("`is_featured` BOOLEAN NOT NULL");
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
     $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
     $this->dbforge->create_table('news');
@@ -47,6 +48,7 @@ class Migration_non_related_tables extends CI_Migration {
         'constraint' => '150',
       ),
     ));
+    $this->dbforge->add_field("`is_featured` BOOLEAN NOT NULL");
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
     $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
     $this->dbforge->create_table('videos');
