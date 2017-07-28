@@ -20,13 +20,14 @@ class Videos_model extends Crud_model
   */
   public function all()
   {
-     $res = $this->db->get($this->table)->result();
+    $res['videos'] = $this->db->get($this->table)->result();
+    $res['featured'] = $this->getFeatured();
 
-     foreach ($res as $item){
-       $item->image_url =  $this->full_up_path . $item->image_url;
-     }
+    foreach ($res['videos'] as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+    }
 
-     return $res;
+    return $res;
   }
 
   /**
@@ -44,6 +45,39 @@ class Videos_model extends Crud_model
     }
 
     return $res;
+  }
+
+  /**
+  * Get featured news
+  * @param  int     $id
+  * @return array   associative array of data
+  */
+  public function getFeatured()
+  {
+    $this->db->where('is_featured', 1);
+    $res = $this->db->get($this->table)->result();
+
+    foreach ($res as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+    }
+
+    return $res;
+  }
+
+  /**
+   * Set featured news
+   * @param [type] $id [description]
+   */
+  public function setFeatured($id)
+  {
+    # Return 0 when id doesn't exist
+    if($this->get($id) == [])
+    return 0;
+
+    $this->db->update($this->table, ['is_featured' => 0]);
+    $this->db->update($this->table, ['is_featured' => 1], ['id' => $id]);
+
+    return $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
   }
 
 }

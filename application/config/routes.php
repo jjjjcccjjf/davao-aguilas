@@ -82,8 +82,6 @@ $route['api/cpm/(:num)'] = 'api/cpm/single/$1';
 $route['api/match_stats/(:num)'] = 'api/match_stats/single/$1';
 $route['api/lineups/(:num)'] = 'api/lineups/single/$1';
 $route['api/actions/(:num)'] = 'api/actions/single/$1';
-$route['api/news/featured/'] = 'api/news/featured/'; # REVIEW: brauchst ist es?
-$route['api/news/featured/(:num)'] = 'api/news/featured/$1';  
 $route['api/match_stats/fixtures/(:num)'] = 'api/match_stats/fixtures/$1';
 
 # Migration

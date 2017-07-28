@@ -1,3 +1,4 @@
+<!-- Featured item -->
 <div class="row">
   <div class="col-lg-12">
     <section class="panel">
@@ -294,7 +295,6 @@ $(document).ready(function(){
     });
   }
 
-  initializeTable('#table_div', table_headers, initializeFeatured);
 
   $featured_news.on('change', function(){
     $.ajax({
@@ -307,6 +307,8 @@ $(document).ready(function(){
       }
     });
   });
+
+  initializeTable('#table_div', table_headers, initializeFeatured);
 
 }); // End document ready
 </script>

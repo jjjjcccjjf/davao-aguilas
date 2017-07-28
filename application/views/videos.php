@@ -1,3 +1,19 @@
+<!-- Featured item -->
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <header class="panel-heading">
+        Featured Video
+        <br>
+        <div><sub style="color:green;" id="custom_message_featured"></sub></div>
+        <select class="form-control" style="margin-top:12px" id="featured_video" >
+          <!-- options set by javascript -->
+        </select>
+      </header>
+    </section>
+  </div>
+</div>
+
 
 <div class="row">
   <div class="col-lg-12">
@@ -47,7 +63,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">URL</label>
             <div class="col-sm-10">
-              <input class="form-control" type="url" name="url" required>
+              <input class="form-control" type="text" name="url" required>
             </div>
           </div>
 
@@ -111,7 +127,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">URL</label>
             <div class="col-sm-10">
-              <input class="form-control" type="url" name="url" required id="_url">
+              <input class="form-control" type="text" name="url" required id="_url">
             </div>
           </div>
 
@@ -150,7 +166,7 @@
 <script>
 $(document).ready(function(){
   var table;
-
+  $featured_video = $('#featured_video');
   var base_url = "<?php echo base_url(); ?>";
   var api_segment = 'api/videos/';
   var api_url = base_url + api_segment;
@@ -170,7 +186,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 201){
-          initializeTable('#table_div', table_headers);
+          initializeTable('#table_div', table_headers, initializeFeatured);
           $('#add_modal').modal('toggle');
           clearAllForms();
           customMessage('#custom_message', 'Item added successfully');
@@ -196,7 +212,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
-          initializeTable('#table_div', table_headers);
+          initializeTable('#table_div', table_headers, initializeFeatured);
           clearAllForms();
           $('#edit_modal').modal('toggle');
           customMessage('Changes saved successfully');
@@ -225,7 +241,7 @@ $(document).ready(function(){
         type: 'DELETE',
         success: function (data, textStatus, xhr) {
           if(xhr.status == 204){
-            initializeTable('#table_div', table_headers);
+            initializeTable('#table_div', table_headers, initializeFeatured);
             customMessage('#custom_message', 'Item deleted successfully');
           }
         }
@@ -258,10 +274,12 @@ $(document).ready(function(){
   * @var selector           string      element to append our table ex. '#some_id'
   * @var table_headers      array       headers to use excluding the number counter header ex. ['Some header', 'Another one', 'And another one']
   */
-  initializeTable = function(selector, table_headers){
+  initializeTable = function(selector, table_headers, callBack){
     $(selector).empty();
 
     $.getJSON(api_url, function(result){
+      result = result['videos'];
+      
       table = `
       <table class="table table-bordered">
       <thead><tr>
@@ -298,9 +316,43 @@ $(document).ready(function(){
       $(selector).append(table);
     });
 
+    callBack();
   }
 
-  initializeTable('#table_div', table_headers);
+
+    initializeFeatured = function(){
+      var options = "<option disabled selected>-- Choose item --</option>";
+      $.getJSON(api_url, function(result){
+        result = result['videos'];
+
+        for(var x in result){
+          options += '<option value="'+ result[x].id +'">'+ result[x].title +'</option>';
+        }
+        $featured_video.html(options);
+
+        (function(){
+          $.getJSON(api_url + "featured", function(result){
+            $featured_video.find('option[value="' + result[0].id + '"]').prop('selected', true);
+          });
+        })();
+
+      });
+    }
+
+
+    $featured_video.on('change', function(){
+      $.ajax({
+        url: api_url + 'featured/' + $(this).val(),
+        type: 'POST',
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            customMessage('#custom_message_featured', 'Changes saved');
+          }
+        }
+      });
+    });
+
+  initializeTable('#table_div', table_headers, initializeFeatured);
 
 }); // End document ready
 </script>
