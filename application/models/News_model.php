@@ -62,4 +62,19 @@ class News_model extends Crud_model
     return $res;
   }
 
+  /**
+   * Set featured news
+   * @param [type] $id [description]
+   */
+  public function setFeatured($id)
+  {
+    # Return 0 when id doesn't exist
+    if($this->get($id) == [])
+    return 0;
+
+    $this->db->update($this->table, ['is_featured' => 0]);
+    $this->db->update($this->table, ['is_featured' => 1], ['id' => $id]);
+
+    return $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
+  }
 }

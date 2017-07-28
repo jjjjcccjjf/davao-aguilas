@@ -296,5 +296,17 @@ $(document).ready(function(){
 
   initializeTable('#table_div', table_headers, initializeFeatured);
 
+  $featured_news.on('change', function(){
+    $.ajax({
+      url: api_url + 'featured/' + $(this).val(),
+      type: 'POST',
+      success: function (data, textStatus, xhr) {
+        if(xhr.status == 200){
+          customMessage('#custom_message_featured', 'Changes saved');
+        }
+      }
+    });
+  });
+
 }); // End document ready
 </script>

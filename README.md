@@ -34,10 +34,10 @@ Lorem ipsum dolor sit amet
 1. Flag for disabling current timestamp
 1. Datetime vs Timestamp (????)
 1. Player stats duplicate issue
-1. Image make it just icon
 1. Retain height fixture deleting
-1. News featured news flag
+1. ~~News featured news flag~~
 1. News Button name +
+1. Change all Image url on cms to icons
 
 ---
 ## API Documentation
