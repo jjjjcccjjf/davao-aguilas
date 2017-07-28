@@ -39,13 +39,18 @@ class Fixtures_model extends Crud_model
   }
 
   function getUpcoming(){
-
+    $fixtures = $this->db->query("SELECT * FROM `fixtures` WHERE `match_schedule` >= NOW() AND `match_progress` = 'Upcoming' ORDER BY `match_schedule` LIMIT 1")->result();
+    $this->formatFields($fixtures);
+    $res['matches'] = $fixtures;
+    $res['league_name'] = $this->getLeagueName($fixtures[0]->league_id);
+    return $res;
   }
 
   function getRecent(){
     $this->db->where('match_progress', 'final');
     $this->db->order_by('match_schedule', 'DESC');
-    $fixtures = array_slice($this->db->get($this->table)->result(), 0, 1);
+    $this->db->limit(1);
+    $fixtures = $this->db->get($this->table)->result();
     $this->formatFields($fixtures);
 
     $res['matches'] = $fixtures;
