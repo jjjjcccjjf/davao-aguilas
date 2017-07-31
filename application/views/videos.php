@@ -61,7 +61,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">URL</label>
+            <label class="col-sm-2 control-label col-sm-2">Embed code</label>
             <div class="col-sm-10">
               <input class="form-control" type="text" name="url" required>
             </div>
@@ -125,7 +125,7 @@
           </div>
 
           <div class="form-group">
-            <label class="col-sm-2 control-label col-sm-2">URL</label>
+            <label class="col-sm-2 control-label col-sm-2">Embed code</label>
             <div class="col-sm-10">
               <input class="form-control" type="text" name="url" required id="_url">
             </div>
@@ -171,7 +171,7 @@ $(document).ready(function(){
   var api_segment = 'api/videos/';
   var api_url = base_url + api_segment;
 
-  var table_headers = ['Title', 'Duration', 'Video URL', 'Type', 'Image URL'];
+  var table_headers = ['Title', 'Duration', 'Embed code', 'Type', 'Image URL'];
 
   /**---------------------------------------------
   -------------------POST add---------------------
@@ -279,7 +279,7 @@ $(document).ready(function(){
 
     $.getJSON(api_url, function(result){
       result = result['videos'];
-      
+
       table = `
       <table class="table table-bordered">
       <thead><tr>

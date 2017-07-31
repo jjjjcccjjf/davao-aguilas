@@ -131,38 +131,41 @@ Status: 200 OK
     "videos": [
         {
             "id": "1",
-            "title": "Barack Obama",
+            "title": "haha",
             "duration": "06:11:11",
             "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
-            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501219419_C1S4Uv5W8AEfz9O.jpg",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471467_maxresdefault.jpg",
             "type": "News & Highlights",
-            "is_featured": "1",
-            "created_at": "2017-07-28 13:23:40",
-            "updated_at": "2017-07-28 13:39:13"
+            "is_featured": "0",
+            "created_at": "2017-07-31 11:24:27",
+            "updated_at": "2017-07-31 11:26:45",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
         },
         {
-            "id": "3",
-            "title": "hey",
-            "duration": "11:11:11",
-            "url": "qwqq",
-            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501220342_600px-Natus_Vincere_(1).png",
-            "type": "Club Videos",
-            "is_featured": "0",
-            "created_at": "2017-07-28 13:39:02",
-            "updated_at": "2017-07-28 13:39:13"
+            "id": "2",
+            "title": "Yo",
+            "duration": "05:31:11",
+            "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471526_C4MWSvsWMAAep5K.jpg",
+            "type": "News & Highlights",
+            "is_featured": "1",
+            "created_at": "2017-07-31 11:25:26",
+            "updated_at": "2017-07-31 11:26:45",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
         }
     ],
     "featured": [
         {
-            "id": "1",
-            "title": "Barack Obama",
-            "duration": "06:11:11",
+            "id": "2",
+            "title": "Yo",
+            "duration": "05:31:11",
             "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
-            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501219419_C1S4Uv5W8AEfz9O.jpg",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471526_C4MWSvsWMAAep5K.jpg",
             "type": "News & Highlights",
             "is_featured": "1",
-            "created_at": "2017-07-28 13:23:40",
-            "updated_at": "2017-07-28 13:39:13"
+            "created_at": "2017-07-31 11:25:26",
+            "updated_at": "2017-07-31 11:26:45",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
         }
     ]
 }
