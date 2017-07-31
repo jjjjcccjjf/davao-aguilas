@@ -383,13 +383,13 @@ Status: 200 OK
 ### Ladders
 
 #### Get a ladder standings by league id
-`GET /ladders/league/:league_id/standings`
+`GET /ladders/leagues/:league_id/standings`
 
 #### Get home standings ladder by league id
-`GET /ladders/league/:league_id/home`
+`GET /ladders/leagues/:league_id/home`
 
 #### Get away standings ladder by league id
-`GET /ladders/league/:league_id/away`
+`GET /ladders/leagues/:league_id/away`
 
 ##### Response
 ```json
