@@ -11,4 +11,23 @@ class Members_model extends Crud_model
 
   }
 
+
+  /**
+  * Get all rows from the table
+  * @return array
+  */
+  public function all()
+  {
+    $res = $this->db->get($this->table)->result();
+    $this->formatFields($res);
+
+    return $res;
+  }
+
+  function formatFields($res){
+    foreach ($res as $item){
+      $item->birth_date_f = date('F j, Y', strtotime($item->birth_date));
+    }
+  }
+
 }
