@@ -33,7 +33,7 @@ Lorem ipsum dolor sit amet
 1. Configure server time
 1. While uploading loading
 1. Flag for disabling current timestamp
-1. Datetime vs Timestamp (????)
+1. ~~Datetime vs Timestamp (????)~~ Refactor all datetime to timestamp
 1. Player stats duplicate issue
 1. Retain height fixture deleting
 1. ~~News featured news flag~~
@@ -346,6 +346,7 @@ Status: 200 OK
 #### Get a league
 `GET /leagues/:id`
 
+##### Response
 ```json
 Status: 200 OK
 [
@@ -381,6 +382,7 @@ Status: 200 OK
 #### Get away standings ladder by league id
 `GET /ladders/league/:league_id/away`
 
+##### Response
 ```json
 Status: 200 OK
 {
@@ -420,6 +422,7 @@ Status: 200 OK
 #### Get all final/finished  matches by league id
 `GET /fixtures/leagues/:league_id/final`
 
+##### Response
 ```json
 Status: 200 OK
 {
@@ -472,6 +475,7 @@ Status: 200 OK
 #### Get fixture / match details by fixture id
 `GET /fixtures/:id`
 
+##### Response
 ```json
 [
     {
@@ -535,6 +539,7 @@ Status: 200 OK
 #### Get closest upcoming finished match / fixture
 `GET /fixtures/upcoming`
 
+##### Response
 ```json
 {
     "matches": [
@@ -576,9 +581,31 @@ Status: 200 OK
 | ---------------- | ---------- | ----------------- |
 |      fname       |   string   |  No description   |
 |      mname       |   string   |  No description   |
+|      lname       |   string   |  No description   |
 |     birthdate    |    date    |  No description   |
 |      email       |   string   |  No description   |    
 |     address      |   string   |  No description   |    
 |      mobile      |   string   |  No description   |    
 |   facebook_link  | url/string |  No description   |    
 |   twitter_link   | url/string |  No description   |    
+
+##### Response
+```json
+201 Created
+[
+    {
+        "id": "1",
+        "fname": "Hello",
+        "mname": "my name is",
+        "lname": "World",
+        "birth_date": "2017-09-22",
+        "email": "lsalamante@myoptimind.com",
+        "address": "007 Dun dun dunnn",
+        "mobile": "09451494315",
+        "facebook_link": "https://facebook.com/bwrites1",
+        "twitter_link": "https://twitter.com/endan1",
+        "created_at": "2017-07-31 10:49:37",
+        "updated_at": "0000-00-00 00:00:00"
+    }
+]
+```
