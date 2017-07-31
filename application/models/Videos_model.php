@@ -23,7 +23,7 @@ class Videos_model extends Crud_model
     $res['videos'] = $this->db->get($this->table)->result();
     $res['featured'] = $this->getFeatured();
 
-    $this->formatFields($res['videos']); 
+    $this->formatFields($res['videos']);
 
     return $res;
   }
@@ -78,6 +78,7 @@ class Videos_model extends Crud_model
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
       $item->embed_code = $item->url; # Just an alias for url.. since URL is wrong in this case
+      $item->created_at_f = date('F j, Y', strtotime($item->created_at));
     }
   }
 

@@ -21,9 +21,7 @@ class News_model extends Crud_model
      $res['news'] = $this->db->get($this->table)->result();
      $res['featured'] = $this->getFeatured();
 
-     foreach ($res['news'] as $item){
-       $item->image_url =  $this->full_up_path . $item->image_url;
-     }
+     $this->formatFields($res['news']);
 
      return $res;
   }
@@ -38,9 +36,7 @@ class News_model extends Crud_model
     $this->db->where('id', $id);
     $res = $this->db->get($this->table)->result();
 
-    foreach ($res as $item){
-      $item->image_url =  $this->full_up_path . $item->image_url;
-    }
+    $this->formatFields($res);
 
     return $res;
   }
@@ -55,9 +51,7 @@ class News_model extends Crud_model
     $this->db->where('is_featured', 1);
     $res = $this->db->get($this->table)->result();
 
-    foreach ($res as $item){
-      $item->image_url =  $this->full_up_path . $item->image_url;
-    }
+    $this->formatFields($res);
 
     return $res;
   }
@@ -76,5 +70,12 @@ class News_model extends Crud_model
     $this->db->update($this->table, ['is_featured' => 1], ['id' => $id]);
 
     return $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
+  }
+
+  function formatFields($res){
+    foreach ($res as $item){
+      $item->image_url =  $this->full_up_path . $item->image_url;
+      $item->created_at_f = date('F j, Y', strtotime($item->created_at));
+    }
   }
 }

@@ -85,32 +85,35 @@ Status: 200 OK
     "news": [
         {
             "id": "1",
-            "title": "Drei",
-            "image_url": "http://localhost/davao-aguilas/uploads/news/1501147487_7b9.png",
-            "body": "drei",
+            "title": "Persona 5 News",
+            "image_url": "http://localhost/davao-aguilas/uploads/news/1501472524_600px-Natus_Vincere_(1).png",
+            "body": "Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet\r\nLorem ipsum dolor sit amet\r\nLorem ipsum dolor sit amet\r\nLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet\r\nLorem ipsum dolor sit amet",
             "is_featured": "0",
-            "created_at": "2017-07-27 17:24:47",
-            "updated_at": "0000-00-00 00:00:00"
+            "created_at": "2017-07-31 11:42:04",
+            "updated_at": "0000-00-00 00:00:00",
+            "created_at_f": "July 31, 2017"
         },
         {
             "id": "2",
-            "title": "zz",
-            "image_url": "http://localhost/davao-aguilas/uploads/news/1501147521_600px-Natus_Vincere_(1).png",
-            "body": "zz",
+            "title": "Hello world",
+            "image_url": "http://localhost/davao-aguilas/uploads/news/1501472536_7b9.png",
+            "body": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
             "is_featured": "1",
-            "created_at": "2017-07-27 17:25:21",
-            "updated_at": "2017-07-27 17:26:16"
+            "created_at": "2017-07-31 11:42:16",
+            "updated_at": "2017-07-31 11:42:18",
+            "created_at_f": "July 31, 2017"
         }
     ],
     "featured": [
         {
             "id": "2",
-            "title": "zz",
-            "image_url": "http://localhost/davao-aguilas/uploads/news/1501147521_600px-Natus_Vincere_(1).png",
-            "body": "zz",
+            "title": "Hello world",
+            "image_url": "http://localhost/davao-aguilas/uploads/news/1501472536_7b9.png",
+            "body": "Lorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit ametLorem ipsum dolor sit amet",
             "is_featured": "1",
-            "created_at": "2017-07-27 17:25:21",
-            "updated_at": "2017-07-27 17:26:16"
+            "created_at": "2017-07-31 11:42:16",
+            "updated_at": "2017-07-31 11:42:18",
+            "created_at_f": "July 31, 2017"
         }
     ]
 }
@@ -136,10 +139,11 @@ Status: 200 OK
             "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
             "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471467_maxresdefault.jpg",
             "type": "News & Highlights",
-            "is_featured": "0",
+            "is_featured": "1",
             "created_at": "2017-07-31 11:24:27",
-            "updated_at": "2017-07-31 11:26:45",
-            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
+            "updated_at": "2017-07-31 11:36:06",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "created_at_f": "July 31, 2017"
         },
         {
             "id": "2",
@@ -148,24 +152,26 @@ Status: 200 OK
             "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
             "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471526_C4MWSvsWMAAep5K.jpg",
             "type": "News & Highlights",
-            "is_featured": "1",
+            "is_featured": "0",
             "created_at": "2017-07-31 11:25:26",
-            "updated_at": "2017-07-31 11:26:45",
-            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
+            "updated_at": "2017-07-31 11:36:05",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "created_at_f": "July 31, 2017"
         }
     ],
     "featured": [
         {
-            "id": "2",
-            "title": "Yo",
-            "duration": "05:31:11",
+            "id": "1",
+            "title": "haha",
+            "duration": "06:11:11",
             "url": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
-            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471526_C4MWSvsWMAAep5K.jpg",
+            "image_url": "http://localhost/davao-aguilas/uploads/video_thumbnails/1501471467_maxresdefault.jpg",
             "type": "News & Highlights",
             "is_featured": "1",
-            "created_at": "2017-07-31 11:25:26",
-            "updated_at": "2017-07-31 11:26:45",
-            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>"
+            "created_at": "2017-07-31 11:24:27",
+            "updated_at": "2017-07-31 11:36:06",
+            "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+            "created_at_f": "July 31, 2017"
         }
     ]
 }
