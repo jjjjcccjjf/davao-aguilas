@@ -178,7 +178,7 @@ $(document).ready(function(){
           initializeTable('#table_div', table_headers, initializeFeatured);
           clearAllForms();
           $('#edit_modal').modal('toggle');
-          customMessage('Changes saved successfully');
+          customMessage('#custom_message', 'Changes saved successfully');
         }
       },
       cache: false,

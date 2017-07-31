@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="col-lg-12">
     <section class="panel">
@@ -239,6 +238,44 @@
     </div>
   </div>
   <!-- Edit Modal end -->
+  <!-- Match reports -->
+  <div aria-hidden="true" aria-labelledby="match_reports_label" role="dialog" tabindex="-1" id="match_reports_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Match report of fixture #<span id="match_reports_id"></span></h4>
+        </div>
+        <div class="modal-body">
+
+          <form action="#" class="form-horizontal" id="match_reports_form">  <!-- form -->
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Title</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="title" id="_title" required></input>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-2">Body</label>
+              <div class="col-sm-10">
+                <textarea class="form-control" name="body" rows="6" id="_body" required></textarea>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-md-2"></label>
+              <div class="controls col-md-10">
+                <button type="submit" class="btn btn-white">Submit</button>
+              </div>
+            </div>
+          </form> <!-- / form -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Match reports end -->
 
   <!-- Match stats Modal -->
   <div aria-hidden="true" aria-labelledby="match_stats_modal_label" role="dialog" tabindex="-1" id="match_stats_modal" class="modal fade">
@@ -286,6 +323,7 @@
     var base_url = "<?php echo base_url(); ?>";
     var api_url = base_url + 'api/fixtures/';
     match_stat_api_url = base_url + 'api/match_stats/';
+    match_reports_api_url = base_url + 'api/match_reports/';
     var table_headers = ['League', 'Home Team', 'Away Team', 'Hash Tag', 'Round number', 'Home Score', 'Away Score', 'Match schedule', 'Location', 'Match Progress'];
 
     /**
@@ -407,7 +445,7 @@
               initializeTable('#table_div', table_headers);
               clearAllForms();
               $('#edit_modal').modal('toggle');
-              customMessage('Changes saved successfully');
+              customMessage('#custom_message', 'Changes saved successfully');
             }
           },
           cache: false,
@@ -471,6 +509,49 @@
         $('#edit_modal').modal('toggle');
       }
 
+
+      /**
+      * function for populating the edit modal
+      * @var int   id
+      */
+      editReport = function(id) {
+        $.getJSON(match_reports_api_url + id, function(result){
+          $('#_title').val(result[0].title);
+          $('#_body').val(result[0].body);
+        });
+        $('#match_reports_id').html('');
+        $('#match_reports_id').html(id);
+        $('#match_reports_modal').modal('toggle');
+      }
+
+      /**---------------------------------------------
+      ---------------Match report edit----------------
+      ---------------------------------------------**/
+      $("#match_reports_form").submit(function(e){
+        var form_data = new FormData($(this)[0]);
+
+        $.ajax({
+          url: match_reports_api_url + $('#match_reports_id').html(),
+          type: 'POST',
+          data: form_data,
+          async: false,
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 200){
+              initializeTable('#table_div', table_headers);
+              clearAllForms();
+              $('#match_reports_modal').modal('toggle');
+              customMessage('#custom_message', 'Changes saved successfully');
+            }
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+
+        e.preventDefault();
+      });
+
+
       /**---------------------------------------------
       --------------------GET all--------------------
       ---------------------------------------------**/
@@ -514,7 +595,8 @@
             `<td>
             <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
             <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
-            <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs' title='Match Statistics'><i class='fa fa-tasks'></i></button>
+            <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs btn-info' title='Match Statistics'><i class='fa fa-tasks'></i></button>
+            <button onclick='editReport(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Edit report'><i class='fa fa-book'></i></button>
             </td>`;
 
             table += '</tr>';
