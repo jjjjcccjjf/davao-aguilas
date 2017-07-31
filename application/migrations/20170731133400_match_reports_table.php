@@ -11,6 +11,7 @@ class Migration_match_reports_table extends CI_Migration {
       'fixture_id' => array(
         'type' => 'INTEGER',
         'constraint' => '9',
+        'unique' => TRUE,
       ),
       'title' => array(
         'type' => 'VARCHAR',

@@ -433,7 +433,7 @@
             type: 'DELETE',
             success: function (data, textStatus, xhr) {
               if(xhr.status == 204){
-                showMatchStats(id);
+                initializeTable('#table_div', table_headers);
                 customMessage('#custom_message', 'Item deleted successfully');
               }
             }

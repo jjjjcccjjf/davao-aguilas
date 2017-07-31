@@ -51,6 +51,38 @@ class Fixtures_model extends Crud_model
     return $res;
   }
 
+  /**
+  * Inserts to the table with the associative array provided
+  * @param  array $data
+  * @return int   the last insert id
+  */
+  public function add($data)
+  {
+    $this->db->insert($this->table, $data);
+    $insert_id =  $this->db->insert_id();
+
+    $this->db->insert('match_reports', ['fixture_id' => $insert_id]);
+
+    return $insert_id;
+  }
+
+  /**
+  * Deletes the row via id
+  * @param  int $id
+  * @return int number of rows deleted
+  */
+  public function delete($id)
+  {
+    $this->db->where('id', $id);
+    $this->db->delete($this->table);
+    $affected_rows = $this->db->affected_rows();
+
+    $this->db->where('fixture_id', $id);
+    $this->db->delete('match_reports');
+
+    return $affected_rows;
+  }
+
   function getRecent(){
     $this->db->where('match_progress', 'final');
     $this->db->order_by('match_schedule', 'DESC');
