@@ -32,7 +32,7 @@ class Players extends Crud_controller
   function single_post($id)
   {
     $data = array_merge($this->input->post(), array_merge($this->model->upload('image_url'), $this->model->upload('full_body_image_url')));
-    
+
     $res = $this->model->update($id, $data);
 
     if ($res || $res === 0) {
@@ -80,6 +80,11 @@ class Players extends Crud_controller
     }
 
     $squad = [];
+
+
+    foreach (PLAYER_POSITIONS as $item) {
+      $squad[$item] = [];
+    }
 
     foreach($res as $item){
       if(in_array($item->position, PLAYER_POSITIONS)){
