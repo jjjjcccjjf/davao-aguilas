@@ -9,6 +9,7 @@ Lorem ipsum dolor sit amet
    1. [Videos](#videos)
    1. [Partners](#partners)
    1. [Teams](#teams)
+   1. [Team statistics](#team-stats)
    1. [Players](#players)
    1. [Leagues](#leagues)
    1. [Ladders](#ladders)
@@ -40,6 +41,7 @@ Lorem ipsum dolor sit amet
 1. News Button name `check schedule`
 1. Change all Image url on cms to icons
 1. Add 404 handlers in CMS?
+1. make squad positions return correct order (refer to design)
 
 ---
 ## API Documentation
@@ -221,13 +223,13 @@ Status: 200 OK
 ]
 ```
 
-
 #### List a squad
 `GET /squad/:team_id`
 
-#### List default squad (in our case, `Davao Aguilas`)
-
+#### List default squad (In our case, `Davao Aguilas`)
 `GET /squad/default`
+
+##### Response
 
 ```json
 Status: 200 OK
@@ -293,6 +295,43 @@ Status: 200 OK
         ]
     }
 }
+```
+
+### Team statistics
+
+#### Get default team statistics (In our case, `Davao Aguilas`)
+`GET /team_stats/team/default`
+
+##### Response
+
+```json
+Status: 200 OK
+[
+    {
+        "id": "1",
+        "team_id": "4",
+        "stat_key": "Yellow Cards",
+        "stat_value": 3,
+        "created_at": "2017-08-01 14:55:53",
+        "updated_at": "2017-08-01 14:56:47"
+    },
+    {
+        "id": "2",
+        "team_id": "4",
+        "stat_key": "Tackles Lost",
+        "stat_value": 6,
+        "created_at": "2017-08-01 14:56:49",
+        "updated_at": "2017-08-01 14:57:06"
+    },
+    {
+        "id": "3",
+        "team_id": "4",
+        "stat_key": "Put Through/Blocked",
+        "stat_value": 1,
+        "created_at": "2017-08-01 14:56:53",
+        "updated_at": "2017-08-01 14:57:03"
+    }
+]
 ```
 
 ### Players
