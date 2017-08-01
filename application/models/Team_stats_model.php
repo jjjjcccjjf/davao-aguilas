@@ -34,7 +34,7 @@ class Team_stats_model extends Crud_model
   public function getDefaultTeamStats()
   {
     $this->load->model('Players_model');
-    $default_team_id = $this->Players_model->getDefaultSquad()[0]->team_id; # Get a single player from a squad then get his ID
+    $default_team_id = $this->getTeamIdByName(DEFAULT_SQUAD); # Find in constants
     $res = $this->getStatsByTeamId($default_team_id);
     $this->formatFields($res);
 
