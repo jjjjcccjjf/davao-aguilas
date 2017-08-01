@@ -295,7 +295,7 @@ $(document).ready(function(){
 
     stat_names = '<select name="stat_key" class="form-control">';
     stat_names +=
-    `<?php foreach(MATCH_STAT_NAMES as $option):?>
+    `<?php foreach(TEAM_STAT_NAMES as $option):?>
     <option><?= $option ?></option>
     <?php endforeach; ?>
     `;

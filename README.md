@@ -232,47 +232,63 @@ Status: 200 OK
 ```json
 Status: 200 OK
 {
-    "Midfielder": {
-        "players": [
-            {
-                "id": "1",
-                "fname": "Danil",
-                "lname": "Ishutin",
-                "team_id": "1",
-                "image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345529_2016-12-09.jpg",
-                "full_body_image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345529_aDaHvdy.png",
-                "position": "Midfielder",
-                "jersey_num": "13",
-                "birth_date": "1994-11-29",
-                "birth_place": "Denmark",
-                "nationality": "Swedish",
-                "height": "123cm",
-                "weight": "123kg",
-                "created_at": "2017-07-17 21:38:49",
-                "birth_date_f": "November 29, 1994",
-                "team_name": "Natus Vincere"
-            }
-        ]
-    },
     "Defender": {
         "players": [
             {
-                "id": "11",
-                "fname": "Bruno",
-                "lname": "Buccariati",
-                "team_id": "1",
-                "image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345888_11139958_1079252412094268_8281657439582323313_n.jpg",
-                "full_body_image_url": "http://betaprojex.com/davao-aguilas/uploads/players/1500345888_a2b09ed22479262cc03e3b76fc913780.png",
+                "id": "1",
+                "fname": "Dio",
+                "lname": "Brando",
+                "team_id": "4",
+                "image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_aDaHvdy.png",
+                "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_2016-12-09.jpg",
                 "position": "Defender",
-                "jersey_num": "00",
-                "birth_date": "2017-07-14",
-                "birth_place": "somewhere",
-                "nationality": "nigga",
-                "height": "99cm",
-                "weight": "123kg",
-                "created_at": "2017-07-17 21:44:48",
-                "birth_date_f": "July 14, 2017",
-                "team_name": "Natus Vincere"
+                "jersey_num": "09",
+                "birth_date": "1994-07-31",
+                "birth_place": "Venice, Italy",
+                "nationality": "Japanese",
+                "height": "189cm",
+                "weight": "50kg",
+                "created_at": "2017-07-31 11:48:48",
+                "updated_at": "2017-08-01 13:46:20",
+                "birth_date_f": "July 31, 1994",
+                "team_name": "Davao Aguilas",
+                "age": 23,
+                "stats": [
+                    {
+                        "stat_key": "Total Passes",
+                        "stat_value": 21
+                    }
+                ]
+            }
+        ]
+    },
+    "Forward": {
+        "players": [
+            {
+                "id": "2",
+                "fname": "Mr.",
+                "lname": "Brown",
+                "team_id": "4",
+                "image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_avatar_22.jpg",
+                "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_1sh7uw.jpg",
+                "position": "Forward",
+                "jersey_num": "12",
+                "birth_date": "1994-08-01",
+                "birth_place": "Venice, Italy",
+                "nationality": "Italian",
+                "height": "133cm",
+                "weight": "22kg",
+                "created_at": "2017-08-01 13:42:51",
+                "updated_at": "2017-08-01 13:44:28",
+                "birth_date_f": "August 1, 1994",
+                "team_name": "Davao Aguilas",
+                "age": 23,
+                "stats": [
+                    {
+                        "stat_key": "Goals",
+                        "stat_value": 22
+                    }
+                ]
             }
         ]
     }
