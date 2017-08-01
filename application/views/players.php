@@ -260,7 +260,7 @@
     var api_segment = 'api/players/';
     var api_url = base_url + api_segment;
 
-    var table_headers = ['Player name', 'Team', 'Position', 'Jersey number', 'Birth date', 'Birth place', 'Nationality', 'Weight', 'Height', 'Player photo', 'Fully body photo'];
+    var table_headers = ['Player name', 'Team', 'Position', 'Player photo', 'Fully body photo'];
 
     /**---------------------------------------------
     -------------------POST add---------------------
@@ -393,12 +393,6 @@
           table += '<td>' + result[x].fname + " " + result[x].lname +'</td>';
           table += '<td>' + result[x].team_name +'</td>';
           table += '<td>' + result[x].position +'</td>';
-          table += '<td>' + result[x].jersey_num +'</td>';
-          table += '<td>' + result[x].birth_date_f +'</td>';
-          table += '<td>' + result[x].birth_place +'</td>';
-          table += '<td>' + result[x].nationality +'</td>';
-          table += '<td>' + result[x].weight +'</td>';
-          table += '<td>' + result[x].height +'</td>';
           table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
           table += '<td><a href="' + result[x].full_body_image_url + '" target="_blank">' + (result[x].full_body_image_url.split("/")).pop() +'</a></td>'; // get only file  name
           table +=
@@ -418,6 +412,32 @@
     }
 
     initializeTable('#table_div', table_headers);
+
+
+/*
+                                                 ,  ,
+                                               / \/ \
+                                              (/ //_ \_
+     .-._                                      \||  .  \
+      \  '-._                            _,:__.-"/---\_ \
+ ______/___  '.    .--------------------'~-'--.)__( , )\ \
+`'--.___  _\  /    |             Here        ,'    \)|\ `\|
+     /_.-' _\ \ _:,_          Be Dragons           " ||   (
+   .'__ _.' \'-/,`-~`                                |/
+       '. ___.> /=,|  Abandon hope all ye who enter  |
+        / .-'/_ )  '---------------------------------'
+        )'  ( /(/
+             \\ "
+              '=='
+
+This horrible monstrosity takes a medicare monstrosity and mangles it
+into a data structure that can easily be used to create a medicare feed.
+It's bloated, confusing, and pretty awful by necessity(for the most part).
+*/
+
+
+
+
 
   }); // End document ready
   </script>
