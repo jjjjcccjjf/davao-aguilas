@@ -355,4 +355,19 @@ $(document).ready(function(){
     }
 
 }); // End document ready
+
+function deleteTeamStat(team_stats_id, team_id){
+  if(confirm('Are you sure you want to do this?')){
+    $.ajax({
+      url: team_stats_api_url + team_stats_id,
+      type: 'DELETE',
+      success: function (data, textStatus, xhr) {
+        if(xhr.status == 204){
+          initializeTeamStats(team_id);
+          // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+        }
+      }
+    });
+  }
+}
 </script>

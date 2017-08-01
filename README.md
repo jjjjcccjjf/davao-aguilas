@@ -39,6 +39,7 @@ Lorem ipsum dolor sit amet
 1. ~~News featured news flag~~
 1. News Button name `check schedule`
 1. Change all Image url on cms to icons
+1. Add 404 handlers in CMS?
 
 ---
 ## API Documentation

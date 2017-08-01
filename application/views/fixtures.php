@@ -633,8 +633,6 @@
       });
     }); // End document ready
 
-
-
     function deleteMatchStat(match_stat_id, fixture_id){
       if(confirm('Are you sure you want to do this?')){
         $.ajax({
