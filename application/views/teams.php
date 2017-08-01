@@ -313,7 +313,7 @@ $(document).ready(function(){
           stat_names
           + `</div>
           <div class="col-sm-4">
-          <input type="number" min="0" class="form-control" name="stat_value"  id="stat_value-`+ result[x].id +`" placeholder="Stat value" value="` + result[x].away_score + `" required></input>
+          <input type="number" min="0" class="form-control" name="stat_value"  id="stat_value-`+ result[x].id +`" placeholder="Stat value" value="` + result[x].stat_value + `" required></input>
           </div>
           <div class="col-sm-2" style="vertical-align">
           <button type="button" class="btn btn-info btn-xs save-btn" data-tstat_id="`+ result[x].id +`" id="save_btn-` + result[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
@@ -321,8 +321,10 @@ $(document).ready(function(){
           </div>
           </div>`);
 
-          $("#team_stats_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
-          $("#team_stats_row_" + result[x].id).find('select').attr('id', 'stat_name-' + result[x].id);
+          // setting the DROPDOWN id here
+          // and also setting default values
+          $("#team_stats_row_" + result[x].id).find('select option:contains("' + result[x].stat_key + '")').prop('selected', true);
+          $("#team_stats_row_" + result[x].id).find('select').attr('id', 'stat_key-' + result[x].id);
         }
       });
     }
@@ -354,20 +356,41 @@ $(document).ready(function(){
       });
     }
 
-}); // End document ready
 
-function deleteTeamStat(team_stats_id, team_id){
-  if(confirm('Are you sure you want to do this?')){
-    $.ajax({
-      url: team_stats_api_url + team_stats_id,
-      type: 'DELETE',
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 204){
-          initializeTeamStats(team_id);
-          // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+    $('body').on('click', '.save-btn', function(){
+      var elem_id = $(this).attr('id');
+      var team_stats_id = $("#" + elem_id).data('tstat_id'); // fixture id
+      var stat_key = $("#stat_key-" + team_stats_id).val();
+      var stat_value = $("#stat_value-" + team_stats_id).val();
+
+      $.ajax({
+        url: team_stats_api_url + team_stats_id,
+        type: 'POST',
+        data: { stat_key : stat_key, stat_value: stat_value },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            initializeTeamStats($("#team_stats_row_" + team_stats_id).data('from_match'));
+            // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+          }
         }
-      }
+      });
+
     });
+
+  }); // End document ready
+
+  function deleteTeamStat(team_stats_id, team_id){
+    if(confirm('Are you sure you want to do this?')){
+      $.ajax({
+        url: team_stats_api_url + team_stats_id,
+        type: 'DELETE',
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 204){
+            initializeTeamStats(team_id);
+            // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+          }
+        }
+      });
+    }
   }
-}
-</script>
+  </script>

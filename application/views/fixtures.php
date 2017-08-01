@@ -390,6 +390,8 @@
             </div>
             </div>`);
 
+            // setting the DROPDOWN id here
+            // and also setting default values
             $("#match_stat_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
             $("#match_stat_row_" + result[x].id).find('select').attr('id', 'stat_name-' + result[x].id);
           }
@@ -631,6 +633,7 @@
         });
 
       });
+
     }); // End document ready
 
     function deleteMatchStat(match_stat_id, fixture_id){
