@@ -14,6 +14,7 @@ Lorem ipsum dolor sit amet
 1. [Leagues](#leagues)
 1. [Ladders](#ladders)
 1. [Fixtures](#fixtures)
+    1. [Match reports](#match-reports)
 1. [Members](#members)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
@@ -41,7 +42,7 @@ Lorem ipsum dolor sit amet
 1. News Button name `check schedule`
 1. Change all Image url on cms to icons
 1. Add 404 handlers in CMS?
-1. make squad positions return correct order (refer to design)
+1. ~~make squad positions return correct order (refer to design)~~
 
 ---
 ## API Documentation
@@ -649,6 +650,24 @@ Status: 200 OK
   ],
   "league_name": "League A"
 }
+```
+
+#### Match reports
+#### Get fixture's match reports
+`GET /fixtures/:id/match_reports`
+
+##### Response
+```json
+[
+    {
+        "id": "10",
+        "fixture_id": "14",
+        "title": "Some Title",
+        "body": "Lorem ipsum dolor",
+        "created_at": "2017-07-31 17:29:57",
+        "updated_at": "2017-07-31 17:36:10"
+    }
+]
 ```
 
 

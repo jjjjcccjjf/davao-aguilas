@@ -517,7 +517,7 @@
       * @var int   id
       */
       editReport = function(id) {
-        $.getJSON(match_reports_api_url + id, function(result){
+        $.getJSON(api_url + id + '/match_reports', function(result){
           $('#_title').val(result[0].title);
           $('#_body').val(result[0].body);
         });
@@ -533,7 +533,7 @@
         var form_data = new FormData($(this)[0]);
 
         $.ajax({
-          url: match_reports_api_url + $('#match_reports_id').html(),
+          url: api_url + $('#match_reports_id').html() + '/match_reports',
           type: 'POST',
           data: form_data,
           async: false,
