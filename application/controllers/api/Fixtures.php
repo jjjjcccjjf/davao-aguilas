@@ -16,7 +16,7 @@ class Fixtures extends Crud_controller
   * @param  [type] $type      fixtures or results
   * @return [type]            [description]
   */
-  function league_get($league_id, $type){
+  function leagues_get($league_id, $type){
 
     $res = $this->model->getFixtures($league_id, ucwords($type));
 
