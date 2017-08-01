@@ -23,4 +23,16 @@ class Team_stats_model extends Crud_model
     return $res;
   }
 
+  public function getStatsByTeamId($team_id)
+  {
+    $this->db->where('team_id', $team_id);
+    $res = $this->db->get($this->table)->result();
+
+    foreach($res as &$val) {
+      $val->stat_value = floatval($val->stat_value);
+    }
+
+    return $res;
+  }
+
 }

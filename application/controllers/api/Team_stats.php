@@ -10,4 +10,14 @@ class Team_stats extends Crud_controller
 
   }
 
+  function team_get($team_id){
+    $res = $this->model->getStatsByTeamId($team_id);
+
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($res, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
+  }
+
 }

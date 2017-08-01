@@ -96,12 +96,49 @@
 </div>
 <!-- Edit Modal end -->
 
+<!-- Team stats Modal -->
+<div aria-hidden="true" aria-labelledby="team_stats_modal_label" role="dialog" tabindex="-1" id="team_stats_modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+        <h4 class="modal-title">Team statistics of team #<span id="team_stats_id"></span></h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="form-horizontal">
+
+          <div class="form-group">
+            <div class="col-sm-2 text-center">
+            </div>
+            <div class="col-sm-6 text-center">
+              <h4>Team Statistics</h4>
+            </div>
+            <div class="col-sm-2 text-center">
+            </div>
+            <div class="col-sm-2">
+              <button class="btn btn-success btn-xs" id="add_match_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+            </div>
+          </div>
+
+          <div id="team_stats_forms">  <!-- forms -->
+
+          </div> <!-- / forms -->
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Match stats Modal end -->
+
 <script>
 $(document).ready(function(){
   var table;
 
   var base_url = "<?php echo base_url(); ?>";
   var api_segment = 'api/teams/';
+  team_stats_api_url = base_url + 'api/team_stats/';
   var api_url = base_url + api_segment;
 
   var table_headers = ['Team name', 'Image URL'];
@@ -232,6 +269,7 @@ $(document).ready(function(){
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
         <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
+        <button onclick='showTeamStats(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Team statistics'><i class='fa fa-book'></i></button>
         </td>`;
 
         table += '</tr>';
@@ -245,6 +283,76 @@ $(document).ready(function(){
   }
 
   initializeTable('#table_div', table_headers);
+
+  initializeTeamStats = function(id){
+    var $team_stats_forms = $("#team_stats_forms");
+    var $add_btn = $('#add_match_btn');
+
+    $team_stats_forms.empty();
+
+    $add_btn.removeAttr('onclick');
+    $add_btn.attr('onClick', 'newTeamStat('+ id +');');
+
+    stat_names = '<select name="stat_key" class="form-control">';
+    stat_names +=
+    `<?php foreach(MATCH_STAT_NAMES as $option):?>
+    <option><?= $option ?></option>
+    <?php endforeach; ?>
+    `;
+    stat_names += '</select>';
+
+    $.getJSON(team_stats_api_url + 'team/' + id, function(result){
+
+      /* ------------------------------------------------- */
+      /* -------------MAIN CONTENT WILL GO HERE----------- */
+      /* ------------------------------------------------- */
+      for(var x in result){
+        $team_stats_forms.append(`
+          <div class="form-group" id="team_stats_row_`+ result[x].id +`" data-from_match="`+id+`">
+          <div class="col-sm-6">` +
+          stat_names
+          + `</div>
+          <div class="col-sm-4">
+          <input type="number" min="0" class="form-control" name="stat_value"  id="stat_value-`+ result[x].id +`" placeholder="Stat value" value="` + result[x].away_score + `" required></input>
+          </div>
+          <div class="col-sm-2" style="vertical-align">
+          <button type="button" class="btn btn-info btn-xs save-btn" data-tstat_id="`+ result[x].id +`" id="save_btn-` + result[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+          <button type="button" class="btn btn-danger btn-xs" onclick="deleteTeamStat(` + result[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
+          </div>
+          </div>`);
+
+          $("#team_stats_row_" + result[x].id).find('select option:contains("' + result[x].stat_name + '")').prop('selected', true);
+          $("#team_stats_row_" + result[x].id).find('select').attr('id', 'stat_name-' + result[x].id);
+        }
+      });
+    }
+
+    /**
+    * function for populating the team_stats modal
+    * @var int   id
+    */
+    showTeamStats = function(id) {
+      initializeTeamStats(id);
+      $('#team_stats_id').html('');
+      $('#team_stats_id').html(id);
+      $('#team_stats_modal').modal('toggle');
+    }
+
+    newTeamStat = function(id){
+      $.ajax({
+        url: team_stats_api_url,
+        type: 'POST',
+        data: { team_id : id },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 201){
+            initializeTeamStats(id);
+          }
+        },
+        error: function(e){
+          console.log(e);
+        }
+      });
+    }
 
 }); // End document ready
 </script>
