@@ -681,7 +681,7 @@ Status: 200 OK
 |      fname       |   string   |  No description   |
 |      mname       |   string   |  No description   |
 |      lname       |   string   |  No description   |
-|     birthdate    |    date    |  No description   |
+|    birth_date    |    date    |  No description   |
 |      email       |   string   |  No description   |    
 |     address      |   string   |  No description   |    
 |      mobile      |   string   |  No description   |    
