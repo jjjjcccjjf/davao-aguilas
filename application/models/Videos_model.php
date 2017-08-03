@@ -44,7 +44,7 @@ class Videos_model extends Crud_model
   }
 
   /**
-  * Get featured news
+  * Get featured video
   * @param  int     $id
   * @return array   associative array of data
   */
@@ -59,9 +59,32 @@ class Videos_model extends Crud_model
   }
 
   /**
-   * Set featured news
-   * @param [type] $id [description]
-   */
+  * Get video by type
+  * @param  int     $id
+  * @return array   associative array of data
+  */
+  public function getVideosByType($type)
+  {
+
+    switch ($type) {
+      case 'news-and-highlights':
+      $this->db->where('type', 'News & Highlights');
+      break;
+      case 'club-videos':
+      $this->db->where('type', 'Club Videos');
+      break;
+    }
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
+
+    return $res;
+  }
+
+  /**
+  * Set featured news
+  * @param [type] $id [description]
+  */
   public function setFeatured($id)
   {
     # Return 0 when id doesn't exist

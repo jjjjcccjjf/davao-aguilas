@@ -33,6 +33,18 @@ class Videos extends Crud_controller
     }
   }
 
+  function type_get($type){
+
+    $res['videos'] = $this->model->getVideosByType($type);
+    $res['featured'] = $this->model->getFeatured();
+
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($res, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
+  }
+
   function featured_post($id){
 
     if($this->model->setFeatured($id)){

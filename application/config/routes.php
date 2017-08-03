@@ -61,6 +61,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 # Davao Aguilas custom routes
 $route['api/videos/(:num)'] = 'api/videos/single/$1';
+$route['api/videos/type/(:any)'] = 'api/videos/type/$1';
 $route['api/news/(:num)'] = 'api/news/single/$1';
 $route['api/partners/(:num)'] = 'api/partners/single/$1';
 $route['api/members/(:num)'] = 'api/members/single/$1';

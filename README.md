@@ -7,6 +7,8 @@ Lorem ipsum dolor sit amet
 1. [Pagination](#pagination)
 1. [News](#news)
 1. [Videos](#videos)
+    1. [News & Highlights](#videos)
+    1. [Club Videos](#videos)
 1. [Partners](#partners)
 1. [Teams](#teams)
 1. [Team statistics](#team-statistics)
@@ -129,6 +131,12 @@ Status: 200 OK
 
 #### Get a video
 `GET /videos/:id`
+
+#### List all `News & Highlights` video type
+`GET /videos/type/news-and-highlights`
+
+#### List all `Club Videos` video type
+`GET /videos/type/club-videos`
 
 ##### Response
 
