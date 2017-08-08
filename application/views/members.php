@@ -107,13 +107,13 @@
             <div class="form-group">
               <label class="col-sm-2 control-label col-sm-2">Facebook link</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="facebook_link" id="_facebook_link" required></input>
+                <input type="url" class="form-control" name="facebook_link" id="_facebook_link" required></input>
               </div>
             </div>
             <div class="form-group">
               <label class="col-sm-2 control-label col-sm-2">Twitter link</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" name="twitte_linkr" id="_twitter_link" required></input>
+                <input type="url" class="form-control" name="twitter_link" id="_twitter_link" required></input>
               </div>
             </div>
 
