@@ -101,6 +101,12 @@ class Videos_model extends Crud_model
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
       $item->embed_code = $item->url; # Just an alias for url.. since URL is wrong in this case
+
+      # Block for giving embed code
+      $result = substr($item->url, strpos($item->url, "https"));
+      $result = substr($result, 0, strpos($result, "\" frame"));
+      $item->embed_url =  $result;
+
       $item->created_at_f = date('F j, Y', strtotime($item->created_at));
     }
   }

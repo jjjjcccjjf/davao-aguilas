@@ -155,6 +155,7 @@ Status: 200 OK
       "created_at": "2017-07-31 11:24:27",
       "updated_at": "2017-07-31 11:36:06",
       "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+      "embed_url": "https://www.youtube.com/embed/tluFQCOezZE",
       "created_at_f": "July 31, 2017"
     },
     {
@@ -168,6 +169,7 @@ Status: 200 OK
       "created_at": "2017-07-31 11:25:26",
       "updated_at": "2017-07-31 11:36:05",
       "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+      "embed_url": "https://www.youtube.com/embed/tluFQCOezZE",
       "created_at_f": "July 31, 2017"
     }
   ],
@@ -183,6 +185,7 @@ Status: 200 OK
       "created_at": "2017-07-31 11:24:27",
       "updated_at": "2017-07-31 11:36:06",
       "embed_code": "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/dQw4w9WgXcQ\" frameborder=\"0\" allowfullscreen></iframe>",
+      "embed_url": "https://www.youtube.com/embed/tluFQCOezZE",
       "created_at_f": "July 31, 2017"
     }
   ]
