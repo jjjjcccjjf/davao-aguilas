@@ -62,6 +62,7 @@ class Fixtures_model extends Crud_model
     $insert_id =  $this->db->insert_id();
 
     $this->db->insert('match_reports', ['fixture_id' => $insert_id]);
+    $this->db->insert('commentary', ['fixture_id' => $insert_id]);
 
     return $insert_id;
   }
@@ -79,6 +80,9 @@ class Fixtures_model extends Crud_model
 
     $this->db->where('fixture_id', $id);
     $this->db->delete('match_reports');
+
+    $this->db->where('fixture_id', $id);
+    $this->db->delete('commentary');
 
     return $affected_rows;
   }

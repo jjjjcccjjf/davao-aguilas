@@ -159,6 +159,7 @@ class Migration_fixtures_and_related extends CI_Migration {
       'fixture_id' => array(
         'type' => 'INTEGER',
         'constraint' => '9',
+        'unique' => TRUE,
       ),
       'full_time' => array(
         'type' => 'TEXT',

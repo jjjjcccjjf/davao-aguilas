@@ -316,6 +316,94 @@
   </div>
   <!-- Match stats Modal end -->
 
+  <!-- Commentary Modal -->
+  <div aria-hidden="true" aria-labelledby="commentary_modal_label" role="dialog" tabindex="-1" id="commentary_modal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Commentary of fixture #<span id="commentary_id"></span></h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-horizontal">
+
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <form action="#" class="form-horizontal" id="commentary_form">  <!-- form -->
+
+                    <div class="col-sm-12"> <!-- col sm 12 -->
+                      <div class="form-group">
+                        <label class="col-sm-12 control-label">Full time commentary</label>
+                        <div class="col-sm-12">
+                          <textarea class="form-control v-resize-only" name="full_time" id="_full_time" required></textarea>
+                        </div>
+                      </div>
+                    </div>   <!-- end col sm 12 -->
+
+                    <div class="col-sm-12"> <!-- col sm 12 -->
+                      <div class="form-group">
+                        <label class="col-sm-12 control-label">Half time commentary</label>
+                        <div class="col-sm-12">
+                          <textarea class="form-control v-resize-only" name="half_time" id="_half_time" required></textarea>
+                        </div>
+                      </div>
+                    </div>   <!-- end col sm 12 -->
+
+                    <div class="col-sm-12"> <!-- col sm 12 -->
+                      <div class="form-group">
+                        <label class="col-sm-12 control-label">Introduction commentary</label>
+                        <div class="col-sm-12">
+                          <textarea class="form-control v-resize-only" name="intro" id="_intro" required></textarea>
+                        </div>
+                      </div>
+                    </div>   <!-- end col sm 12 -->
+
+                    <div class="form-group">
+                      <div class="controls col-md-10" style="margin-left:15px">
+                        <button type="submit" class="btn btn-white">Save changes</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+              </div>
+
+              <div class="col-sm-6">
+
+                <div class="form-group">
+                  <div class="col-sm-2 text-center">
+                    <h4>Home Score</h4>
+                  </div>
+                  <div class="col-sm-6 text-center">
+                    <h4>Match Statistics</h4>
+                  </div>
+                  <div class="col-sm-2 text-center">
+                    <h4>Away Score</h4>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn btn-success btn-xs" id="add_match_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                  </div>
+                </div>
+
+                <div id="match_stats_forms">  <!-- forms -->
+
+                </div> <!-- / forms -->
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Commentary Modal end -->
+
+
+
   <script>
   $(document).ready(function(){
     var table;
@@ -526,6 +614,21 @@
         $('#match_reports_modal').modal('toggle');
       }
 
+      /**
+      * function for populating the edit modal
+      * @var int   id
+      */
+      editCommentary = function(id) {
+        $.getJSON(api_url + id + '/commentary', function(result){
+          $('#_full_time').val(result[0].full_time);
+          $('#_half_time').val(result[0].half_time);
+          $('#_intro').val(result[0].intro);
+        });
+        $('#commentary_id').html('');
+        $('#commentary_id').html(id);
+        $('#commentary_modal').modal('toggle');
+      }
+
       /**---------------------------------------------
       ---------------Match report edit----------------
       ---------------------------------------------**/
@@ -542,6 +645,33 @@
               initializeTable('#table_div', table_headers);
               clearAllForms();
               $('#match_reports_modal').modal('toggle');
+              customMessage('#custom_message', 'Changes saved successfully');
+            }
+          },
+          cache: false,
+          contentType: false,
+          processData: false
+        });
+
+        e.preventDefault();
+      });
+
+      /**---------------------------------------------
+      ---------------Commentary edit----------------
+      ---------------------------------------------**/
+      $("#commentary_form").submit(function(e){
+        var form_data = new FormData($(this)[0]);
+
+        $.ajax({
+          url: api_url + $('#commentary_id').html() + '/commentary',
+          type: 'POST',
+          data: form_data,
+          async: false,
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 200){
+              initializeTable('#table_div', table_headers);
+              clearAllForms();
+              $('#commentary_modal').modal('toggle');
               customMessage('#custom_message', 'Changes saved successfully');
             }
           },
@@ -599,6 +729,7 @@
             <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
             <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs btn-info' title='Match Statistics'><i class='fa fa-tasks'></i></button>
             <button onclick='editReport(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Edit report'><i class='fa fa-book'></i></button>
+            <button onclick='editCommentary(`+ result[x].id +`)' class='btn btn-xs btn-warning' title='Edit commentary'><i class='fa fa-keyboard-o'></i></button>
             </td>`;
 
             table += '</tr>';
