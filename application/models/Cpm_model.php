@@ -11,4 +11,11 @@ class Cpm_model extends Crud_model
 
   }
 
+  public function getAllByType($id, $type)
+  {
+    $this->db->where('fixture_id', $id);
+    $this->db->where('coverage_type', $type);
+    return $this->db->get($this->table)->result();
+  }
+
 }

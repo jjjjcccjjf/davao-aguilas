@@ -186,7 +186,7 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'VARCHAR',
         'constraint' => '50',
       ),
-      'commentary_id' => array(
+      'fixture_id' => array(
         'type' => 'INTEGER',
         'constraint' => '9',
       ),

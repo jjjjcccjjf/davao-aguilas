@@ -329,10 +329,15 @@
           <div class="form-horizontal">
 
             <div class="row">
-              <div class="col-sm-6">
+              <div class="col-sm-4">
                 <div class="form-group">
                   <form action="#" class="form-horizontal" id="commentary_form">  <!-- form -->
 
+                    <div class="col-sm-12 text-center">
+                      <div class="col-sm-12">
+                        <h4>Commentaries</h4>
+                      </div>
+                    </div>
                     <div class="col-sm-12"> <!-- col sm 12 -->
                       <div class="form-group">
                         <label class="col-sm-12 control-label">Full time commentary</label>
@@ -370,26 +375,53 @@
 
               </div>
 
-              <div class="col-sm-6">
+              <div class="col-sm-8">
 
-                <div class="form-group">
-                  <div class="col-sm-2 text-center">
-                    <h4>Home Score</h4>
-                  </div>
-                  <div class="col-sm-6 text-center">
-                    <h4>Match Statistics</h4>
-                  </div>
-                  <div class="col-sm-2 text-center">
-                    <h4>Away Score</h4>
-                  </div>
-                  <div class="col-sm-2">
-                    <button class="btn btn-success btn-xs" id="add_match_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-12">
+                    <h4>First half Commentaries</h4>
                   </div>
                 </div>
 
-                <div id="match_stats_forms">  <!-- forms -->
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-3">
+                    <h5>Minute mark</h5>
+                  </div>
+                  <div class="col-sm-6 text-center">
+                    <h5>Text body</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn btn-success btn-xs" id="add_first_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                  </div>
+                </div>
 
+                <div id="first_half_forms">  <!-- forms -->
                 </div> <!-- / forms -->
+
+                <!-- ############################### -->
+
+
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-12">
+                    <h4>Second half Commentaries</h4>
+                  </div>
+                </div>
+
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-3">
+                    <h5>Minute mark</h5>
+                  </div>
+                  <div class="col-sm-6 text-center">
+                    <h5>Text body</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn btn-success btn-xs" id="add_second_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                  </div>
+                </div>
+
+                <div id="second_half_forms">  <!-- forms -->
+                </div> <!-- / forms -->
+
 
               </div>
             </div>
@@ -412,6 +444,7 @@
     var api_url = base_url + 'api/fixtures/';
     match_stat_api_url = base_url + 'api/match_stats/';
     match_reports_api_url = base_url + 'api/match_reports/';
+    cpm_api_url = base_url + 'api/cpm/';
     var table_headers = ['League', 'Home Team', 'Away Team', 'Hash Tag', 'Round number', 'Home Score', 'Away Score', 'Match schedule', 'Location', 'Match Progress'];
 
     /**
@@ -433,6 +466,19 @@
         success: function (data, textStatus, xhr) {
           if(xhr.status == 201){
             initializeMatchStats(id);
+          }
+        }
+      });
+    }
+
+    newCpm = function(id, type){
+      $.ajax({
+        url: cpm_api_url,
+        type: 'POST',
+        data: { fixture_id : id, coverage_type: type },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 201){
+            initializeCpm(id);
           }
         }
       });
@@ -491,6 +537,69 @@
         });
       }
 
+
+
+      initializeCpm = function(id){
+        var $first_half_forms = $("#first_half_forms");
+        var $second_half_forms = $("#second_half_forms");
+
+        var $add_btn_1st = $('#add_first_half_btn');
+        var $add_btn_2nd = $('#add_second_half_btn');
+
+        $first_half_forms.empty();
+        $second_half_forms.empty();
+
+        $add_btn_1st.removeAttr('onclick');
+        $add_btn_1st.attr('onClick', 'newCpm('+ id +', "first_half");');
+
+        $add_btn_2nd.removeAttr('onclick');
+        $add_btn_2nd.attr('onClick', 'newCpm('+ id +', "second_half");');
+
+        $.getJSON(api_url + id + '/commentary', function(result){
+
+          /* ------------------------------------------------- */
+          /* -------------MAIN CONTENT WILL GO HERE----------- */
+          /* ------------------------------------------------- */
+
+          first_half = result.first_half;
+          second_half = result.second_half;
+
+          // var first_half = result[x].first_half;
+          // var second_half = result[x].second_half;
+
+          for(var x in first_half){
+            $first_half_forms.append(`<div class="form-group" id="cpm_row_`+ first_half[x].id +`" data-from_match="`+id+`">
+            <div class="col-sm-3">
+            <input type="text" class="form-control" name="minute_mark" id="minute_mark-`+ first_half[x].id +`" placeholder="Minute mark" value="` + first_half[x].minute_mark + `" required></input>
+            </div>
+            <div class="col-sm-6">
+            <textarea class="form-control v-resize-only" name="body" id="body-`+ first_half[x].id +`" placeholder="Text body" required>` + first_half[x].body + `</textarea>
+            </div>
+            <div class="col-sm-3" style="vertical-align">
+            <button type="button" class="btn btn-info btn-xs save-btn" data-cpm_id="`+ first_half[x].id +`" id="save_btn-` + first_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + first_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
+            </div>
+            </div>`);
+          }
+
+          for(var x in second_half){
+            $second_half_forms.append(`<div class="form-group" id="cpm_row_`+ second_half[x].id +`" data-from_match="`+id+`">
+            <div class="col-sm-3">
+            <input type="text" class="form-control" name="minute_mark" id="minute_mark-`+ second_half[x].id +`" placeholder="Minute mark" value="` + second_half[x].minute_mark + `" required></input>
+            </div>
+            <div class="col-sm-6">
+            <textarea class="form-control v-resize-only" name="body" id="body-`+ second_half[x].id +`" placeholder="Text body" required>` + second_half[x].body + `</textarea>
+            </div>
+            <div class="col-sm-3" style="vertical-align">
+            <button type="button" class="btn btn-info btn-xs save-btn" data-cpm_id="`+ second_half[x].id +`" id="save_btn-` + second_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + second_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
+            </div>
+            </div>`);
+          }
+
+
+        });
+      }
 
       /**---------------------------------------------
       -------------------POST add---------------------
@@ -619,10 +728,16 @@
       * @var int   id
       */
       editCommentary = function(id) {
+        initializeCpm(id);
+
+        $('#_full_time').val('');
+        $('#_half_time').val('');
+        $('#_intro').val('');
+
         $.getJSON(api_url + id + '/commentary', function(result){
-          $('#_full_time').val(result[0].full_time);
-          $('#_half_time').val(result[0].half_time);
-          $('#_intro').val(result[0].intro);
+          $('#_full_time').val(result.commentary[0].full_time);
+          $('#_half_time').val(result.commentary[0].half_time);
+          $('#_intro').val(result.commentary[0].intro);
         });
         $('#commentary_id').html('');
         $('#commentary_id').html(id);
