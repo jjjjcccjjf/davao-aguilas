@@ -518,49 +518,31 @@ Status: 200 OK
 ```json
 Status: 200 OK
 {
-  "matches": [
-    {
-      "id": "1",
-      "home_team_id": "2",
-      "away_team_id": "1",
-      "league_id": "2",
-      "home_score": "0",
-      "away_score": "0",
-      "hash_tag": "#DonaldForPresident",
-      "round_num": "1",
-      "match_schedule": "2017-07-19 23:11:00",
-      "location": "Pangasinan, Pilipinas",
-      "match_progress": "Upcoming",
-      "created_at": "2017-07-19 14:44:03",
-      "updated_at": "2017-07-20 11:09:00",
-      "home_team_name": "Davao Aguilas",
-      "away_team_name": "Za warudoo",
-      "match_time": "23:11:00",
-      "match_date": "2017-07-19",
-      "league_name": "Asian Championship League"
-    },
-    {
-      "id": "2",
-      "home_team_id": "1",
-      "away_team_id": "2",
-      "league_id": "2",
-      "home_score": "0",
-      "away_score": "0",
-      "hash_tag": "#DioForPresident",
-      "round_num": "2",
-      "match_schedule": "2004-11-11 15:11:00",
-      "location": "Makati City, Philippines",
-      "match_progress": "Upcoming",
-      "created_at": "2017-07-19 15:54:13",
-      "updated_at": "2017-07-20 12:01:21",
-      "home_team_name": "Za warudoo",
-      "away_team_name": "Davao Aguilas",
-      "match_time": "15:11:00",
-      "match_date": "2004-11-11",
-      "league_name": "Asian Championship League"
-    }
-  ],
-  "league_name": "Asian Championship League"
+    "matches": [
+        {
+            "id": "5",
+            "home_team_id": "2",
+            "away_team_id": "1",
+            "league_id": "1",
+            "home_score": "3",
+            "away_score": "2",
+            "hash_tag": "#DonaldForPresident",
+            "round_num": "1",
+            "match_schedule": "2017-07-14 01:59:00",
+            "location": "Manila",
+            "match_progress": "Final",
+            "created_at": "2017-07-21 00:52:26",
+            "home_team_name": "Davao Aguilas",
+            "away_team_name": "Natus Vincere",
+            "match_schedule_f": "Friday, 14 July 2017",
+            "match_time": "01:59",
+            "match_date": "2017-07-14",
+            "home_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602754_H7jhECD.png",
+            "away_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602712_600px-Natus_Vincere_(1).png",
+            "league_name": "A-League"
+        }
+    ],
+    "league_name": "A-League"
 }
 ```
 
