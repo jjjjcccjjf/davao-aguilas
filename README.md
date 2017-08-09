@@ -17,6 +17,8 @@ Lorem ipsum dolor sit amet
 1. [Ladders](#ladders)
 1. [Fixtures](#fixtures)
     1. [Match reports](#match-reports)
+    1. [Match statistics](#fixtures)
+    1. [Commentary](#commentary)
 1. [Members](#members)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
@@ -647,7 +649,7 @@ Status: 200 OK
 
 #### Match reports
 #### Get fixture's match reports
-`GET /fixtures/:id/match_reports`
+`GET /fixtures/:fixture_id/match_reports`
 
 ##### Response
 ```json
@@ -663,6 +665,50 @@ Status: 200 OK
 ]
 ```
 
+#### Commentary
+#### Get fixture's commentary
+`GET /fixtures/:fixture_id/commentary`
+
+```json
+Status: 200 OK
+{
+    "commentary": [
+        {
+            "id": "3",
+            "fixture_id": "15",
+            "full_time": "Hallooo",
+            "half_time": "World",
+            "intro": "yeah",
+            "created_at": "2017-08-08 13:24:24",
+            "updated_at": "2017-08-09 11:59:43"
+        }
+    ],
+    "first_half": [
+        {
+            "id": "2",
+            "minute_mark": "10'",
+            "fixture_id": "15",
+            "icon_id": "0",
+            "body": "HOYYY!",
+            "coverage_type": "first_half",
+            "created_at": "2017-08-08 18:06:36",
+            "updated_at": "2017-08-08 18:17:44"
+        }
+    ],
+    "second_half": [
+        {
+            "id": "1",
+            "minute_mark": "9'",
+            "fixture_id": "15",
+            "icon_id": "0",
+            "body": "hello",
+            "coverage_type": "second_half",
+            "created_at": "2017-08-08 18:06:25",
+            "updated_at": "2017-08-08 18:17:48"
+        }
+    ]
+}
+```
 
 ### Members
 #### Add new member
