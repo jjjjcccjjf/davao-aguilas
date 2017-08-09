@@ -576,7 +576,7 @@
             <textarea class="form-control v-resize-only" name="body" id="body-`+ first_half[x].id +`" placeholder="Text body" required>` + first_half[x].body + `</textarea>
             </div>
             <div class="col-sm-3" style="vertical-align">
-            <button type="button" class="btn btn-info btn-xs save-btn" data-cpm_id="`+ first_half[x].id +`" id="save_btn-` + first_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-info btn-xs save-btn-cpm" data-cpm_id="`+ first_half[x].id +`" id="save_btn-` + first_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
             <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + first_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
             </div>
             </div>`);
@@ -591,7 +591,7 @@
             <textarea class="form-control v-resize-only" name="body" id="body-`+ second_half[x].id +`" placeholder="Text body" required>` + second_half[x].body + `</textarea>
             </div>
             <div class="col-sm-3" style="vertical-align">
-            <button type="button" class="btn btn-info btn-xs save-btn" data-cpm_id="`+ second_half[x].id +`" id="save_btn-` + second_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+            <button type="button" class="btn btn-info btn-xs save-btn-cpm" data-cpm_id="`+ second_half[x].id +`" id="save_btn-` + second_half[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
             <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + second_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
             </div>
             </div>`);
@@ -676,8 +676,8 @@
             }
           });
         }
-
       }
+
 
       /**
       * function for populating the edit modal
@@ -880,6 +880,26 @@
 
       });
 
+      $('body').on('click', '.save-btn-cpm', function(){
+        var elem_id = $(this).attr('id');
+        var cpm_id = $("#" + elem_id).data('cpm_id'); // fixture id
+        var minute_mark = $("#minute_mark-" + cpm_id).val();
+        var body = $("#body-" + cpm_id).val();
+
+        $.ajax({
+          url: cpm_api_url + cpm_id,
+          type: 'POST',
+          data: { minute_mark : minute_mark, body: body },
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 200){
+              initializeCpm($("#cpm_row_" + cpm_id).data('from_match'));
+              // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+            }
+          }
+        });
+
+      });
+
     }); // End document ready
 
     function deleteMatchStat(match_stat_id, fixture_id){
@@ -890,6 +910,21 @@
           success: function (data, textStatus, xhr) {
             if(xhr.status == 204){
               initializeMatchStats(fixture_id);
+              // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+            }
+          }
+        });
+      }
+    }
+
+    function deleteCpm(cpm_id, fixture_id){
+      if(confirm('Are you sure you want to do this?')){
+        $.ajax({
+          url: cpm_api_url + cpm_id,
+          type: 'DELETE',
+          success: function (data, textStatus, xhr) {
+            if(xhr.status == 204){
+              initializeCpm(fixture_id);
               // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }
