@@ -19,6 +19,8 @@ class Players_model extends Crud_model
   */
   public function all()
   {
+    $this->db->order_by('lname', 'ASC');
+    
     $res = $this->db->get($this->table)->result();
     $this->formatFields($res);
 
