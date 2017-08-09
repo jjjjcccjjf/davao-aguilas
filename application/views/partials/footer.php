@@ -59,10 +59,10 @@
 <script type="text/javascript">
 
 /**
- * changes the value of #custom_message span
- * @param  string     msg    custom message string
- * @return void
- */
+* changes the value of #custom_message span
+* @param  string     msg    custom message string
+* @return void
+*/
 function customMessage(selector, msg){
   $(selector).empty();
   $(selector).html(msg);
@@ -77,7 +77,20 @@ function clearAllForms() {
   $('input[type=file]').val('');
 }
 
-</script>
+function showLoader() {
+  $('body').append(`
+    <div id="_loader" style="z-index:99999999; height:100vh; width:100vw; text-align:center; background: rgba(0,0,0, 0.1); position:fixed; top:0; left:0;">
+    <img style="width: 65px; margin-top: 200px;" src="<?php echo base_url('assets/img/eclipse.gif') ?>" />
+    </div>
+    `);
+    console.log('show loader');
+  }
 
+  function hideLoader() {
+    $('#_loader').remove();
+    console.log('remove loader');
+  }
+
+  </script>
 </body>
 </html>

@@ -390,7 +390,7 @@
           table += '<tr>';
 
           table += '<td>' + id +'</td>'; // id
-          table += '<td>' + result[x].fname + " " + result[x].lname +'</td>';
+          table += '<td>' + result[x].lname + ", " + result[x].fname +'</td>';
           table += '<td>' + result[x].team_name +'</td>';
           table += '<td>' + result[x].position +'</td>';
           table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name

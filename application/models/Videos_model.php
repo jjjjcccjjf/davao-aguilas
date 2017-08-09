@@ -12,6 +12,7 @@ class Videos_model extends Crud_model
 
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
+    $this->db->order_by('id', 'DESC');
   }
 
   /**

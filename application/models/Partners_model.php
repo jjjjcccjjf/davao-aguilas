@@ -11,6 +11,7 @@ class Partners_model extends Crud_model
     $this->upload_dir = 'partners';
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
+    $this->db->order_by('title', 'ASC');
   }
 
   /**

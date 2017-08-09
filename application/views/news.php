@@ -142,6 +142,7 @@ $(document).ready(function(){
   $("#add_form").submit(function(e){
     var form_data = new FormData($(this)[0]);
 
+    showLoader();
     $.ajax({
       url: api_url,
       type: 'POST',
@@ -149,6 +150,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 201){
+          hideLoader();
           initializeTable('#table_div', table_headers, initializeFeatured);
           $('#add_modal').modal('toggle');
           clearAllForms();
@@ -168,6 +170,7 @@ $(document).ready(function(){
   $("#edit_form").submit(function(e){
     var form_data = new FormData($(this)[0]);
 
+    showLoader();
     $.ajax({
       url: api_url + $('#edit_id').html(),
       type: 'POST',
@@ -175,6 +178,7 @@ $(document).ready(function(){
       async: false,
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
+          hideLoader();
           initializeTable('#table_div', table_headers, initializeFeatured);
           clearAllForms();
           $('#edit_modal').modal('toggle');

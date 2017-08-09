@@ -8,6 +8,7 @@ class Players extends Crud_controller
     parent::__construct();
     $this->load->model('Players_model', 'model');
 
+    $this->db->order_by('lname', 'ASC');
   }
 
   function index_post()
