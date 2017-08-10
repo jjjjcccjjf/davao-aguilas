@@ -87,6 +87,7 @@ $route['api/commentary/(:num)'] = 'api/commentary/single/$1';
 $route['api/cpm/(:num)'] = 'api/cpm/single/$1';
 $route['api/match_stats/(:num)'] = 'api/match_stats/single/$1';
 $route['api/lineups/(:num)'] = 'api/lineups/single/$1';
+$route['api/geo_tags/(:num)'] = 'api/geo_tags/single/$1';
 $route['api/actions/(:num)'] = 'api/actions/single/$1';
 $route['api/fixtures/(:num)/match_reports'] = 'api/match_reports/single/$1';
 $route['api/fixtures/(:num)/commentary'] = 'api/commentary/single/$1';
