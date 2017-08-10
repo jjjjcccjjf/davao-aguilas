@@ -190,9 +190,10 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'INTEGER',
         'constraint' => '9',
       ),
-      'icon_id' => array(
-        'type' => 'INTEGER',
-        'constraint' => '9',
+      'icon_type' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '100',
+        'null' => TRUE
       ),
       'body' => array(
         'type' => 'TEXT',
