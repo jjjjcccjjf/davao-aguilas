@@ -683,6 +683,16 @@ Status: 200 OK
 #### Get fixture's commentary
 `GET /fixtures/:fixture_id/commentary`
 
+#### Response  
+
+Note: Possible values of `icon_type` may include the following:
+1. `N/A`
+1. `Goal`
+1. `Substitute`
+1. `Red Card`
+1. `Yellow Card`
+
+
 ```json
 Status: 200 OK
 {
@@ -690,11 +700,11 @@ Status: 200 OK
         {
             "id": "3",
             "fixture_id": "15",
-            "full_time": "Hallooo",
-            "half_time": "World",
-            "intro": "yeah",
+            "full_time": "Halloooq",
+            "half_time": "Worldq",
+            "intro": "yeahq",
             "created_at": "2017-08-08 13:24:24",
-            "updated_at": "2017-08-09 11:59:43"
+            "updated_at": "2017-08-09 14:27:39"
         }
     ],
     "first_half": [
@@ -702,11 +712,21 @@ Status: 200 OK
             "id": "2",
             "minute_mark": "10'",
             "fixture_id": "15",
-            "icon_id": "0",
-            "body": "HOYYY!",
+            "icon_type": "Substitute",
+            "body": "HOYYY!asd1!",
             "coverage_type": "first_half",
             "created_at": "2017-08-08 18:06:36",
-            "updated_at": "2017-08-08 18:17:44"
+            "updated_at": "2017-08-10 15:05:06"
+        },
+        {
+            "id": "26",
+            "minute_mark": "",
+            "fixture_id": "15",
+            "icon_type": "Goal",
+            "body": "",
+            "coverage_type": "first_half",
+            "created_at": "2017-08-10 14:39:15",
+            "updated_at": "2017-08-10 15:05:08"
         }
     ],
     "second_half": [
@@ -714,11 +734,11 @@ Status: 200 OK
             "id": "1",
             "minute_mark": "9'",
             "fixture_id": "15",
-            "icon_id": "0",
-            "body": "hello",
+            "icon_type": "Red Card",
+            "body": "hahaha",
             "coverage_type": "second_half",
             "created_at": "2017-08-08 18:06:25",
-            "updated_at": "2017-08-08 18:17:48"
+            "updated_at": "2017-08-10 15:05:11"
         }
     ]
 }
