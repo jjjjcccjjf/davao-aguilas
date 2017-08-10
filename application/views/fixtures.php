@@ -384,10 +384,13 @@
                 </div>
 
                 <div class="col-sm-12 text-center">
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <h5>Minute mark</h5>
                   </div>
-                  <div class="col-sm-6 text-center">
+                  <div class="col-sm-2">
+                    <h5>Action</h5>
+                  </div>
+                  <div class="col-sm-5 text-center">
                     <h5>Text body</h5>
                   </div>
                   <div class="col-sm-2">
@@ -408,10 +411,13 @@
                 </div>
 
                 <div class="col-sm-12 text-center">
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <h5>Minute mark</h5>
                   </div>
-                  <div class="col-sm-6 text-center">
+                  <div class="col-sm-2">
+                    <h5>Action</h5>
+                  </div>
+                  <div class="col-sm-5 text-center">
                     <h5>Text body</h5>
                   </div>
                   <div class="col-sm-2">
@@ -437,6 +443,25 @@
 
 
   <script>
+
+  /*
+                                                   ,  ,
+                                                 / \/ \
+                                                (/ //_ \_
+       .-._                                      \||  .  \
+        \  '-._                            _,:__.-"/---\_ \
+   ______/___  '.    .--------------------'~-'--.)__( , )\ \
+  `'--.___  _\  /    |             Here        ,'    \)|\ `\|
+       /_.-' _\ \ _:,_          Be Dragons           " ||   (
+     .'__ _.' \'-/,`-~`                                |/
+         '. ___.> /=,|  Abandon hope all ye who enter  |
+          / .-'/_ )  '---------------------------------'
+          )'  ( /(/
+               \\ "
+                '=='
+
+  */
+
   $(document).ready(function(){
     var table;
 
@@ -555,6 +580,14 @@
         $add_btn_2nd.removeAttr('onclick');
         $add_btn_2nd.attr('onClick', 'newCpm('+ id +', "second_half");');
 
+        icon_types = '<select name="icon_type" class="form-control">';
+        icon_types +=
+        `<?php foreach(ICON_TYPES as $option):?>
+        <option><?= $option ?></option>
+        <?php endforeach; ?>
+        `;
+        icon_types += '</select>';
+
         $.getJSON(api_url + id + '/commentary', function(result){
 
           /* ------------------------------------------------- */
@@ -569,10 +602,13 @@
 
           for(var x in first_half){
             $first_half_forms.append(`<div class="form-group" id="cpm_row_`+ first_half[x].id +`" data-from_match="`+id+`">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             <input type="text" class="form-control" name="minute_mark" id="minute_mark-`+ first_half[x].id +`" placeholder="Minute mark" value="` + first_half[x].minute_mark + `" required></input>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">` +
+            icon_types
+            + `</div>
+            <div class="col-sm-4">
             <textarea class="form-control v-resize-only" name="body" id="body-`+ first_half[x].id +`" placeholder="Text body" required>` + first_half[x].body + `</textarea>
             </div>
             <div class="col-sm-3" style="vertical-align">
@@ -580,14 +616,22 @@
             <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + first_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
             </div>
             </div>`);
+
+            // setting the DROPDOWN id here
+            // and also setting default values
+            $("#cpm_row_" + first_half[x].id).find('select option:contains("' + first_half[x].icon_type + '")').prop('selected', true);
+            $("#cpm_row_" + first_half[x].id).find('select').attr('id', 'icon_type-' + first_half[x].id);
           }
 
           for(var x in second_half){
             $second_half_forms.append(`<div class="form-group" id="cpm_row_`+ second_half[x].id +`" data-from_match="`+id+`">
-            <div class="col-sm-3">
+            <div class="col-sm-2">
             <input type="text" class="form-control" name="minute_mark" id="minute_mark-`+ second_half[x].id +`" placeholder="Minute mark" value="` + second_half[x].minute_mark + `" required></input>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-3">` +
+            icon_types
+            + `</div>
+            <div class="col-sm-4">
             <textarea class="form-control v-resize-only" name="body" id="body-`+ second_half[x].id +`" placeholder="Text body" required>` + second_half[x].body + `</textarea>
             </div>
             <div class="col-sm-3" style="vertical-align">
@@ -595,7 +639,13 @@
             <button type="button" class="btn btn-danger btn-xs" onclick="deleteCpm(` + second_half[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
             </div>
             </div>`);
+
+            // setting the DROPDOWN id here
+            // and also setting default values
+            $("#cpm_row_" + second_half[x].id).find('select option:contains("' + second_half[x].icon_type + '")').prop('selected', true);
+            $("#cpm_row_" + second_half[x].id).find('select').attr('id', 'icon_type-' + second_half[x].id);
           }
+
 
 
         });
@@ -884,12 +934,13 @@
         var elem_id = $(this).attr('id');
         var cpm_id = $("#" + elem_id).data('cpm_id'); // fixture id
         var minute_mark = $("#minute_mark-" + cpm_id).val();
+        var icon_type = $("#icon_type-" + cpm_id).val();
         var body = $("#body-" + cpm_id).val();
 
         $.ajax({
           url: cpm_api_url + cpm_id,
           type: 'POST',
-          data: { minute_mark : minute_mark, body: body },
+          data: { minute_mark : minute_mark, body: body, icon_type, icon_type },
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
               initializeCpm($("#cpm_row_" + cpm_id).data('from_match'));

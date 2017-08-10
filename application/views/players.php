@@ -430,13 +430,7 @@
              \\ "
               '=='
 
-This horrible monstrosity takes a medicare monstrosity and mangles it
-into a data structure that can easily be used to create a medicare feed.
-It's bloated, confusing, and pretty awful by necessity(for the most part).
 */
-
-
-
 
 
   }); // End document ready
