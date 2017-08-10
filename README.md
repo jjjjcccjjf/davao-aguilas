@@ -548,6 +548,20 @@ Status: 200 OK
 }
 ```
 
+#### When exceeding the maximum page number
+
+##### Example request
+`GET /fixtures/leagues/1/final?page=5&per_page=2`
+
+##### Response
+```json
+Status: 200 OK
+{
+    "matches": [],
+    "league_name": null
+}
+```
+
 #### Get fixture / match details by fixture id
 `GET /fixtures/:id`
 
