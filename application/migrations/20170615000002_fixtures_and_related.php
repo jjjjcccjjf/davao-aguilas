@@ -190,11 +190,6 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'INTEGER',
         'constraint' => '9',
       ),
-      'icon_type' => array(
-        'type' => 'VARCHAR',
-        'constraint' => '100',
-        'null' => TRUE
-      ),
       'body' => array(
         'type' => 'TEXT',
       ),
@@ -206,6 +201,9 @@ class Migration_fixtures_and_related extends CI_Migration {
         'constraint' => '100',
       ),
     ));
+
+    $this->dbforge->add_field("`icon_type` VARCHAR(100) NOT NULL DEFAULT 'N/A' "); # For icon_type with default value
+
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
     $this->dbforge->add_field("`updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP");
     $this->dbforge->create_table('cpm'); /** means comment per minute */

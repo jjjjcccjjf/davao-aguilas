@@ -98,6 +98,7 @@ const VIDEO_TYPES = ['Club Videos', 'News &amp; Highlights']; # We're using this
 const PLAYER_STATISTICS = ['Assists', 'Goals', 'Total Passes', 'Crosses', 'Shots on Target', 'Shots inside penalty box', 'Shots outside penalty box', 'Shot accuracy']; # We're using this syntax because 5.6 doesn't support the one above!
 const MATCH_PROGRESS_TYPES = ['Upcoming', 'Ongoing', 'Final']; # We're using this syntax because 5.6 doesn't support the one above!
 const MATCH_STAT_NAMES = ['Goals', 'Assists', 'Total Shots', 'Attacks', 'Corners', 'Fouls', 'Free Kicks']; # We're using this syntax because 5.6 doesn't support the one above!
+const ICON_TYPES = ['N/A', 'Substitute', 'Goal', 'Red Card', 'Yellow Card' ]; # We're using this syntax because 5.6 doesn't support the one above!
 const TEAM_STAT_NAMES = ['Goals', 'Goals Conceded', 'Total Shots',
 'Shooting Accuracy', 'Total Passes', 'Passing Accuracy', 'Crossing Accuracy',
 'Tackles Won', 'Total Fouls Won', 'Total Fouls Conceded', 'Duels Won',
