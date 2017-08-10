@@ -33,8 +33,8 @@ class Fixtures_model extends Crud_model
     $this->formatFields($fixtures);
 
     $res['matches'] = $fixtures;
+    $res['league_name'] = $this->getLeagueName(@$fixtures[0]->league_id);
 
-    $res['league_name'] = $this->getLeagueName($fixtures[0]->league_id);
     return $res;
   }
 
