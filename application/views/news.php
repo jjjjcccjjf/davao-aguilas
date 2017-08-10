@@ -242,7 +242,7 @@ $(document).ready(function(){
   initializeTable = function(selector, table_headers, callBack){
     $(selector).empty();
 
-    $.getJSON(api_url, function(result){
+    $.getJSON(api_url + "?order_by=desc", function(result){
       result = result['news'];
       table = `
       <table class="table table-bordered">

@@ -5,6 +5,7 @@ Lorem ipsum dolor sit amet
 1. Blablabla
 1. [API Documentation](#api-documentation)
 1. [Pagination](#pagination)
+1. [Ordering](#ordering)
 1. [News](#news)
 1. [Videos](#videos)
     1. [News & Highlights](#videos)
@@ -76,6 +77,19 @@ Requests with `?page` query string will be paginated to 10 items by default. You
 
 ##### Note:
 If query string `?page` is omitted, the api will return **all items** from a resource!
+
+### Ordering
+Some API endpoints support ordering with the use of the query string `order_by` on the URL. This orders the items by `id` by default.
+
+See examples below:  
+Recognizable values are `desc` and `asc` case insensitively
+
+
+`http://example.com/api/?order_by=desc`  
+`http://example.com/api?page=1&order_by=asc` // you can omit the trailing slash just fine  
+
+Currently, ordering are supported on the ff. endpoints:
+1. [News](#news)
 
 ---
 
