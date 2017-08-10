@@ -20,6 +20,7 @@ Lorem ipsum dolor sit amet
     1. [Match statistics](#fixtures)
     1. [Commentary](#commentary)
 1. [Members](#members)
+1. [Geo Tags](#geo-tags)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
 ## Requirements and Dependencies
@@ -780,4 +781,26 @@ Status: 200 OK
     "updated_at": "0000-00-00 00:00:00"
   }
 ]
+```
+
+### Geo Tags
+#### Insert new device location
+`POST /geo_tags/`
+
+#### Update device location
+`POST /geo_tags/`
+
+`Note: Updating is just the same`
+
+##### Parameters
+|     Name         |    Type    |    Description    |
+| ---------------- | ---------- | ----------------- |
+|    device_id     |   string   |  No description   |
+|    longitude     |   string   |  No description   |
+|    latitude      |   string   |  No description   |
+
+##### Response
+```json
+201 Created
+TODO
 ```
