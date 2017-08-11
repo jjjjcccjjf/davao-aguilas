@@ -10,4 +10,25 @@ class Lineups extends Crud_controller
 
   }
 
+  function default_get($fixture_id){
+    $res = $this->model->getDefaultLineup($fixture_id);
+    $squad = [];
+    
+    foreach (PLAYER_POSITIONS as $item) {
+      $squad[$item] = ["players"=>[]];
+    }
+
+    foreach($res as $item){
+      if(in_array($item->position, PLAYER_POSITIONS)){
+        $squad[$item->position]['players'][] = $item;
+      }
+    }
+
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($squad, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
+
+  }
 }

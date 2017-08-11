@@ -29,7 +29,7 @@ class Crud_model extends CI_model
 
     # Use `$this->db->reset_query();` on the child class to override these two. Then redeclare them as needed
     // $this->db->order_by('id', 'DESC');
-    
+
     $this->paginate(); # apply pagination to all methods
   }
 
@@ -214,6 +214,8 @@ class Crud_model extends CI_model
     $this->db->like('name', $team_name);
     $res = $this->db->get('teams')->result();
 
+    $this->db->flush_cache();
+    
     return @$res[0]->id;
   }
 

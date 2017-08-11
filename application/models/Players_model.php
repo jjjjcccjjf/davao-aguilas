@@ -88,7 +88,7 @@ class Players_model extends Crud_model
   }
 
   /**
-  * Get all squad by id
+  * Get default squad id
   * @return array
   */
   public function getDefaultSquad()

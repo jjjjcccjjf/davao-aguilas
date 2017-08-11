@@ -81,11 +81,10 @@ class Players extends Crud_controller
 
     $squad = [];
 
-
     foreach (PLAYER_POSITIONS as $item) {
       $squad[$item] = ["players"=>[]];
     }
-    
+
     foreach($res as $item){
       if(in_array($item->position, PLAYER_POSITIONS)){
         $squad[$item->position]['players'][] = $item;
@@ -97,6 +96,7 @@ class Players extends Crud_controller
     }else{
       $this->response(['message' => 'Not found'], 404);
     }
+
   }
 
 }
