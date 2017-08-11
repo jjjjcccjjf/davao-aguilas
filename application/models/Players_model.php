@@ -20,7 +20,7 @@ class Players_model extends Crud_model
   public function all()
   {
     $this->db->order_by('lname', 'ASC');
-    
+
     $res = $this->db->get($this->table)->result();
     $this->formatFields($res);
 
@@ -115,7 +115,6 @@ class Players_model extends Crud_model
       unset($val->created_at);
       unset($val->updated_at);
       unset($val->player_id);
-      unset($val->id);
     }
 
     return $res;

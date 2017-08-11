@@ -127,3 +127,6 @@ const TEAM_STAT_NAMES = ['Goals', 'Goals Conceded', 'Total Shots',
 'Unsuccessful Launches', 'Unsuccessful Long Passes', 'Unsuccessful Passes Opp...TODO',
 'Unsuccessful Passes Own...TODO', 'Unsuccessful Short Passes', 'Unsuccessful Lay-Offs',
 'Yellow Cards']; # We're using this syntax because 5.6 doesn't support the one above!
+const PLAYER_STAT_NAMES = ['Games Started', 'Minutes', 'Goals', 'Goal Assists',
+'Penalty Goals', 'Yellow Cards', 'Second Yellow Cards', 'Red Cards', 'Substitutes In',
+'Substitutes Out'];
