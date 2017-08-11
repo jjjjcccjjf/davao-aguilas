@@ -87,9 +87,13 @@ class Migration_fixtures_and_related extends CI_Migration {
         'type' => 'INTEGER',
         'constraint' => '9',
       ),
-      'is_substitute' => array(
-        'type' => 'TINYINT', /** mysql bool */
-        'constraint' => '1',
+      'team_id' => array(
+        'type' => 'INTEGER',
+        'constraint' => '9',
+      ),
+      'position' => array(
+        'type' => 'VARCHAR',
+        'constraint' => '100',
       ),
     ));
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
