@@ -60,6 +60,14 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label col-sm-2">Wordpress button label</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="button_label" required></input>
+            </div>
+          </div>
+
+
+          <div class="form-group">
             <label class="control-label col-md-2">Banner</label>
             <div class="controls col-md-10">
               <input type="file" name="image_url" required/>
@@ -106,6 +114,13 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label col-sm-2">Wordpress button label</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" name="button_label" id="_button_label" required></input>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="control-label col-md-2">Banner</label>
             <div class="controls col-md-10">
               <input type="file" name="image_url"/>
@@ -134,7 +149,7 @@ $(document).ready(function(){
   var api_segment = 'api/news/';
   var api_url = base_url + api_segment;
 
-  var table_headers = ['Title', 'Body', 'Image URL'];
+  var table_headers = ['Title', 'Body', 'Wordpress button label', 'Image URL'];
 
   /**---------------------------------------------
   -------------------POST add---------------------
@@ -232,6 +247,7 @@ $(document).ready(function(){
     $.getJSON(api_url + id, function(result){
       $('#_title').val(result[0].title);
       $('#_body').val(result[0].body);
+      $('#_button_label').val(result[0].button_label);
     });
     $('#edit_id').html('');
     $('#edit_id').html(id);
@@ -270,6 +286,7 @@ $(document).ready(function(){
         table += '<td>' + id +'</td>'; // id
         table += '<td>' + result[x].title +'</td>';
         table += '<td>' + (((result[x].body).length > 140) ? (result[x].body).substr(0,140) + '...' : result[x].body) +'</td>'; // chop off string and add ellipses when exceeding 140 characters
+        table += '<td>' + result[x].button_label +'</td>';
         table += '<td><a href="' + result[x].image_url + '" target="_blank">' + '<button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>' +'</a></td>';
         table +=
         `<td>

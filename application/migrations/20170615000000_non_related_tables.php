@@ -18,6 +18,9 @@ class Migration_non_related_tables extends CI_Migration {
       'body' => array(
         'type' => 'TEXT',
       ),
+      'button_label' => array(
+        'type' => 'TEXT',
+      ),
     ));
     $this->dbforge->add_field("`is_featured` BOOLEAN NOT NULL");
     $this->dbforge->add_field("`created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP");
