@@ -80,7 +80,7 @@ function clearAllForms() {
 function showLoader() {
   $('body').append(`
     <div id="_loader" style="z-index:99999999; height:100vh; width:100vw; text-align:center; background: rgba(0,0,0, 0.1); position:fixed; top:0; left:0;">
-    <img style="width: 65px; margin-top: 200px;" src="<?php echo base_url('assets/img/Eclipse.gif') ?>" />
+    <img style="width: 300px; margin-top: 190px;" src="<?php echo base_url('assets/img/loading.png') ?>" />
     </div>
     `);
     console.log('show loader');

@@ -127,25 +127,27 @@ $(document).ready(function(){
     var form_data = new FormData($(this)[0]);
 
     showLoader();
-    $.ajax({
-      url: api_url,
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        hideLoader();
-        if(xhr.status == 201){
-          initializeTable('#table_div', table_headers);
-          $('#add_modal').modal('toggle');
-          clearAllForms();
-          customMessage('#custom_message', 'Item added successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
 
+    setTimeout(function () {
+      $.ajax({
+        url: api_url,
+        type: 'POST',
+        data: form_data,
+        async: false,
+        success: function (data, textStatus, xhr) {
+          hideLoader();
+          if(xhr.status == 201){
+            initializeTable('#table_div', table_headers);
+            $('#add_modal').modal('toggle');
+            clearAllForms();
+            customMessage('#custom_message', 'Item added successfully');
+          }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    }, 200);
     e.preventDefault();
   });
   /**---------------------------------------------
@@ -155,24 +157,27 @@ $(document).ready(function(){
     var form_data = new FormData($(this)[0]);
 
     showLoader();
-    $.ajax({
-      url: api_url + $('#edit_id').html(),
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 200){
-          hideLoader();
-          initializeTable('#table_div', table_headers);
-          clearAllForms();
-          $('#edit_modal').modal('toggle');
-          customMessage('#custom_message', 'Changes saved successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
+
+    setTimeout(function () {
+      $.ajax({
+        url: api_url + $('#edit_id').html(),
+        type: 'POST',
+        data: form_data,
+        async: false,
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            hideLoader();
+            initializeTable('#table_div', table_headers);
+            clearAllForms();
+            $('#edit_modal').modal('toggle');
+            customMessage('#custom_message', 'Changes saved successfully');
+          }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    }, 200);
 
     e.preventDefault();
   });
