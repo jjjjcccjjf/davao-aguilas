@@ -121,6 +121,7 @@ class Fixtures_model extends Crud_model
     if($match_stats != []){
       $res[0]->match_stats = $match_stats;
     }
+    
     $this->formatFields($res);
     return $res;
   }

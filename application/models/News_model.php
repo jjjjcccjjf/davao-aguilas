@@ -11,7 +11,12 @@ class News_model extends Crud_model
     $this->upload_dir = 'news'; # Will be under the `uploads` parent folder
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
-    $this->db->order_by('id', @$_GET['order_by']);
+    if(!isset($_GET['order_by']))
+    $order = 'desc';
+    else
+    $order = @$_GET['order_by'];
+
+    $this->db->order_by('id', $order);
 
   }
 
