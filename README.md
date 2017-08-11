@@ -286,6 +286,7 @@ Status: 200 OK
         "age": 23,
         "stats": [
           {
+            "id": "5",
             "stat_key": "Total Passes",
             "stat_value": 21
           }
@@ -316,6 +317,7 @@ Status: 200 OK
         "age": 23,
         "stats": [
           {
+            "id": "7",
             "stat_key": "Goals",
             "stat_value": 22
           }
