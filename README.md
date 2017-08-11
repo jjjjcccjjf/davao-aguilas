@@ -12,6 +12,7 @@ Lorem ipsum dolor sit amet
     1. [Club Videos](#videos)
 1. [Partners](#partners)
 1. [Teams](#teams)
+1. [Squad](#squad)
 1. [Team statistics](#team-statistics)
 1. [Players](#players)
 1. [Leagues](#leagues)

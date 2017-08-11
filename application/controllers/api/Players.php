@@ -83,9 +83,9 @@ class Players extends Crud_controller
 
 
     foreach (PLAYER_POSITIONS as $item) {
-      $squad[$item] = [];
+      $squad[$item] = ["players"=>[]];
     }
-
+    
     foreach($res as $item){
       if(in_array($item->position, PLAYER_POSITIONS)){
         $squad[$item->position]['players'][] = $item;
