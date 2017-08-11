@@ -270,7 +270,7 @@ $(document).ready(function(){
         table += '<td>' + id +'</td>'; // id
         table += '<td>' + result[x].title +'</td>';
         table += '<td>' + (((result[x].body).length > 140) ? (result[x].body).substr(0,140) + '...' : result[x].body) +'</td>'; // chop off string and add ellipses when exceeding 140 characters
-        table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>';
+        table += '<td><a href="' + result[x].image_url + '" target="_blank">' + '<button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>' +'</a></td>';
         table +=
         `<td>
         <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>

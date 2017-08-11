@@ -431,8 +431,8 @@
           table += '<td>' + result[x].lname + ", " + result[x].fname +'</td>';
           table += '<td>' + result[x].team_name +'</td>';
           table += '<td>' + result[x].position +'</td>';
-          table += '<td><a href="' + result[x].image_url + '" target="_blank">' + (result[x].image_url.split("/")).pop() +'</a></td>'; // get only file  name
-          table += '<td><a href="' + result[x].full_body_image_url + '" target="_blank">' + (result[x].full_body_image_url.split("/")).pop() +'</a></td>'; // get only file  name
+          table += '<td><a href="' + result[x].image_url + '" target="_blank">' + '<button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>' +'</a></td>'; // get only file  name
+          table += '<td><a href="' + result[x].full_body_image_url + '" target="_blank">' + '<button class="btn btn-xs btn-info"><i class="fa fa-eye"></i></button>' +'</a></td>'; // get only file  name
           table +=
           `<td>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
