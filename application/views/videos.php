@@ -178,25 +178,28 @@ $(document).ready(function(){
   ---------------------------------------------**/
   $("#add_form").submit(function(e){
     var form_data = new FormData($(this)[0]);
+    showLoader();
 
-    $.ajax({
-      url: api_url,
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 201){
-          initializeTable('#table_div', table_headers, initializeFeatured);
-          $('#add_modal').modal('toggle');
-          clearAllForms();
-          customMessage('#custom_message', 'Item added successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
-
+    setTimeout(function () {
+      $.ajax({
+        url: api_url,
+        type: 'POST',
+        data: form_data,
+        async: false,
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 201){
+            hideLoader();
+            initializeTable('#table_div', table_headers, initializeFeatured);
+            $('#add_modal').modal('toggle');
+            clearAllForms();
+            customMessage('#custom_message', 'Item added successfully');
+          }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    }, 200);
     e.preventDefault();
   });
   /**---------------------------------------------
@@ -204,24 +207,28 @@ $(document).ready(function(){
   ---------------------------------------------**/
   $("#edit_form").submit(function(e){
     var form_data = new FormData($(this)[0]);
+    showLoader();
 
-    $.ajax({
-      url: api_url + $('#edit_id').html(),
-      type: 'POST',
-      data: form_data,
-      async: false,
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 200){
-          initializeTable('#table_div', table_headers, initializeFeatured);
-          clearAllForms();
-          $('#edit_modal').modal('toggle');
-          customMessage('#custom_message', 'Changes saved successfully');
-        }
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
+    setTimeout(function () {
+      $.ajax({
+        url: api_url + $('#edit_id').html(),
+        type: 'POST',
+        data: form_data,
+        async: false,
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            hideLoader();
+            initializeTable('#table_div', table_headers, initializeFeatured);
+            clearAllForms();
+            $('#edit_modal').modal('toggle');
+            customMessage('#custom_message', 'Changes saved successfully');
+          }
+        },
+        cache: false,
+        contentType: false,
+        processData: false
+      });
+    }, 200);
 
     e.preventDefault();
   });
@@ -320,37 +327,37 @@ $(document).ready(function(){
   }
 
 
-    initializeFeatured = function(){
-      var options = "<option disabled selected>-- Choose item --</option>";
-      $.getJSON(api_url, function(result){
-        result = result['videos'];
+  initializeFeatured = function(){
+    var options = "<option disabled selected>-- Choose item --</option>";
+    $.getJSON(api_url, function(result){
+      result = result['videos'];
 
-        for(var x in result){
-          options += '<option value="'+ result[x].id +'">'+ result[x].title +'</option>';
-        }
-        $featured_video.html(options);
+      for(var x in result){
+        options += '<option value="'+ result[x].id +'">'+ result[x].title +'</option>';
+      }
+      $featured_video.html(options);
 
-        (function(){
-          $.getJSON(api_url + "featured", function(result){
-            $featured_video.find('option[value="' + result[0].id + '"]').prop('selected', true);
-          });
-        })();
+      (function(){
+        $.getJSON(api_url + "featured", function(result){
+          $featured_video.find('option[value="' + result[0].id + '"]').prop('selected', true);
+        });
+      })();
 
-      });
-    }
-
-
-    $featured_video.on('change', function(){
-      $.ajax({
-        url: api_url + 'featured/' + $(this).val(),
-        type: 'POST',
-        success: function (data, textStatus, xhr) {
-          if(xhr.status == 200){
-            customMessage('#custom_message_featured', 'Changes saved');
-          }
-        }
-      });
     });
+  }
+
+
+  $featured_video.on('change', function(){
+    $.ajax({
+      url: api_url + 'featured/' + $(this).val(),
+      type: 'POST',
+      success: function (data, textStatus, xhr) {
+        if(xhr.status == 200){
+          customMessage('#custom_message_featured', 'Changes saved');
+        }
+      }
+    });
+  });
 
   initializeTable('#table_div', table_headers, initializeFeatured);
 
