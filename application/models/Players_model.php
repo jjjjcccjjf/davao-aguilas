@@ -94,7 +94,7 @@ class Players_model extends Crud_model
   public function getDefaultSquad()
   {
     $team_id = $this->getTeamIdByName(DEFAULT_SQUAD); # Find in constants
-
+    $this->db->order_by('lname', 'ASC');
     $this->db->where('team_id', $team_id);
     $res = $this->db->get($this->table)->result();
 
