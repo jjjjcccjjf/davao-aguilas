@@ -7,7 +7,7 @@ class Ladders_model extends Crud_model
   public function __construct()
   {
     parent::__construct();
-    $this->table = 'Ladders';
+    $this->table = 'ladders';
 
     $this->upload_dir = 'teams'; # REVIEW: Hmmm. Is this ok? Since there's no uploading, might as well use this (?)
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
