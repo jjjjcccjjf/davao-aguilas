@@ -92,7 +92,9 @@ $route['api/actions/(:num)'] = 'api/actions/single/$1';
 $route['api/lineups/(:num)/default'] = 'api/lineups/default/$1';
 $route['api/fixtures/(:num)/match_reports'] = 'api/match_reports/single/$1';
 $route['api/fixtures/(:num)/commentary'] = 'api/commentary/single/$1';
+$route['api/fixtures/(:num)/lineups'] = 'api/lineups/teams/$1';
 $route['api/match_stats/fixtures/(:num)'] = 'api/match_stats/fixtures/$1';
+$route['api/teams/default/id'] = 'api/teams/default/id';
 
 # Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';

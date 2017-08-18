@@ -21,7 +21,9 @@ Lorem ipsum dolor sit amet
     1. [Match reports](#match-reports)
     1. [Match statistics](#fixtures)
     1. [Commentary](#commentary)
+    1. [Lineups](#lineups)
 1. [Members](#members)
+1. [Lineups](#lineups)
 1. [Geo Tags](#geo-tags)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
 
@@ -763,6 +765,152 @@ Status: 200 OK
             "updated_at": "2017-08-10 15:05:11"
         }
     ]
+}
+```
+
+
+### Lineups
+#### Get lineup of a fixture
+`POST /fixtures/:fixture_id/lineups`
+
+```json
+Status: 200 OK
+{
+    "Goalkeeper": {
+        "players": [
+            {
+                "id": "2",
+                "fixture_id": "4",
+                "player_id": "1",
+                "team_id": "4",
+                "position": "Goalkeeper",
+                "created_at": "2017-08-17 17:55:54",
+                "updated_at": "2017-08-18 10:22:54",
+                "player": [
+                    {
+                        "id": "1",
+                        "fname": "Dio",
+                        "lname": "Brando",
+                        "team_id": "4",
+                        "image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_aDaHvdy.png",
+                        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_2016-12-09.jpg",
+                        "position": "Goalkeeper",
+                        "jersey_num": "09",
+                        "birth_date": "1994-07-31",
+                        "birth_place": "Venice, Italy",
+                        "nationality": "Japanese",
+                        "height": "189cm",
+                        "weight": "50kg",
+                        "created_at": "2017-07-31 11:48:48",
+                        "updated_at": "2017-08-15 18:12:16",
+                        "birth_date_f": "July 31, 1994",
+                        "team_name": "Davao Aguilas",
+                        "age": 23,
+                        "stats": [
+                            {
+                                "id": "3",
+                                "stat_key": "Minutes",
+                                "stat_value": 4
+                            },
+                            {
+                                "id": "5",
+                                "stat_key": "Penalty Goals",
+                                "stat_value": 5
+                            },
+                            {
+                                "id": "11",
+                                "stat_key": "Goal Assists",
+                                "stat_value": 11
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "15",
+                "fixture_id": "4",
+                "player_id": "2",
+                "team_id": "4",
+                "position": "Goalkeeper",
+                "created_at": "2017-08-18 11:32:38",
+                "updated_at": "2017-08-18 11:32:42",
+                "player": [
+                    {
+                        "id": "2",
+                        "fname": "Mr.",
+                        "lname": "Brown",
+                        "team_id": "4",
+                        "image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_avatar_22.jpg",
+                        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_1sh7uw.jpg",
+                        "position": "Goalkeeper",
+                        "jersey_num": "12",
+                        "birth_date": "1994-08-01",
+                        "birth_place": "Venice, Italy",
+                        "nationality": "Italian",
+                        "height": "133cm",
+                        "weight": "22kg",
+                        "created_at": "2017-08-01 13:42:51",
+                        "updated_at": "2017-08-15 18:12:51",
+                        "birth_date_f": "August 1, 1994",
+                        "team_name": "Davao Aguilas",
+                        "age": 23,
+                        "stats": [
+                            {
+                                "id": "2",
+                                "stat_key": "Goals",
+                                "stat_value": 22
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "Defender": {
+        "players": []
+    },
+    "Midfielder": {
+        "players": [
+            {
+                "id": "3",
+                "fixture_id": "4",
+                "player_id": "4",
+                "team_id": "4",
+                "position": "Midfielder",
+                "created_at": "2017-08-17 18:05:01",
+                "updated_at": "2017-08-18 10:22:59",
+                "player": [
+                    {
+                        "id": "4",
+                        "fname": "Girboo",
+                        "lname": "Francois",
+                        "team_id": "4",
+                        "image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_600px-Natus_Vincere_(1).png",
+                        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_13987238.jpg",
+                        "position": "Goalkeeper",
+                        "jersey_num": "31",
+                        "birth_date": "1994-08-01",
+                        "birth_place": "Venice, Italy",
+                        "nationality": "Italian",
+                        "height": "189cm",
+                        "weight": "50kg",
+                        "created_at": "2017-08-01 15:31:16",
+                        "updated_at": "2017-08-15 18:12:09",
+                        "birth_date_f": "August 1, 1994",
+                        "team_name": "Davao Aguilas",
+                        "age": 23,
+                        "stats": []
+                    }
+                ]
+            }
+        ]
+    },
+    "Forward": {
+        "players": []
+    },
+    "Manager": {
+        "players": []
+    }
 }
 ```
 

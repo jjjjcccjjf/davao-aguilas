@@ -139,6 +139,12 @@ class Admin extends CI_Controller {
 		$res = $this->client->request('GET', base_url() . 'api/leagues');
 		$data['leagues'] = json_decode($res->getBody());
 
+		$res = $this->client->request('GET', base_url() . 'api/players');
+		$data['players'] = json_decode($res->getBody());
+
+		$res = $this->client->request('GET', base_url() . 'api/teams/default/id');
+		$data['default_team_id'] = json_decode($res->getBody());
+		
 		$this->wrapper('fixtures', $data);
 	}
 
