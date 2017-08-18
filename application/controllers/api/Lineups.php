@@ -22,7 +22,7 @@ class Lineups extends Crud_controller
     foreach($res as $item){
       if(in_array($item->position, PLAYER_POSITIONS)){
 
-        $item->player = $this->players->get($item->player_id);
+        $item->player = $this->players->get($item->player_id)[0];
         $squad[$item->position]['players'][] = $item;
 
       }
@@ -31,7 +31,7 @@ class Lineups extends Crud_controller
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($squad, 200);
     }else{
-      $this->response(['message' => 'Not found'], 404);
+      $this->response($squad, 200);
     }
 
   }
