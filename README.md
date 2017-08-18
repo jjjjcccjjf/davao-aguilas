@@ -773,6 +773,7 @@ Status: 200 OK
 #### Get lineup of a fixture
 `POST /fixtures/:fixture_id/lineups`
 
+##### Response
 ```json
 Status: 200 OK
 {
