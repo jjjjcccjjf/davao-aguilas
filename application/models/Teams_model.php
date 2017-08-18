@@ -41,8 +41,13 @@ class Teams_model extends Crud_model
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
     }
-    
+
     return $res;
+  }
+
+  public function getDefaultTeamId()
+  {
+    return $this->getTeamIdByName(DEFAULT_SQUAD);
   }
 
 }

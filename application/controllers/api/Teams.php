@@ -23,5 +23,14 @@ class Teams extends Crud_controller
     }
   }
 
+  /**
+   * get the default team ID
+   * @param  string $id [description]
+   * @return [type]     [description]
+   */
+  function default_get($id = 'id'){
+    echo $this->model->getDefaultTeamId();
+  }
+
 
 }
