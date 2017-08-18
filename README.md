@@ -771,7 +771,7 @@ Status: 200 OK
 
 ### Lineups
 #### Get lineup of a fixture
-`POST /fixtures/:fixture_id/lineups`
+`GET /lineups/:fixture_id/default`
 
 ##### Response
 ```json
