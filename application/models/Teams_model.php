@@ -9,6 +9,7 @@ class Teams_model extends Crud_model
     parent::__construct();
     $this->table = 'teams';
     $this->upload_dir = 'teams';
+    $this->uploads_folder = "uploads/" . $this->upload_dir . "/";
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
   }
@@ -50,4 +51,20 @@ class Teams_model extends Crud_model
     return $this->getTeamIdByName(DEFAULT_SQUAD);
   }
 
+
+
+      /**
+      * Deletes the row via id
+      * @param  int $id
+      * @return int number of rows deleted
+      */
+      public function delete($id)
+      {
+        $item = $this->getImage($id, 'image_url');
+        unlink($item);
+
+        $this->db->where('id', $id);
+        $this->db->delete($this->table);
+        return $this->db->affected_rows();
+      }
 }

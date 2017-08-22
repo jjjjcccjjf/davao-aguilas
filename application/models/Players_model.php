@@ -9,6 +9,7 @@ class Players_model extends Crud_model
     parent::__construct();
     $this->table = 'players';
     $this->upload_dir = 'players';
+    $this->uploads_folder = "uploads/" . $this->upload_dir . "/";
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
   }
@@ -134,5 +135,23 @@ class Players_model extends Crud_model
       $item->stats = $this->getPlayerStatistics($item->id);
     }
   }
+
+
+    /**
+    * Deletes the row via id
+    * @param  int $id
+    * @return int number of rows deleted
+    */
+    public function delete($id)
+    {
+      $item = $this->getImage($id, 'image_url');
+      unlink($item);
+      $item = $this->getImage($id, 'full_body_image_url');
+      unlink($item);
+
+      $this->db->where('id', $id);
+      $this->db->delete($this->table);
+      return $this->db->affected_rows();
+    }
 
 }
