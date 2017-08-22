@@ -85,8 +85,8 @@
                     <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <!-- <img alt="" src="assets/img/avatar1_small.jpg"> -->
-                            <span class="username"><?php echo @$_SESSION['fname'] . " " . @$_SESSION['lname']; ?></span>
+                            <img style="height:30px" src="<?php echo base_url() ?>assets/img/logo.png">
+                            <span class="username">Welcome, <?php echo $this->session->userdata('username'); ?></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">

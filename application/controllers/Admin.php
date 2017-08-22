@@ -63,6 +63,7 @@ class Admin extends CI_Controller {
 
 		if($admin->password == $p){
 			$this->session->set_userdata('is_logged_in', 1);
+			$this->session->set_userdata('username', $admin->username);
 			redirect('admin/news');
 		}
 		else{
