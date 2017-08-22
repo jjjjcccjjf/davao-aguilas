@@ -61,7 +61,7 @@ a, a:hover, a:focus {
     margin: 0;
     padding:20px 15px;
     text-align: center;
-    background: #D49E00;
+    background: rgb(42, 53, 66);
     border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     color: #fff;
@@ -102,7 +102,7 @@ a, a:hover, a:focus {
 }
 
 .form-signin .btn-login {
-    background: #D49E00;
+    background: rgb(42, 53, 66);
     color: #fff;
     text-transform: uppercase;
     font-weight: 300;

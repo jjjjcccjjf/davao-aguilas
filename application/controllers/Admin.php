@@ -28,9 +28,7 @@ class Admin extends CI_Controller {
 
 	public function index()
 	{
-		if (isset($this->session->userdata['logged_in'])) {
-			#			$this->products();
-		} else {
+		if (!isset($this->session->userdata['logged_in'])) {
 			$this->load->view('login');
 		}
 	}
@@ -57,8 +55,21 @@ class Admin extends CI_Controller {
 
 	public function login()
 	{
-		$this->session->set_userdata('is_logged_in', 1);
-		redirect('admin/news');
+		$u = $this->input->post('username');
+		$p = sha1($this->input->post('password'));
+
+		$this->db->where('username', $u);
+		$admin = $this->db->get('admin')->result()[0];
+
+		if($admin->password == $p){
+			$this->session->set_userdata('is_logged_in', 1);
+			redirect('admin/news');
+		}
+		else{
+			$this->session->set_flashdata('login_error', 'Incorrect username or password');
+			redirect(base_url());
+		}
+
 	}
 
 	public function logout()
@@ -144,7 +155,7 @@ class Admin extends CI_Controller {
 
 		$res = $this->client->request('GET', base_url() . 'api/teams/default/id');
 		$data['default_team_id'] = json_decode($res->getBody());
-		
+
 		$this->wrapper('fixtures', $data);
 	}
 

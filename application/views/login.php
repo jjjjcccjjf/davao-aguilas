@@ -6,9 +6,9 @@
   <meta name="description" content="">
   <meta name="author" content="Mosaddek">
   <meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-  <link rel="shortcut icon" href="img/favicon.png">
+  <link rel="shortcut icon" href="<?php echo base_url('assets/img/favicon.png') ?>">
 
-  <title>FlatLab - Flat & Responsive Bootstrap Admin Template</title>
+  <title>Davao Aguilas</title>
 
   <!-- Bootstrap core CSS -->
   <link href="<?php echo base_url('assets/css/bootstrap.min.css'); ?>" rel="stylesheet">
@@ -34,8 +34,9 @@
       <h2 class="form-signin-heading">sign in now</h2>
 
       <div class="login-wrap">
-        <input type="text" class="form-control" placeholder="User ID" autofocus>
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="text" class="form-control" name="username" placeholder="User ID" autofocus>
+        <input type="password" class="form-control" name="password" placeholder="Password">
+        <p><?php echo $this->session->flashdata('login_error') ?></p>
         <button class="btn btn-lg btn-login btn-block" type="submit">Sign in</button>
       </div>
 
