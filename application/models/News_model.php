@@ -9,6 +9,7 @@ class News_model extends Crud_model
     parent::__construct();
     $this->table = 'news';
     $this->upload_dir = 'news'; # Will be under the `uploads` parent folder
+    $this->uploads_folder = "uploads/" . $this->upload_dir . "/";
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
 
     if(!isset($_GET['order_by']))
@@ -85,5 +86,20 @@ class News_model extends Crud_model
       $item->image_url =  $this->full_up_path . $item->image_url;
       $item->created_at_f = date('F j, Y', strtotime($item->created_at));
     }
+  }
+
+  /**
+  * Deletes the row via id
+  * @param  int $id
+  * @return int number of rows deleted
+  */
+  public function delete($id)
+  {
+    $item = $this->getImage($id, 'image_url');
+    unlink($item);
+
+    $this->db->where('id', $id);
+    $this->db->delete($this->table);
+    return $this->db->affected_rows();
   }
 }

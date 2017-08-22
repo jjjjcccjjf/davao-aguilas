@@ -25,6 +25,7 @@ class Crud_model extends CI_model
     parent::__construct();
     $this->table = 'crud';
     $this->upload_dir = 'your_dir';
+    $this->uploads_folder = "uploads/" . $this->upload_dir . "/";
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/"; # override this on your child class. just redeclare it
 
     # Use `$this->db->reset_query();` on the child class to override these two. Then redeclare them as needed
@@ -51,6 +52,12 @@ class Crud_model extends CI_model
   {
     $this->db->where('id', $id);
     return $this->db->get($this->table)->result();
+  }
+
+  public function getImage($id, $key)
+  {
+    $this->db->where('id', $id);
+    return $this->uploads_folder . $this->db->get($this->table)->result()[0]->$key;
   }
 
   /**
@@ -215,7 +222,7 @@ class Crud_model extends CI_model
     $res = $this->db->get('teams')->result();
 
     $this->db->flush_cache();
-    
+
     return @$res[0]->id;
   }
 

@@ -26,7 +26,7 @@ class Migration_admin_table extends CI_Migration {
 
       $data = array(
         'username' => 'admin',
-        'password' => 'password'
+        'password' => sha1('password')
       );
       $this->db->insert($table, $data);
     }

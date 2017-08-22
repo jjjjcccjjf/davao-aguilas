@@ -41,8 +41,8 @@ Lorem ipsum dolor sit amet
 1. remove file every submit
 1. ~~Constants array for static fields such as Type in videos, Role in players~~
 1. ~~Pagination of webservice~~
-1. Configure server time
-1. While uploading loading
+1. ~~Configure server time~~
+1. ~~While uploading loading~~
 1. Flag for disabling current timestamp
 1. ~~Datetime vs Timestamp (????)~~ Refactor all datetime to timestamp
 1. Player stats duplicate issue
@@ -50,7 +50,7 @@ Lorem ipsum dolor sit amet
 1. ~~News featured news flag~~
 1. ~~News Button name `check schedule`~~
 1. ~~Change all Image url on cms to icons~~
-1. Add 404 handlers in CMS?
+1. ~~Add 404 handlers in CMS?~~
 1. ~~Squad sorting~~
 1. ~~make squad positions return correct order (refer to design)~~
 
