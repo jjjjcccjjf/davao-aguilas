@@ -15,7 +15,16 @@ class Cpm_model extends Crud_model
   {
     $this->db->where('fixture_id', $id);
     $this->db->where('coverage_type', $type);
-    return $this->db->get($this->table)->result();
+    return $this->formatNull($this->db->get($this->table)->result());
   }
 
+  public function formatNull($res)
+  {
+    foreach($res as $key => $val){
+      if($res[$key]->icon_type == null || $res[$key]->icon_type == ''){
+        $res[$key]->icon_type = 'N/A';
+      }
+    }
+    return $res;
+  }
 }
