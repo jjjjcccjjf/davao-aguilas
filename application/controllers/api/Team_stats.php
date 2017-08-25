@@ -27,7 +27,7 @@ class Team_stats extends Crud_controller
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
-      $this->response(['message' => 'Not found'], 404);
+      $this->response([], 200);
     }
   }
 

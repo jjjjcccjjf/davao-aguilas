@@ -17,7 +17,9 @@ class Ladders extends Crud_controller
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
-      $this->response(['message' => 'Not found'], 404);
+      $res['standings'] = [];
+      $res['league_name'] = "";
+      $this->response($res, 200);
     }
   }
 
@@ -35,7 +37,9 @@ class Ladders extends Crud_controller
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
-      $this->response(['message' => 'Not found'], 404);
+      $res['standings'] = [];
+      $res['league_name'] = "";
+      $this->response($res, 200);
     }
   }
 
@@ -53,7 +57,9 @@ class Ladders extends Crud_controller
     if($res || $res !== []){ # Respond with 404 when the resource is not found
       $this->response($res, 200);
     }else{
-      $this->response(['message' => 'Not found'], 404);
+      $res['standings'] = [];
+      $res['league_name'] = "";
+      $this->response($res, 200);
     }
   }
 
