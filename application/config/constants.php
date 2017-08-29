@@ -95,7 +95,6 @@ defined('DEFAULT_SQUAD') OR define('DEFAULT_SQUAD', 'Davao Aguilas');
 const PLAYER_POSITIONS = ['Goalkeeper', 'Defender', 'Midfielder', 'Forward', "Manager"]; # We're using this syntax because 5.6 doesn't support the one above!
 const COURT_TYPES = ['Home', 'Away']; # We're using this syntax because 5.6 doesn't support the one above!
 const VIDEO_TYPES = ['Club Videos', 'News &amp; Highlights']; # We're using this syntax because 5.6 doesn't support the one above!
-const PLAYER_STATISTICS = ['Assists', 'Goals', 'Total Passes', 'Crosses', 'Shots on Target', 'Shots inside penalty box', 'Shots outside penalty box', 'Shot accuracy']; # We're using this syntax because 5.6 doesn't support the one above!
 const MATCH_PROGRESS_TYPES = ['Upcoming', 'Ongoing', 'Final']; # We're using this syntax because 5.6 doesn't support the one above!
 const MATCH_STAT_NAMES = ['Goals', 'Assists', 'Total Shots', 'Attacks', 'Corners', 'Fouls', 'Free Kicks']; # We're using this syntax because 5.6 doesn't support the one above!
 const ICON_TYPES = ['N/A', 'Substitute', 'Goal', 'Red Card', 'Yellow Card' ]; # We're using this syntax because 5.6 doesn't support the one above!
@@ -130,3 +129,5 @@ const TEAM_STAT_NAMES = ['Goals', 'Goals Conceded', 'Total Shots',
 const PLAYER_STAT_NAMES = ['Games Started', 'Minutes', 'Goals', 'Goal Assists',
 'Penalty Goals', 'Yellow Cards', 'Second Yellow Cards', 'Red Cards', 'Substitutes In',
 'Substitutes Out'];
+const GENERAL_PLAYER_STATS = ['Goals', 'Assists', 'Shots', 'Passes',
+'Tackles', 'Clearances', 'Saves'];
