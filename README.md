@@ -8,20 +8,21 @@ Lorem ipsum dolor sit amet
 1. [Ordering](#ordering)
 1. [News](#news)
 1. [Videos](#videos)
-    1. [News & Highlights](#videos)
-    1. [Club Videos](#videos)
+1. [News & Highlights](#videos)
+1. [Club Videos](#videos)
 1. [Partners](#partners)
 1. [Teams](#teams)
 1. [Squad](#list-a-squad)
 1. [Team statistics](#team-statistics)
+1. [General statistics (Most Goals, Most Assists, etc.)](#general-statistics)
 1. [Players](#players)
 1. [Leagues](#leagues)
 1. [Ladders](#ladders)
 1. [Fixtures](#fixtures)
-    1. [Match reports](#match-reports)
-    1. [Match statistics](#fixtures)
-    1. [Commentary](#commentary)
-    1. [Lineups](#lineups)
+1. [Match reports](#match-reports)
+1. [Match statistics](#fixtures)
+1. [Commentary](#commentary)
+1. [Lineups](#lineups)
 1. [Members](#members)
 1. [Lineups](#lineups)
 1. [Geo Tags](#geo-tags)
@@ -372,6 +373,71 @@ Status: 200 OK
 ]
 ```
 
+### General statistics
+
+#### Get default general player statistics (Most Goals, Most Assists, etc) (In our case, `Davao Aguilas`)
+`GET /player_stats/team/default`
+
+##### Response
+
+```json
+{
+  "Goals": {
+    "players": [
+      {
+        "id": "1",
+        "player_id": "2",
+        "team_id": "4",
+        "stat_key": "Goals",
+        "stat_value": 4,
+        "created_at": "2017-08-29 17:52:28",
+        "updated_at": "0000-00-00 00:00:00",
+        "name": "Mr. Brown"
+      }
+    ]
+  },
+  "Assists": {
+    "players": [
+      {
+        "id": "2",
+        "player_id": "3",
+        "team_id": "4",
+        "stat_key": "Assists",
+        "stat_value": 51,
+        "created_at": "2017-08-29 17:52:28",
+        "updated_at": "0000-00-00 00:00:00",
+        "name": "Johnny Walker"
+      },
+      {
+        "id": "3",
+        "player_id": "2",
+        "team_id": "4",
+        "stat_key": "Assists",
+        "stat_value": 512,
+        "created_at": "2017-08-29 17:54:26",
+        "updated_at": "0000-00-00 00:00:00",
+        "name": "Mr. Brown"
+      }
+    ]
+  },
+  "Shots": {
+    "players": []
+  },
+  "Passes": {
+    "players": []
+  },
+  "Tackles": {
+    "players": []
+  },
+  "Clearances": {
+    "players": []
+  },
+  "Saves": {
+    "players": []
+  }
+}
+```
+
 ### Players
 #### List all players
 `GET /players/`
@@ -544,31 +610,31 @@ Status: 200 OK
 ```json
 Status: 200 OK
 {
-    "matches": [
-        {
-            "id": "5",
-            "home_team_id": "2",
-            "away_team_id": "1",
-            "league_id": "1",
-            "home_score": "3",
-            "away_score": "2",
-            "hash_tag": "#DonaldForPresident",
-            "round_num": "1",
-            "match_schedule": "2017-07-14 01:59:00",
-            "location": "Manila",
-            "match_progress": "Final",
-            "created_at": "2017-07-21 00:52:26",
-            "home_team_name": "Davao Aguilas",
-            "away_team_name": "Natus Vincere",
-            "match_schedule_f": "Friday, 14 July 2017",
-            "match_time": "01:59",
-            "match_date": "2017-07-14",
-            "home_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602754_H7jhECD.png",
-            "away_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602712_600px-Natus_Vincere_(1).png",
-            "league_name": "A-League"
-        }
-    ],
-    "league_name": "A-League"
+  "matches": [
+    {
+      "id": "5",
+      "home_team_id": "2",
+      "away_team_id": "1",
+      "league_id": "1",
+      "home_score": "3",
+      "away_score": "2",
+      "hash_tag": "#DonaldForPresident",
+      "round_num": "1",
+      "match_schedule": "2017-07-14 01:59:00",
+      "location": "Manila",
+      "match_progress": "Final",
+      "created_at": "2017-07-21 00:52:26",
+      "home_team_name": "Davao Aguilas",
+      "away_team_name": "Natus Vincere",
+      "match_schedule_f": "Friday, 14 July 2017",
+      "match_time": "01:59",
+      "match_date": "2017-07-14",
+      "home_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602754_H7jhECD.png",
+      "away_team_image_url": "http://betaprojex.com/davao-aguilas/uploads/teams/1500602712_600px-Natus_Vincere_(1).png",
+      "league_name": "A-League"
+    }
+  ],
+  "league_name": "A-League"
 }
 ```
 
@@ -581,8 +647,8 @@ Status: 200 OK
 ```json
 Status: 200 OK
 {
-    "matches": [],
-    "league_name": null
+  "matches": [],
+  "league_name": null
 }
 ```
 
@@ -692,14 +758,14 @@ Status: 200 OK
 ##### Response
 ```json
 [
-    {
-        "id": "10",
-        "fixture_id": "14",
-        "title": "Some Title",
-        "body": "Lorem ipsum dolor",
-        "created_at": "2017-07-31 17:29:57",
-        "updated_at": "2017-07-31 17:36:10"
-    }
+  {
+    "id": "10",
+    "fixture_id": "14",
+    "title": "Some Title",
+    "body": "Lorem ipsum dolor",
+    "created_at": "2017-07-31 17:29:57",
+    "updated_at": "2017-07-31 17:36:10"
+  }
 ]
 ```
 
@@ -720,51 +786,51 @@ Note: Possible values of `icon_type` may include the following:
 ```json
 Status: 200 OK
 {
-    "commentary": [
-        {
-            "id": "3",
-            "fixture_id": "15",
-            "full_time": "Halloooq",
-            "half_time": "Worldq",
-            "intro": "yeahq",
-            "created_at": "2017-08-08 13:24:24",
-            "updated_at": "2017-08-09 14:27:39"
-        }
-    ],
-    "first_half": [
-        {
-            "id": "2",
-            "minute_mark": "10'",
-            "fixture_id": "15",
-            "icon_type": "Substitute",
-            "body": "HOYYY!asd1!",
-            "coverage_type": "first_half",
-            "created_at": "2017-08-08 18:06:36",
-            "updated_at": "2017-08-10 15:05:06"
-        },
-        {
-            "id": "26",
-            "minute_mark": "",
-            "fixture_id": "15",
-            "icon_type": "Goal",
-            "body": "",
-            "coverage_type": "first_half",
-            "created_at": "2017-08-10 14:39:15",
-            "updated_at": "2017-08-10 15:05:08"
-        }
-    ],
-    "second_half": [
-        {
-            "id": "1",
-            "minute_mark": "9'",
-            "fixture_id": "15",
-            "icon_type": "Red Card",
-            "body": "hahaha",
-            "coverage_type": "second_half",
-            "created_at": "2017-08-08 18:06:25",
-            "updated_at": "2017-08-10 15:05:11"
-        }
-    ]
+  "commentary": [
+    {
+      "id": "3",
+      "fixture_id": "15",
+      "full_time": "Halloooq",
+      "half_time": "Worldq",
+      "intro": "yeahq",
+      "created_at": "2017-08-08 13:24:24",
+      "updated_at": "2017-08-09 14:27:39"
+    }
+  ],
+  "first_half": [
+    {
+      "id": "2",
+      "minute_mark": "10'",
+      "fixture_id": "15",
+      "icon_type": "Substitute",
+      "body": "HOYYY!asd1!",
+      "coverage_type": "first_half",
+      "created_at": "2017-08-08 18:06:36",
+      "updated_at": "2017-08-10 15:05:06"
+    },
+    {
+      "id": "26",
+      "minute_mark": "",
+      "fixture_id": "15",
+      "icon_type": "Goal",
+      "body": "",
+      "coverage_type": "first_half",
+      "created_at": "2017-08-10 14:39:15",
+      "updated_at": "2017-08-10 15:05:08"
+    }
+  ],
+  "second_half": [
+    {
+      "id": "1",
+      "minute_mark": "9'",
+      "fixture_id": "15",
+      "icon_type": "Red Card",
+      "body": "hahaha",
+      "coverage_type": "second_half",
+      "created_at": "2017-08-08 18:06:25",
+      "updated_at": "2017-08-10 15:05:11"
+    }
+  ]
 }
 ```
 
@@ -780,135 +846,135 @@ or
 ```json
 Status: 200 OK
 {
-    "Goalkeeper": {
-        "players": [
+  "Goalkeeper": {
+    "players": [
+      {
+        "id": "2",
+        "fixture_id": "4",
+        "player_id": "1",
+        "team_id": "4",
+        "position": "Goalkeeper",
+        "created_at": "2017-08-17 17:55:54",
+        "updated_at": "2017-08-18 10:22:54",
+        "player": {
+          "id": "1",
+          "fname": "Dio",
+          "lname": "Brando",
+          "team_id": "4",
+          "image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_aDaHvdy.png",
+          "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_2016-12-09.jpg",
+          "position": "Goalkeeper",
+          "jersey_num": "09",
+          "birth_date": "1994-07-31",
+          "birth_place": "Venice, Italy",
+          "nationality": "Japanese",
+          "height": "189cm",
+          "weight": "50kg",
+          "created_at": "2017-07-31 11:48:48",
+          "updated_at": "2017-08-15 18:12:16",
+          "birth_date_f": "July 31, 1994",
+          "team_name": "Davao Aguilas",
+          "age": 23,
+          "stats": [
             {
-                "id": "2",
-                "fixture_id": "4",
-                "player_id": "1",
-                "team_id": "4",
-                "position": "Goalkeeper",
-                "created_at": "2017-08-17 17:55:54",
-                "updated_at": "2017-08-18 10:22:54",
-                "player": {
-                    "id": "1",
-                    "fname": "Dio",
-                    "lname": "Brando",
-                    "team_id": "4",
-                    "image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_aDaHvdy.png",
-                    "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_2016-12-09.jpg",
-                    "position": "Goalkeeper",
-                    "jersey_num": "09",
-                    "birth_date": "1994-07-31",
-                    "birth_place": "Venice, Italy",
-                    "nationality": "Japanese",
-                    "height": "189cm",
-                    "weight": "50kg",
-                    "created_at": "2017-07-31 11:48:48",
-                    "updated_at": "2017-08-15 18:12:16",
-                    "birth_date_f": "July 31, 1994",
-                    "team_name": "Davao Aguilas",
-                    "age": 23,
-                    "stats": [
-                        {
-                            "id": "3",
-                            "stat_key": "Minutes",
-                            "stat_value": 4
-                        },
-                        {
-                            "id": "5",
-                            "stat_key": "Penalty Goals",
-                            "stat_value": 5
-                        },
-                        {
-                            "id": "11",
-                            "stat_key": "Goal Assists",
-                            "stat_value": 11
-                        }
-                    ]
-                }
+              "id": "3",
+              "stat_key": "Minutes",
+              "stat_value": 4
             },
             {
-                "id": "15",
-                "fixture_id": "4",
-                "player_id": "2",
-                "team_id": "4",
-                "position": "Goalkeeper",
-                "created_at": "2017-08-18 11:32:38",
-                "updated_at": "2017-08-18 11:32:42",
-                "player": {
-                    "id": "2",
-                    "fname": "Mr.",
-                    "lname": "Brown",
-                    "team_id": "4",
-                    "image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_avatar_22.jpg",
-                    "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_1sh7uw.jpg",
-                    "position": "Goalkeeper",
-                    "jersey_num": "12",
-                    "birth_date": "1994-08-01",
-                    "birth_place": "Venice, Italy",
-                    "nationality": "Italian",
-                    "height": "133cm",
-                    "weight": "22kg",
-                    "created_at": "2017-08-01 13:42:51",
-                    "updated_at": "2017-08-15 18:12:51",
-                    "birth_date_f": "August 1, 1994",
-                    "team_name": "Davao Aguilas",
-                    "age": 23,
-                    "stats": [
-                        {
-                            "id": "2",
-                            "stat_key": "Goals",
-                            "stat_value": 22
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    "Defender": {
-        "players": []
-    },
-    "Midfielder": {
-        "players": [
+              "id": "5",
+              "stat_key": "Penalty Goals",
+              "stat_value": 5
+            },
             {
-                "id": "3",
-                "fixture_id": "4",
-                "player_id": "4",
-                "team_id": "4",
-                "position": "Midfielder",
-                "created_at": "2017-08-17 18:05:01",
-                "updated_at": "2017-08-18 10:22:59",
-                "player": {
-                    "id": "4",
-                    "fname": "Girboo",
-                    "lname": "Francois",
-                    "team_id": "4",
-                    "image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_600px-Natus_Vincere_(1).png",
-                    "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_13987238.jpg",
-                    "position": "Goalkeeper",
-                    "jersey_num": "31",
-                    "birth_date": "1994-08-01",
-                    "birth_place": "Venice, Italy",
-                    "nationality": "Italian",
-                    "height": "189cm",
-                    "weight": "50kg",
-                    "created_at": "2017-08-01 15:31:16",
-                    "updated_at": "2017-08-15 18:12:09",
-                    "birth_date_f": "August 1, 1994",
-                    "team_name": "Davao Aguilas",
-                    "age": 23,
-                    "stats": []
-                }
+              "id": "11",
+              "stat_key": "Goal Assists",
+              "stat_value": 11
             }
-        ]
-    },
-    "Forward": {
-        "players": []
-    },
-    "Manager": {
-        "players": []
-    }
+          ]
+        }
+      },
+      {
+        "id": "15",
+        "fixture_id": "4",
+        "player_id": "2",
+        "team_id": "4",
+        "position": "Goalkeeper",
+        "created_at": "2017-08-18 11:32:38",
+        "updated_at": "2017-08-18 11:32:42",
+        "player": {
+          "id": "2",
+          "fname": "Mr.",
+          "lname": "Brown",
+          "team_id": "4",
+          "image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_avatar_22.jpg",
+          "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_1sh7uw.jpg",
+          "position": "Goalkeeper",
+          "jersey_num": "12",
+          "birth_date": "1994-08-01",
+          "birth_place": "Venice, Italy",
+          "nationality": "Italian",
+          "height": "133cm",
+          "weight": "22kg",
+          "created_at": "2017-08-01 13:42:51",
+          "updated_at": "2017-08-15 18:12:51",
+          "birth_date_f": "August 1, 1994",
+          "team_name": "Davao Aguilas",
+          "age": 23,
+          "stats": [
+            {
+              "id": "2",
+              "stat_key": "Goals",
+              "stat_value": 22
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "Defender": {
+    "players": []
+  },
+  "Midfielder": {
+    "players": [
+      {
+        "id": "3",
+        "fixture_id": "4",
+        "player_id": "4",
+        "team_id": "4",
+        "position": "Midfielder",
+        "created_at": "2017-08-17 18:05:01",
+        "updated_at": "2017-08-18 10:22:59",
+        "player": {
+          "id": "4",
+          "fname": "Girboo",
+          "lname": "Francois",
+          "team_id": "4",
+          "image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_600px-Natus_Vincere_(1).png",
+          "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_13987238.jpg",
+          "position": "Goalkeeper",
+          "jersey_num": "31",
+          "birth_date": "1994-08-01",
+          "birth_place": "Venice, Italy",
+          "nationality": "Italian",
+          "height": "189cm",
+          "weight": "50kg",
+          "created_at": "2017-08-01 15:31:16",
+          "updated_at": "2017-08-15 18:12:09",
+          "birth_date_f": "August 1, 1994",
+          "team_name": "Davao Aguilas",
+          "age": 23,
+          "stats": []
+        }
+      }
+    ]
+  },
+  "Forward": {
+    "players": []
+  },
+  "Manager": {
+    "players": []
+  }
 }
 ```
 

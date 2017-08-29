@@ -71,6 +71,7 @@ $route['api/squad/(:any)'] = 'api/players/squad/$1';
 $route['api/icons/(:num)'] = 'api/icons/single/$1';
 $route['api/team_stats/(:num)'] = 'api/team_stats/single/$1';
 $route['api/team_stats/team/default'] = 'api/team_stats/team/0/default';
+$route['api/general_stats/team/default'] = 'api/general_stats/team/0/default';
 $route['api/team_stats/team/(:num)'] = 'api/team_stats/team/$1';
 $route['api/player_stats/(:num)'] = 'api/player_stats/single/$1';
 $route['api/leagues/(:num)'] = 'api/leagues/single/$1';
