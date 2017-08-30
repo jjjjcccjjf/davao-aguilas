@@ -392,7 +392,8 @@ Status: 200 OK
         "stat_value": 4,
         "created_at": "2017-08-29 17:52:28",
         "updated_at": "0000-00-00 00:00:00",
-        "name": "Mr. Brown"
+        "name": "Mr. Brown",
+        "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       }
     ]
   },
@@ -406,7 +407,8 @@ Status: 200 OK
         "stat_value": 51,
         "created_at": "2017-08-29 17:52:28",
         "updated_at": "0000-00-00 00:00:00",
-        "name": "Johnny Walker"
+        "name": "Johnny Walker",
+        "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       },
       {
         "id": "3",
@@ -416,7 +418,8 @@ Status: 200 OK
         "stat_value": 512,
         "created_at": "2017-08-29 17:54:26",
         "updated_at": "0000-00-00 00:00:00",
-        "name": "Mr. Brown"
+        "name": "Mr. Brown",
+        "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       }
     ]
   },
