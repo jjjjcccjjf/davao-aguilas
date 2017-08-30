@@ -40,6 +40,16 @@ class General_stats_model extends Crud_model
     return $res;
   }
 
+  public function getStatsByPlayerId($player_id)
+  {
+    $this->db->where('player_id', $player_id);
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
+
+    return $res;
+  }
+
   public function formatFields($res)
   {
     foreach($res as $val) {

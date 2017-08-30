@@ -42,4 +42,15 @@ class General_stats extends Crud_controller
     }
   }
 
+  public function player_get($player_id)
+  {
+    $res = $this->model->getStatsByPlayerId($player_id);
+
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($res, 200);
+    }else{
+      $this->response([], 200);
+    }
+  }
+
 }

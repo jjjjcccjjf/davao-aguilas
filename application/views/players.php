@@ -288,6 +288,42 @@
   </div>
   <!-- Player stats Modal end -->
 
+  <!-- General stats Modal -->
+  <div aria-hidden="true" aria-labelledby="general_stats_modal_label" role="dialog" tabindex="-1" id="general_stats_modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+          <h4 class="modal-title">Player statistics of player #<span id="general_stats_id"></span></h4>
+        </div>
+        <div class="modal-body">
+
+          <div class="form-horizontal">
+
+            <div class="form-group">
+              <div class="col-sm-2 text-center">
+              </div>
+              <div class="col-sm-6 text-center">
+                <h4>General Statistics</h4>
+              </div>
+              <div class="col-sm-2 text-center">
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-success btn-xs" id="add_gen_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+              </div>
+            </div>
+
+            <div id="general_stats_forms">  <!-- forms -->
+
+            </div> <!-- / forms -->
+            <input type="hidden" name="team_id" value="" id="gstat_team_id">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- General stats Modal end -->
+
   <script>
   $(document).ready(function(){
     var table;
@@ -295,6 +331,7 @@
     var base_url = "<?php echo base_url(); ?>";
     var api_segment = 'api/players/';
     player_stats_api_url = base_url + 'api/player_stats/';
+    general_stats_api_url = base_url + 'api/general_stats/';
     var api_url = base_url + api_segment;
 
 
@@ -442,7 +479,8 @@
           table +=
           `<td>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
-          <button onclick='showPlayerStats(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Player statistics'><i class='fa fa-book'></i></button>
+          <button onclick='showPlayerStats(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Player profile statistics'><i class='fa fa-book'></i></button>
+          <button onclick='showGeneralStats(`+ result[x].id +`, `+ result[x].team_id +`)' class='btn btn-xs btn-info' title='General statistics'><i class='fa fa-book'></i></button>
           <button onclick='deleteItem(`+ result[x].id +`)' class='btn btn-xs btn-danger' title="Delete"><i class='fa fa-times'></i></button>
           </td>`;
 
@@ -548,6 +586,95 @@
     }
 
 
+    /*
+    ,  ,
+    / \/ \
+    (/ //_ \_
+    .-._                                      \||  .  \
+    \  '-._                            _,:__.-"/---\_ \
+    ______/___  '.    .--------------------'~-'--.)__( , )\ \
+    `'--.___  _\  /    |             Here        ,'    \)|\ `\|
+    /_.-' _\ \ _:,_          Be NOOOOOBS           " ||   (
+    .'__ _.' \'-/,`-~`                                |/
+    '. ___.> /=,|  Abandon hope all ye who enter  |
+    / .-'/_ )  '---------------------------------'
+  )'  ( /(/
+  \\ "
+  '=='
+
+  */
+
+  showGeneralStats = function(id, team_id) {
+    initializeGeneralStats(id, team_id);
+    $('#general_stats_id').html('');
+    $('#general_stats_id').html(id);
+    $('#general_stats_modal').modal('toggle');
+  }
+
+  initializeGeneralStats = function(id, team_id){
+    var $general_stats_forms = $("#general_stats_forms");
+    var $add_btn = $('#add_gen_btn');
+
+    $general_stats_forms.empty();
+
+    $add_btn.removeAttr('onclick');
+    $add_btn.attr('onClick', 'newGeneralStat('+ id +', '+ team_id +');');
+
+    stat_names = '<select name="stat_key" class="form-control">';
+    stat_names +=
+    `<?php foreach(GENERAL_PLAYER_STATS as $option):?>
+    <option><?php echo $option ?></option>
+    <?php endforeach; ?>
+    `;
+    stat_names += '</select>';
+
+    $.getJSON(general_stats_api_url + 'player/'+ id, function(result){
+
+      var stats = result;
+
+      /* ------------------------------------------------- */
+      /* -------------MAIN CONTENT WILL GO HERE----------- */
+      /* ------------------------------------------------- */
+      for(var x in stats){
+        $general_stats_forms.append(`
+          <div class="form-group" id="general_stats_row_`+ stats[x].id +`" data-from_player="`+id+`">
+          <div class="col-sm-6">` +
+          stat_names
+          + `</div>
+          <div class="col-sm-4">
+          <input type="number" min="0" class="form-control" name="stat_value"  id="stat_value-`+ stats[x].id +`" placeholder="Stat value" value="` + stats[x].stat_value + `" required></input>
+          </div>
+          <div class="col-sm-2" style="vertical-align">
+          <button type="button" class="btn btn-info btn-xs save-gstat-btn" data-gstat_id="`+ stats[x].id +`" id="save_btn-` + stats[x].id + `" title="Save" ><i class="fa fa-check"></i></button>
+          <button type="button" class="btn btn-danger btn-xs" onclick="deleteGeneralStat(` + stats[x].id + `, `+ id +`)" title="Remove"><i class="fa fa-times"></i></button>
+          </div>
+          </div>`);
+
+          // setting the DROPDOWN id here
+          // and also setting default values
+          $("#general_stats_row_" + stats[x].id).find('select option:contains("' + stats[x].stat_key + '")').prop('selected', true);
+          $("#general_stats_row_" + stats[x].id).find('select').attr('id', 'stat_key-' + stats[x].id);
+        }
+      });
+    }
+
+    newGeneralStat = function(id, team_id){
+      $.ajax({
+        url: general_stats_api_url,
+        type: 'POST',
+        data: { player_id : id, team_id: team_id },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 201){
+            initializeGeneralStats(id);
+          }
+        },
+        error: function(e){
+          console.log(e);
+        }
+      });
+    }
+
+
   }); // End document ready
 
   function deletePlayerStat(player_stats_id, player_id){
@@ -565,6 +692,20 @@
     }
   }
 
+  function deleteGeneralStat(general_stats_id, player_id){
+    if(confirm('Are you sure you want to do this?')){
+      $.ajax({
+        url: general_stats_api_url + general_stats_id,
+        type: 'DELETE',
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 204){
+            initializeGeneralStats(player_id);
+            // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+          }
+        }
+      });
+    }
+  }
 
   $('body').on('click', '.save-btn', function(){
     var elem_id = $(this).attr('id');
@@ -579,6 +720,26 @@
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
           initializePlayerStats($("#player_stats_row_" + player_stats_id).data('from_player'));
+          // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+        }
+      }
+    });
+
+  });
+
+  $('body').on('click', '.save-gstat-btn', function(){
+    var elem_id = $(this).attr('id');
+    var general_stats_id = $("#" + elem_id).data('gstat_id'); // fixture id
+    var stat_key = $("#stat_key-" + general_stats_id).val();
+    var stat_value = $("#stat_value-" + general_stats_id).val();
+
+    $.ajax({
+      url: general_stats_api_url + general_stats_id,
+      type: 'POST',
+      data: { stat_key : stat_key, stat_value: stat_value },
+      success: function (data, textStatus, xhr) {
+        if(xhr.status == 200){
+          initializeGeneralStats($("#general_stats_row_" + general_stats_id).data('from_player'));
           // customMessage('#custom_message', 'Item deleted successfully'); FIXME
         }
       }
