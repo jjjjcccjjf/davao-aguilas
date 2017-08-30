@@ -9,6 +9,11 @@ class General_stats_model extends Crud_model
     parent::__construct();
     $this->table = 'general_stats';
 
+    $this->upload_dir = 'players';
+    $this->uploads_folder = "uploads/" . $this->upload_dir . "/";
+    $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
+
+
   }
 
   public function all()
@@ -57,6 +62,7 @@ class General_stats_model extends Crud_model
       $val->stat_value = floatval($val->stat_value);
 
       $val->name = $this->getPlayerNameById($val->player_id);
+      $val->image_url = $this->full_up_path . $this->getPlayeImageById($val->player_id);
     }
   }
 
