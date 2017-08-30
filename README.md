@@ -376,7 +376,7 @@ Status: 200 OK
 ### General statistics
 
 #### Get default general player statistics (Most Goals, Most Assists, etc) (In our case, `Davao Aguilas`)
-`GET /player_stats/team/default`
+`GET /general_stats/team/default`
 
 ##### Response
 
