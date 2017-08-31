@@ -247,6 +247,14 @@ class Crud_model extends CI_model
     return (@$res[0]->image_url);
   }
 
+  public function getJerseyNumById($player_id)
+  {
+    $this->db->where('id', $player_id);
+    $res = $this->db->get('players')->result();
+
+    return (@$res[0]->jersey_num);
+  }
+
   /**
   * this is for pagination
   * uses $this->input->get('page') and $this->input->get('per_page')

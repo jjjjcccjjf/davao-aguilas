@@ -393,6 +393,7 @@ Status: 200 OK
         "created_at": "2017-08-29 17:52:28",
         "updated_at": "0000-00-00 00:00:00",
         "name": "Mr. Brown",
+        "jersey_num": "31",
         "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       }
     ]
@@ -408,6 +409,7 @@ Status: 200 OK
         "created_at": "2017-08-29 17:52:28",
         "updated_at": "0000-00-00 00:00:00",
         "name": "Johnny Walker",
+        "jersey_num": "32",
         "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       },
       {
@@ -419,6 +421,7 @@ Status: 200 OK
         "created_at": "2017-08-29 17:54:26",
         "updated_at": "0000-00-00 00:00:00",
         "name": "Mr. Brown",
+        "jersey_num": "31",
         "image_url": "http://localhost/davao-aguilas/uploads/players/1501572604_1sh7uw.jpg"
       }
     ]
