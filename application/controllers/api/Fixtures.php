@@ -3,10 +3,14 @@
 class Fixtures extends Crud_controller
 {
 
+  public $client;
+
   function __construct()
   {
     parent::__construct();
     $this->load->model('Fixtures_model', 'model');
+
+    $this->client = new GuzzleHttp\Client();
 
   }
 
@@ -25,6 +29,28 @@ class Fixtures extends Crud_controller
     // }else{
     //   $this->response([], 200);
     // }
+  }
+
+  /**
+   * combines fixture type1 with type2. type1 having priority
+   * @param  [type] $type1 'ongoing'
+   * @param  [type] $type2 'final'
+   * @return [type]        [description]
+   */
+  function mixed_get($league_id, $type1, $type2)
+  {
+    $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type1");
+    $type1_res = json_decode($res->getBody());
+
+    $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type2");
+    $type2_res = json_decode($res->getBody());
+
+    $type1_match = $type1_res->matches[0];
+
+    $type2_res->ongoing_matches[] =  $type1_match;
+
+    $this->response($type2_res, 200);
+
   }
 
   function upcoming_get(){

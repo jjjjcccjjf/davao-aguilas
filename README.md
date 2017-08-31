@@ -644,6 +644,90 @@ Status: 200 OK
 }
 ```
 
+
+#### Get mixed results ongoing and final
+`GET /fixtures/leagues/:league_id/mixed/ongoing/final`
+
+#### Response
+```json
+Status: 200 OK
+{
+    "matches": [
+        {
+            "id": "9",
+            "home_team_id": "2",
+            "away_team_id": "3",
+            "league_id": "1",
+            "home_score": "3",
+            "away_score": "2",
+            "hash_tag": "#hohoho",
+            "round_num": "2",
+            "match_schedule": "2017-09-30 07:02:00",
+            "match_time": "07:02",
+            "location": "San Mateo",
+            "match_progress": "Final",
+            "created_at": "2017-07-28 16:48:04",
+            "updated_at": "2017-07-28 17:08:56",
+            "home_team_name": "Alliance",
+            "away_team_name": "Buddha",
+            "match_schedule_f": "Saturday, 30 September 2017",
+            "match_date": "2017-09-30",
+            "home_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225828_H7jhECD.png",
+            "away_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225837_cb3ebb54aeaaadf8a61893d0c2ad081c.jpg",
+            "league_name": "League A"
+        },
+        {
+            "id": "12",
+            "home_team_id": "3",
+            "away_team_id": "1",
+            "league_id": "1",
+            "home_score": "1",
+            "away_score": "1",
+            "hash_tag": "1",
+            "round_num": "1",
+            "match_schedule": "2017-07-31 04:01:00",
+            "match_time": "04:01",
+            "location": "San Mateo",
+            "match_progress": "Final",
+            "created_at": "2017-07-31 15:37:53",
+            "updated_at": "0000-00-00 00:00:00",
+            "home_team_name": "Buddha",
+            "away_team_name": null,
+            "match_schedule_f": "Monday, 31 July 2017",
+            "match_date": "2017-07-31",
+            "home_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225837_cb3ebb54aeaaadf8a61893d0c2ad081c.jpg",
+            "away_team_image_url": "http://localhost/davao-aguilas/uploads/teams/",
+            "league_name": "League A"
+        }
+    ],
+    "league_name": "League A",
+    "ongoing_matches": [
+        {
+            "id": "7",
+            "home_team_id": "4",
+            "away_team_id": "3",
+            "league_id": "1",
+            "home_score": "3",
+            "away_score": "2",
+            "hash_tag": "#BOOO EIGHT",
+            "round_num": "1",
+            "match_schedule": "2017-08-28 09:00:00",
+            "match_time": "09:00",
+            "location": "Philippines",
+            "match_progress": "Ongoing",
+            "created_at": "2017-07-28 16:35:11",
+            "updated_at": "2017-08-31 15:33:48",
+            "home_team_name": "Davao Aguilas",
+            "away_team_name": "Buddha",
+            "match_schedule_f": "Monday, 28 August 2017",
+            "match_date": "2017-08-28",
+            "home_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501566027_13987238.jpg",
+            "away_team_image_url": "http://localhost/davao-aguilas/uploads/teams/1501225837_cb3ebb54aeaaadf8a61893d0c2ad081c.jpg",
+            "league_name": "League A"
+        }
+    ]
+}
+```
 #### When exceeding the maximum page number
 
 ##### Example request
