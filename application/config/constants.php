@@ -131,3 +131,9 @@ const PLAYER_STAT_NAMES = ['Games Started', 'Minutes', 'Goals', 'Goal Assists',
 'Substitutes Out'];
 const GENERAL_PLAYER_STATS = ['Goals', 'Assists', 'Shots', 'Passes',
 'Tackles', 'Clearances', 'Saves'];
+const NOTIF_CONSTANTS = [
+  'start_of_match' => 'Start of Match',
+  'half_time' => 'Half Time',
+  'full_time' => 'Full Time',
+  'red_card' => 'Red Card'
+];

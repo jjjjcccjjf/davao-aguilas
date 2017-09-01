@@ -75,6 +75,8 @@ function customMessage(selector, msg){
 function clearAllForms() {
   $('form')[0].reset();
   $('input[type=file]').val('');
+
+  $('#notifs_form')[0].reset();
 }
 
 function showLoader() {
