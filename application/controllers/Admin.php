@@ -4,15 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 
 	/**
-	* array for our enabled modules
-	* @var array
+	* GuzzleHttp Client
+	* @var object
 	*/
-	public $includes = [];
-
-	/**
-	 * GuzzleHttp Client
-	 * @var object
-	 */
 	public $client;
 
 	public function __construct()
