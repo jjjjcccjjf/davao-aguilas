@@ -5,7 +5,7 @@
         Matches / Fixtures
         <a href="#add_modal" data-toggle="modal" class="btn btn-xs btn-info pull-right"> + Add New </a>
         <br>
-        <div><sub style="color:green;" id="custom_message"></sub></div>
+        <div><sub style="color:mediumseagreen;" id="custom_message"></sub></div>
       </header>
 
       <div class="panel-body">
@@ -496,7 +496,7 @@
               <form method="POST" class="form-horizontal" id="notifs_form">  <!-- form -->
                 <div class="col-sm-12">
                   <p class="hidden" id="_loading" style="color:cadetblue;font-weight:bold">Processing...</p>
-                  <p class="" id="custom_notif" style="color:green;font-weight:bold"></p>
+                  <p class="" id="custom_notif" style="color:mediumseagreen;font-weight:bold"></p>
                   <p class="" id="custom_notif_f" style="color:red;font-weight:bold"></p>
                 </div>
                 <div class="form-group">
@@ -538,18 +538,19 @@
               <div class="form-group">
                 <div class="col-lg-12 text-center">
                   <h2>Real-time Score</h2>
-                  <div class="alert alert-info fade in">
+                  <p class="" id="live_score_notif" style="color:mediumseagreen;font-weight:bold"></p>
+                  <div class="alert alert-warning fade in">
                     <button data-dismiss="alert" class="close close-sm" type="button">
                       <i class="fa fa-times"></i>
                     </button>
-                    <strong>Heads up!</strong> Changes to the scores will be pushed <strong>after 3 seconds</strong>
+                      <strong>Notice:</strong> Changes to the scores will be pushed immediately <strong>after 4 seconds</strong>
                   </div>
                 </div>
                 <div class="col-sm-5  ">
                   <h4 id="n_team_name_home">Team 1 Name</h4>
                   <h5>Home Score</h5>
 
-                  <input type="number" id="n_home_score" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1" >
+                  <input type="number" id="n_home_score" class="form-control live_score" style="height:50px;width:70px" min="0" max="99" step="1" >
                 </div>
                 <div class="col-sm-2 " style='text-align:left'>
                   <h4>vs</h4>
@@ -557,7 +558,7 @@
                 <div class="col-sm-5  ">
                   <h4 id="n_team_name_away">Team 2 name</h4>
                   <h5>Away Score</h5>
-                  <input type="number" id="n_away_score" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1"  >
+                  <input type="number" id="n_away_score" class="form-control live_score" style="height:50px;width:70px" min="0" max="99" step="1"  >
                 </div>
               </div>
             </div> <!-- end modal body -->
@@ -591,8 +592,11 @@
 */
 
 $(document).ready(function(){
+  // Declarations
   var table;
 
+  ok_update_score = 0;
+  var countdownTimer;
   var base_url = "<?php echo base_url(); ?>";
   var api_url = base_url + 'api/fixtures/';
   match_stat_api_url = base_url + 'api/match_stats/';
@@ -971,10 +975,10 @@ $(document).ready(function(){
       $("#notifs_form").submit(function(e){
         e.preventDefault();
 
-       var form_data = new FormData($(this)[0]);
-       form_data.append('fixture_id', $("#notifs_id").html());
+        var form_data = new FormData($(this)[0]);
+        form_data.append('fixture_id', $("#notifs_id").html());
 
-       $("#_loading").removeClass('hidden');
+        $("#_loading").removeClass('hidden');
         $.ajax({
           url: notifs_api_url + $("#n_notif_type").val(),
           type: 'POST',
@@ -1273,6 +1277,50 @@ $(document).ready(function(){
         });
 
       });
+
+      $(".live_score").on('change', function functionName() {
+        ok_update_score = 0; // Reset flag for updating the score
+        clearTimeout(countdownTimer); // built-in function fo r clearing time out
+
+        makeUpdateOK = function(callback){
+          ok_update_score = 1; // Set update ok to true
+          // Call our callback functin which checks if it's ok to update the score
+          // If yes, then update the score. Otherwise, do nothing
+          callback(ok_update_score);
+        };
+
+        countdownTimer = setTimeout(function() {
+          makeUpdateOK(updateScore);
+        }, 4000);
+
+      });
+
+      function updateScore(){
+        // Update the score
+        if(ok_update_score){
+
+          var form_data = new FormData();
+          form_data.append('home_score', $("#n_home_score").val());
+          form_data.append('away_score', $("#n_away_score").val());
+
+          $.ajax({
+            url: api_url + $('#notifs_id').html(),
+            type: 'POST',
+            data: form_data,
+            async: false,
+            success: function (data, textStatus, xhr) {
+              if(xhr.status == 200){
+                customMessage('#live_score_notif', 'Score updated');
+              }
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+
+
+        }
+      }
 
     }); // End document ready
 
