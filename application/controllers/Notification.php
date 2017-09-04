@@ -19,7 +19,6 @@ class Notification extends CI_Controller {
     $b = $this->input->post('body');
 
     $res = array();
-    $res['data']['status'] = true;
     $res['data']['title'] = $t;
     $res['data']['body'] = $b;
     $res['data']['fixture_id'] = $this->input->post('fixture_id');

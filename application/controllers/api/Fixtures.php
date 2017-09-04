@@ -42,8 +42,10 @@ class Fixtures extends Crud_controller
     $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type1");
     $type1_res = json_decode($res->getBody());
 
+    $get_var = (@$_GET['page'] != null) ? "?page=" . $_GET['page'] : "";
+    $get_var .= (@$_GET['per_page'] != null) ? "&per_page=" . $_GET['per_page'] : "";
 
-    $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type2?page=" . $_GET['page'] . "&per_page=" . $_GET['per_page']);
+    $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type2" . $get_var);
     $type2_res = json_decode($res->getBody());
 
     $type1_match = @$type1_res->matches[0];

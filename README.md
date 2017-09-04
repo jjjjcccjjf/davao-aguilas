@@ -19,6 +19,7 @@ Lorem ipsum dolor sit amet
 1. [Leagues](#leagues)
 1. [Ladders](#ladders)
 1. [Fixtures](#fixtures)
+  1. Mixed
 1. [Match reports](#match-reports)
 1. [Match statistics](#fixtures)
   1. [Commentary](#commentary)
