@@ -495,6 +495,7 @@
 
               <form method="POST" class="form-horizontal" id="notifs_form">  <!-- form -->
                 <div class="col-sm-12">
+                  <p class="hidden" id="_loading" style="color:cadetblue;font-weight:bold">Processing...</p>
                   <p class="" id="custom_notif" style="color:green;font-weight:bold"></p>
                   <p class="" id="custom_notif_f" style="color:red;font-weight:bold"></p>
                 </div>
@@ -957,29 +958,27 @@ $(document).ready(function(){
       $("#notifs_form").submit(function(e){
         e.preventDefault();
 
-        var notif_payload = {};
+       var form_data = new FormData($(this)[0]);
+       form_data.append('fixture_id', $("#notifs_id").html());
 
-        notif_payload.title = $("#n_title").val();
-        notif_payload.body = $("#n_body").val();
-        notif_payload.fixture_id = $("#notifs_id").html();
-
-        // console.log(JSON.stringify(notif_payload));
-
+       $("#_loading").removeClass('hidden');
         $.ajax({
           url: notifs_api_url + $("#n_notif_type").val(),
           type: 'POST',
-          data: JSON.stringify(notif_payload),
-          dataType: "json",
+          data: form_data,
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
-
-              if(data === 1){
+              $("#_loading").addClass('hidden');
+              if(data == 1){
                 clearAllForms();
                 customMessage('#custom_notif', 'Notification sent');
               }else{
                 customMessage('#custom_notif_f', 'Failed to send notification');
               }
             }
+          },
+          error: function(e){
+            console.log(e);
           },
           cache: false,
           contentType: false,
