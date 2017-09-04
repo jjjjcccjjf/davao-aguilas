@@ -546,18 +546,18 @@
                   </div>
                 </div>
                 <div class="col-sm-5  ">
-                  <h4>Team 1 Name</h4>
+                  <h4 id="n_team_name_home">Team 1 Name</h4>
                   <h5>Home Score</h5>
 
-                  <input type="number" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1" >
+                  <input type="number" id="n_home_score" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1" >
                 </div>
                 <div class="col-sm-2 " style='text-align:left'>
                   <h4>vs</h4>
                 </div>
                 <div class="col-sm-5  ">
-                  <h4>Team 2 name</h4>
+                  <h4 id="n_team_name_away">Team 2 name</h4>
                   <h5>Away Score</h5>
-                  <input type="number" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1"  >
+                  <input type="number" id="n_away_score" class="form-control" style="height:50px;width:70px" min="0" max="99" step="1"  >
                 </div>
               </div>
             </div> <!-- end modal body -->
@@ -670,6 +670,15 @@ $(document).ready(function(){
 
   initializeNotifs = function(id){
     var $notifs_forms = $("#notifs_forms");
+
+    $.getJSON(api_url + id, function(result){
+
+      $("#n_team_name_home").html(result[0].home_team_name);
+      $("#n_home_score").val(result[0].home_score);
+      $("#n_team_name_away").html(result[0].away_team_name);
+      $("#n_away_score").val(result[0].away_score);
+
+    });
 
     $notifs_forms.empty();
   }
