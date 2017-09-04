@@ -671,6 +671,11 @@ $(document).ready(function(){
   initializeNotifs = function(id){
     var $notifs_forms = $("#notifs_forms");
 
+    // Initialize
+    $("#n_home_score").val('');
+    $("#n_away_score").val('');
+    $notifs_forms.empty();
+
     $.getJSON(api_url + id, function(result){
 
       $("#n_team_name_home").html(result[0].home_team_name);
@@ -680,7 +685,6 @@ $(document).ready(function(){
 
     });
 
-    $notifs_forms.empty();
   }
 
   initializeMatchStats = function(id){
