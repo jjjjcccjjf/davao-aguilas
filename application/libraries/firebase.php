@@ -18,6 +18,7 @@ class Firebase {
             'to' => '/topics/' . $to,
             'notification' => $notification,
             'data' => $message,
+            'priority' => 'high',
         );
         return $this->sendPushNotification($fields);
     }

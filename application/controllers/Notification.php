@@ -52,7 +52,7 @@ class Notification extends CI_Controller {
 
     public function goal_notify($fixture_id)
     { # Violating DRY like a BAWS!!! N!GG@ #SHEEEET
-
+      # Don't try this at home, BEEETCH!!
 
       # Get match data first
       $res = $this->client->request('GET', base_url() . 'api/fixtures/' . $fixture_id);
