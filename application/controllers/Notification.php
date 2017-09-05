@@ -75,6 +75,8 @@ class Notification extends CI_Controller {
       $res['data']['title'] = $t;
       $res['data']['body'] = $b;
       $res['data']['topic'] = 'goal_scored';
+      $res['data']['home_score'] = $fixture_body->home_score;
+      $res['data']['away_score'] = $fixture_body->away_score;
       $res['data']['fixture_id'] = $this->input->post('fixture_id');
       $res['data']['timestamp'] = date('Y-m-d G:i:s');
 
