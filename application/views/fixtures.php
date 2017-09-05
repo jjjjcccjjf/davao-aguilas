@@ -1338,6 +1338,8 @@ $(document).ready(function(){
                   $('#live_score_p').addClass('hidden');
                   customMessage('#live_score_notif', 'Score updated');
                 }else{
+                  $('#live_score_p').addClass('hidden');
+                  
                   customMessage('#live_score_notif', 'Failed to send notification');
                 }
               }
