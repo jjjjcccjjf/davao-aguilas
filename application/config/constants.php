@@ -126,7 +126,9 @@ const TEAM_STAT_NAMES = ['Goals', 'Goals Conceded', 'Total Shots',
 'Unsuccessful Launches', 'Unsuccessful Long Passes', 'Unsuccessful Passes Opp...TODO',
 'Unsuccessful Passes Own...TODO', 'Unsuccessful Short Passes', 'Unsuccessful Lay-Offs',
 'Yellow Cards']; # We're using this syntax because 5.6 doesn't support the one above!
-const PLAYER_STAT_NAMES = ['Games Started', 'Minutes', 'Goals', 'Goal Assists',
+const PLAYER_STAT_NAMES = ['Games Played', 'Clean Sheets', 'Goals Conceded', 'Penalty Saves',
+'Distribution Accuracy' , 'Minutes', 'Goals Scored', 'Assists', 'Interceptions',
+'Total Saves', 'Total Clearances', 'Tackle Success', 'Shooting Accuray', 'Fouls Conceded',
 'Penalty Goals', 'Yellow Cards', 'Second Yellow Cards', 'Red Cards', 'Substitutes In',
 'Substitutes Out'];
 const GENERAL_PLAYER_STATS = ['Goals', 'Assists', 'Shots', 'Passes',
@@ -136,4 +138,24 @@ const NOTIF_CONSTANTS = [
   'half_time' => 'Half Time',
   'full_time' => 'Full Time',
   'red_card' => 'Red Card'
+];
+const GOALKEEPER_FEAT_STATS = [
+  'Clean Sheets', 'Goals Conceded', 'Penalty Saves',
+  'Distribution Accuracy', 'Total Saves', 'Total Clearances',
+  'Red Cards', 'Yellow Cards'
+];
+const DEFENDER_FEAT_STATS = [
+  'Shooting Accuracy', 'Goals Scored', 'Goals Conceded',
+  'Interceptions', 'Total Clearances', 'Tackle Success',
+  'Red Cards', 'Yellow Cards'
+];
+const MIDFIELDER_FEAT_STATS = [
+  'Goals Scored', 'Shooting Accuracy', 'Assists',
+  'Passing Accuracy', 'Fouls Conceded', 'Tackle Success',
+  'Red Cards', 'Yellow Cards'
+];
+const FORWARD_FEAT_STATS = [
+  'Goals Scored', 'Shooting Accuracy', 'Assists',
+  'Passing Accuracy', 'Fouls Conceded', 'Tackle Success',
+  'Red Cards', 'Yellow Cards'
 ];

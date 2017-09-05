@@ -121,6 +121,28 @@ class Players_model extends Crud_model
     return $res;
   }
 
+  function getFeaturedStatistics($player_id, $position){
+    $player_stats = $this->getPlayerStatistics($player_id);
+
+    $featured_stats = [];
+
+    switch($position){
+      case 'Goalkeeper': $featured_array = GOALKEEPER_FEAT_STATS; break;
+      case 'Defender': $featured_array = DEFENDER_FEAT_STATS; break;
+      case 'Midfielder': $featured_array = MIDFIELDER_FEAT_STATS; break;
+      case 'Forward': $featured_array = FORWARD_FEAT_STATS; break;
+    }
+
+    foreach($player_stats as $stat){
+      if(in_array($stat->stat_key, $featured_array)){
+        $featured_stats[]  = $stat;
+      }
+    }
+    
+    return $featured_stats;
+
+  }
+
   function formatFields($res){
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
@@ -133,6 +155,7 @@ class Players_model extends Crud_model
       $item->age = date_diff(date_create(date('Y-m-d', strtotime($item->birth_date))), date_create('today'))->y;
 
       $item->stats = $this->getPlayerStatistics($item->id);
+      $item->featured_stats = $this->getFeaturedStatistics($item->id, $item->position);
     }
   }
 

@@ -26,8 +26,8 @@ Lorem ipsum dolor sit amet
     1. [Lineups](#lineups)
     1. [Members](#members)
     1. [Lineups](#lineups)
-1. [Geo Tags](#geo-tags)
 1. [Requirements and Dependencies](#requirements-and-dependencies)
+1. [Search](#search)
 
 ## Requirements and Dependencies
 
@@ -474,58 +474,80 @@ Status: 200 OK
 ```json
 Status: 200 OK
 [
-  {
-    "id": "1",
-    "fname": "Dio",
-    "lname": "Brando",
-    "team_id": "4",
-    "image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_aDaHvdy.png",
-    "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501472928_2016-12-09.jpg",
-    "position": "Defender",
-    "jersey_num": "09",
-    "birth_date": "1994-07-31",
-    "birth_place": "Venice, Italy",
-    "nationality": "Japanese",
-    "height": "189cm",
-    "weight": "50kg",
-    "created_at": "2017-07-31 11:48:48",
-    "updated_at": "2017-08-01 13:46:20",
-    "birth_date_f": "July 31, 1994",
-    "team_name": "Davao Aguilas",
-    "age": 23,
-    "stats": [
-      {
-        "stat_key": "Total Passes",
-        "stat_value": 21
-      }
-    ]
-  },
-  {
-    "id": "2",
-    "fname": "Mr.",
-    "lname": "Brown",
-    "team_id": "4",
-    "image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_avatar_22.jpg",
-    "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501566171_1sh7uw.jpg",
-    "position": "Forward",
-    "jersey_num": "12",
-    "birth_date": "1994-08-01",
-    "birth_place": "Venice, Italy",
-    "nationality": "Italian",
-    "height": "133cm",
-    "weight": "22kg",
-    "created_at": "2017-08-01 13:42:51",
-    "updated_at": "2017-08-01 13:44:28",
-    "birth_date_f": "August 1, 1994",
-    "team_name": "Davao Aguilas",
-    "age": 23,
-    "stats": [
-      {
-        "stat_key": "Goals",
-        "stat_value": 22
-      }
-    ]
-  }
+    {
+        "id": "4",
+        "fname": "Girboo",
+        "lname": "Francois",
+        "team_id": "4",
+        "image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_600px-Natus_Vincere_(1).png",
+        "full_body_image_url": "http://localhost/davao-aguilas/uploads/players/1501572676_13987238.jpg",
+        "position": "Goalkeeper",
+        "jersey_num": "31",
+        "birth_date": "1994-08-01",
+        "birth_place": "Venice, Italy",
+        "nationality": "Italian",
+        "height": "189cm",
+        "weight": "50kg",
+        "created_at": "2017-08-01 15:31:16",
+        "updated_at": "2017-08-15 18:12:09",
+        "birth_date_f": "August 1, 1994",
+        "team_name": "Davao Aguilas",
+        "age": 23,
+        "stats": [
+            {
+                "id": "23",
+                "stat_key": "Second Yellow Cards",
+                "stat_value": 22
+            },
+            {
+                "id": "24",
+                "stat_key": "Games Played",
+                "stat_value": 12
+            },
+            {
+                "id": "25",
+                "stat_key": "Clean Sheets",
+                "stat_value": 21
+            },
+            {
+                "id": "26",
+                "stat_key": "Distribution Accuracy",
+                "stat_value": 51
+            },
+            {
+                "id": "27",
+                "stat_key": "Red Cards",
+                "stat_value": 1
+            },
+            {
+                "id": "28",
+                "stat_key": "Yellow Cards",
+                "stat_value": 12
+            }
+        ],
+        "featured_stats": [
+            {
+                "id": "25",
+                "stat_key": "Clean Sheets",
+                "stat_value": 21
+            },
+            {
+                "id": "26",
+                "stat_key": "Distribution Accuracy",
+                "stat_value": 51
+            },
+            {
+                "id": "27",
+                "stat_key": "Red Cards",
+                "stat_value": 1
+            },
+            {
+                "id": "28",
+                "stat_key": "Yellow Cards",
+                "stat_value": 12
+            }
+        ]
+    }
 ]
 ```
 
@@ -1107,24 +1129,13 @@ Status: 200 OK
 ]
 ```
 
-### Geo Tags
-#### Insert new device location
-`POST /geo_tags/`
+### Search
+#### Search using a keyword
+`GET /search/:keyword`
 
-#### Update device location
-`POST /geo_tags/`
-
-`Note: Updating is just the same`
-
-##### Parameters
-|     Name         |    Type    |    Description    |
-| ---------------- | ---------- | ----------------- |
-|    device_id     |   string   |  No description   |
-|    longitude     |   string   |  No description   |
-|    latitude      |   string   |  No description   |
 
 ##### Response
 ```json
-201 Created
+Status: 200 OK
 TODO
 ```
