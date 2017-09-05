@@ -12,6 +12,9 @@ class Notification extends CI_Controller {
 
   }
 
+  # Dear maintainer, refactor this to a dispatcher kinda shit
+  # Everything goes through this function and then calls other function
+  # Just like the closest if statement below
   public function notify($topic)
   {
 
@@ -32,6 +35,7 @@ class Notification extends CI_Controller {
     $res = array();
     $res['data']['title'] = $t;
     $res['data']['body'] = $b;
+    $res['data']['topic'] = $topic;
     $res['data']['fixture_id'] = $this->input->post('fixture_id');
     $res['data']['timestamp'] = date('Y-m-d G:i:s');
 
@@ -70,6 +74,7 @@ class Notification extends CI_Controller {
       $res = array();
       $res['data']['title'] = $t;
       $res['data']['body'] = $b;
+      $res['data']['topic'] = $topic;
       $res['data']['fixture_id'] = $this->input->post('fixture_id');
       $res['data']['timestamp'] = date('Y-m-d G:i:s');
 

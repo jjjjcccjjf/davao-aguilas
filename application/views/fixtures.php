@@ -539,6 +539,7 @@
                 <div class="col-lg-12 text-center">
                   <h2>Real-time Score</h2>
                   <p class="" id="live_score_notif" style="color:mediumseagreen;font-weight:bold"></p>
+                  <p class="hidden" id="live_score_p" style="color:sandybrown;font-weight:bold">Processing...</p>
                   <div class="alert alert-warning fade in">
                     <button data-dismiss="alert" class="close close-sm" type="button">
                       <i class="fa fa-times"></i>
@@ -1299,6 +1300,7 @@ $(document).ready(function(){
         // Update the score
         if(ok_update_score){
 
+          $('#live_score_p').removeClass('hidden');
           var form_data = new FormData();
           form_data.append('home_score', $("#n_home_score").val());
           form_data.append('away_score', $("#n_away_score").val());
@@ -1333,6 +1335,7 @@ $(document).ready(function(){
             success: function (data, textStatus, xhr) {
               if(xhr.status == 200){
                 if(data == 1){
+                  $('#live_score_p').addClass('hidden');
                   customMessage('#live_score_notif', 'Score updated');
                 }else{
                   customMessage('#live_score_notif', 'Failed to send notification');
