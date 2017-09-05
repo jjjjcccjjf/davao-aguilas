@@ -543,7 +543,7 @@
                     <button data-dismiss="alert" class="close close-sm" type="button">
                       <i class="fa fa-times"></i>
                     </button>
-                      <strong>Notice:</strong> Changes to the scores will be pushed immediately <strong>after 4 seconds</strong>
+                    <strong>Notice:</strong> Changes to the scores will be pushed immediately <strong>after 4 seconds</strong>
                   </div>
                 </div>
                 <div class="col-sm-5  ">
@@ -1307,10 +1307,9 @@ $(document).ready(function(){
             url: api_url + $('#notifs_id').html(),
             type: 'POST',
             data: form_data,
-            async: false,
             success: function (data, textStatus, xhr) {
               if(xhr.status == 200){
-                customMessage('#live_score_notif', 'Score updated');
+                notifyRealTime(); // Notif firebase
               }
             },
             cache: false,
@@ -1320,6 +1319,35 @@ $(document).ready(function(){
 
 
         }
+
+
+        var notifyRealTime = function(){
+
+          var fd = new FormData();
+          fd.append('fixture_id', $("#notifs_id").html());
+
+          $.ajax({
+            url: notifs_api_url + 'goal_scored',
+            type: 'POST',
+            data: fd,
+            success: function (data, textStatus, xhr) {
+              if(xhr.status == 200){
+                if(data == 1){
+                  customMessage('#live_score_notif', 'Score updated');
+                }else{
+                  customMessage('#live_score_notif', 'Failed to send notification');
+                }
+              }
+            },
+            error: function(e){
+              console.log(e);
+            },
+            cache: false,
+            contentType: false,
+            processData: false
+          });
+        };
+
       }
 
     }); // End document ready
