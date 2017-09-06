@@ -102,6 +102,7 @@ $route['api/fixtures/(:num)/lineups'] = 'api/lineups/teams/$1';
 $route['api/match_stats/fixtures/(:num)'] = 'api/match_stats/fixtures/$1';
 $route['api/teams/default/id'] = 'api/teams/default/id';
 $route['notifications/new/(:any)'] = 'notification/notify/$1';
+$route['api/search/(:any)'] = 'api/search/index/$1';
 
 # Migration
 $route['migrate/(:any)'] = 'migrate/index/$1';
