@@ -25,6 +25,10 @@ class Notification extends CI_Controller {
       die(); # shet shet shett
     }
 
+    # Get match data first
+    $res = $this->client->request('GET', base_url() . 'api/fixtures/' . $fixture_id);
+    $fixture_body = json_decode($res->getBody())[0];
+
     require_once(APPPATH.'libraries/firebase.php');
 
     $firebase = new Firebase();
@@ -36,6 +40,18 @@ class Notification extends CI_Controller {
     $res['data']['title'] = $t;
     $res['data']['body'] = $b;
     $res['data']['topic'] = $topic;
+
+    $res['data']['home_score'] = $fixture_body->home_score;
+    $res['data']['away_score'] = $fixture_body->away_score;
+    $res['data']['home_team_name'] = $fixture_body->home_team_name;
+    $res['data']['away_team_name'] = $fixture_body->away_team_name;
+    $res['data']['home_team_image_url'] = $fixture_body->home_team_image_url;
+    $res['data']['away_team_image_url'] = $fixture_body->away_team_image_url;
+    $res['data']['match_progress'] = $fixture_body->match_progress;
+    $res['data']['location'] = $fixture_body->location;
+    $res['data']['match_date'] = $fixture_body->match_date;
+    $res['data']['match_time'] = $fixture_body->match_time;
+
     $res['data']['fixture_id'] = $this->input->post('fixture_id');
     $res['data']['timestamp'] = date('Y-m-d G:i:s');
 
