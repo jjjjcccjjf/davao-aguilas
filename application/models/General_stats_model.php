@@ -62,6 +62,7 @@ class General_stats_model extends Crud_model
       $val->stat_value = floatval($val->stat_value);
 
       $val->name = $this->getPlayerNameById($val->player_id);
+      $val->position = $this->getPlayerPositionById($val->player_id);
       $val->jersey_num = $this->getJerseyNumById($val->player_id);
       $val->image_url = $this->full_up_path . $this->getPlayeImageById($val->player_id);
     }

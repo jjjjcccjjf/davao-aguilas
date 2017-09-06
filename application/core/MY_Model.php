@@ -239,6 +239,14 @@ class Crud_model extends CI_model
     return (@$res[0]->fname . " " . @$res[0]->lname);
   }
 
+  public function getPlayerPositionById($player_id)
+  {
+    $this->db->where('id', $player_id);
+    $res = $this->db->get('players')->result();
+
+    return (@$res[0]->position);
+  }
+
   public function getPlayeImageById($player_id)
   {
     $this->db->where('id', $player_id);
