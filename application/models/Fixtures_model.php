@@ -19,6 +19,7 @@ class Fixtures_model extends Crud_model
   */
   public function all()
   {
+    $this->db->order_by('match_schedule', 'DESC');
     $res = $this->db->get($this->table)->result();
     $this->formatFields($res);
 
@@ -121,7 +122,7 @@ class Fixtures_model extends Crud_model
     if($match_stats != []){
       $res[0]->match_stats = $match_stats;
     }
-    
+
     $this->formatFields($res);
     return $res;
   }
