@@ -433,15 +433,32 @@
                     <h5>Text body</h5>
                   </div>
                   <div class="col-sm-2">
-                    <button class="btn btn-success btn-xs" id="add_first_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                    <button class="btn btn-success btn-xs add_first_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
                   </div>
                 </div>
 
                 <div id="first_half_forms">  <!-- forms -->
                 </div> <!-- / forms -->
 
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-2">
+                    <h5>Minute mark</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <h5>Action</h5>
+                  </div>
+                  <div class="col-sm-5 text-center">
+                    <h5>Text body</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn btn-success btn-xs add_first_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                  </div>
+                </div>
                 <!-- ############################### -->
 
+                <div class="col-sm-12">
+                  <hr>
+                </div>
 
                 <div class="col-sm-12 text-center">
                   <div class="col-sm-12">
@@ -460,13 +477,28 @@
                     <h5>Text body</h5>
                   </div>
                   <div class="col-sm-2">
-                    <button class="btn btn-success btn-xs" id="add_second_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                    <button class="btn btn-success btn-xs add_second_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
                   </div>
                 </div>
 
                 <div id="second_half_forms">  <!-- forms -->
                 </div> <!-- / forms -->
 
+
+                <div class="col-sm-12 text-center">
+                  <div class="col-sm-2">
+                    <h5>Minute mark</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <h5>Action</h5>
+                  </div>
+                  <div class="col-sm-5 text-center">
+                    <h5>Text body</h5>
+                  </div>
+                  <div class="col-sm-2">
+                    <button class="btn btn-success btn-xs add_second_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
+                  </div>
+                </div>
 
               </div>
             </div>
@@ -834,8 +866,8 @@ $(document).ready(function(){
         var $first_half_forms = $("#first_half_forms");
         var $second_half_forms = $("#second_half_forms");
 
-        var $add_btn_1st = $('#add_first_half_btn');
-        var $add_btn_2nd = $('#add_second_half_btn');
+        var $add_btn_1st = $('.add_first_half_btn');
+        var $add_btn_2nd = $('.add_second_half_btn');
 
         $first_half_forms.empty();
         $second_half_forms.empty();
