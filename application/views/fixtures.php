@@ -927,7 +927,6 @@ $(document).ready(function(){
           url: api_url,
           type: 'POST',
           data: form_data,
-          async: false,
           success: function (data, textStatus, xhr) {
             if(xhr.status == 201){
               initializeTable('#table_div', table_headers);
@@ -954,7 +953,6 @@ $(document).ready(function(){
           url: api_url + $('#edit_id').html(),
           type: 'POST',
           data: form_data,
-          async: false,
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
               initializeTable('#table_div', table_headers);
@@ -1086,9 +1084,9 @@ $(document).ready(function(){
         $('#_intro').val('');
 
         $.getJSON(api_url + id + '/commentary', function(result){
-          $('#_full_time').val(result.commentary[0].full_time);
-          $('#_half_time').val(result.commentary[0].half_time);
-          $('#_intro').val(result.commentary[0].intro);
+          $('#_full_time').val(result.commentary.full_time);
+          $('#_half_time').val(result.commentary.half_time);
+          $('#_intro').val(result.commentary.intro);
         });
         $('#commentary_id').html('');
         $('#commentary_id').html(id);
@@ -1105,7 +1103,6 @@ $(document).ready(function(){
           url: api_url + $('#match_reports_id').html() + '/match_reports',
           type: 'POST',
           data: form_data,
-          async: false,
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
               initializeTable('#table_div', table_headers);
@@ -1132,7 +1129,6 @@ $(document).ready(function(){
           url: api_url + $('#commentary_id').html() + '/commentary',
           type: 'POST',
           data: form_data,
-          async: false,
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
               initializeTable('#table_div', table_headers);
