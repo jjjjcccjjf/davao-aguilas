@@ -26,7 +26,8 @@ class Notification extends CI_Controller {
     }
 
     # Get match data first
-    $res = $this->client->request('GET', base_url() . 'api/fixtures/' . $fixture_id);
+    $res = $this->client->request('GET', base_url() . 'api/fixtures/'
+    . $this->input->post('fixture_id'));
     $fixture_body = json_decode($res->getBody())[0];
 
     require_once(APPPATH.'libraries/firebase.php');
@@ -50,6 +51,7 @@ class Notification extends CI_Controller {
     $res['data']['match_progress'] = $fixture_body->match_progress;
     $res['data']['location'] = $fixture_body->location;
     $res['data']['match_date'] = $fixture_body->match_date;
+    $res['data']['match_date_f'] = date('F j, Y', strtotime($fixture_body->match_date));
     $res['data']['match_time'] = $fixture_body->match_time;
 
     $res['data']['fixture_id'] = $this->input->post('fixture_id');
@@ -101,6 +103,7 @@ class Notification extends CI_Controller {
       $res['data']['match_progress'] = $fixture_body->match_progress;
       $res['data']['location'] = $fixture_body->location;
       $res['data']['match_date'] = $fixture_body->match_date;
+      $res['data']['match_date_f'] = date('F j, Y', strtotime($fixture_body->match_date));
       $res['data']['match_time'] = $fixture_body->match_time;
 
       $res['data']['fixture_id'] = $this->input->post('fixture_id');
