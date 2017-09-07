@@ -17,9 +17,9 @@ class General_stats extends Crud_controller
   */
   function team_get($team_id, $param = null){
     if($param == 'default'){
-       $res = $this->model->getDefaultTeamStats();
+      $res = $this->model->getDefaultTeamStats();
     }else{
-       $res = $this->model->getStatsByTeamId($team_id);
+      $res = $this->model->getStatsByTeamId($team_id);
     }
 
 
@@ -33,6 +33,18 @@ class General_stats extends Crud_controller
       if(in_array($item->stat_key, GENERAL_PLAYER_STATS)){
         $squad[$item->stat_key]['players'][] = $item;
       }
+    }
+
+    foreach($squad as $stat => $val){
+
+      $tmp_arr = $val['players'];
+
+      usort($tmp_arr, function($a, $b){
+        if ($a->stat_value == $b->stat_value) return 0;
+        return $b->stat_value < $a->stat_value ? -1 : 1;
+      });
+
+      $squad[$stat]['players'] = $tmp_arr;
     }
 
     if($res || $res !== []){ # Respond with 404 when the resource is not found
