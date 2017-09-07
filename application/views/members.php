@@ -268,12 +268,12 @@
 
           table += '<td>' + id +'</td>'; // id
           table += '<td>' + result[x].fname + " " + result[x].mname + " " + result[x].lname +'</td>';
-          table += '<td>' + result[x].birth_date_f +'</td>';
-          table += '<td>' + result[x].email +'</td>';
-          table += '<td>' + result[x].address +'</td>';
-          table += '<td>' + result[x].mobile +'</td>';
-          table += '<td>' + result[x].facebook_link +'</td>';
-          table += '<td>' + result[x].twitter_link +'</td>';
+          table += '<td>' + handleNull(result[x].birth_date_f) +'</td>';
+          table += '<td>' + handleNull(result[x].email) +'</td>';
+          table += '<td>' + handleNull(result[x].address) +'</td>';
+          table += '<td>' + handleNull(result[x].mobile) +'</td>';
+          table += '<td>' + handleNull(result[x].facebook_link) +'</td>';
+          table += '<td>' + handleNull(result[x].twitter_link) +'</td>';
           table +=
           `<td>
           <button onclick='editItem(`+ result[x].id +`)' class='btn btn-xs' title='Edit'><i class='fa fa-pencil'></i></button>
@@ -288,6 +288,15 @@
         $(selector).append(table);
       });
 
+    }
+
+    handleNull = function(value){
+
+      if(value != null && value != '' && value.length > 0){
+        return value;
+      }else{
+        return 'N\/A';
+      }
     }
 
     initializeTable('#table_div', table_headers);
