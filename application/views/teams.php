@@ -332,7 +332,10 @@ $(document).ready(function(){
 
           // setting the DROPDOWN id here
           // and also setting default values
-          $("#team_stats_row_" + result[x].id).find('select option:contains("' + result[x].stat_key + '")').prop('selected', true);
+          $("#team_stats_row_" + result[x].id).find('select option').each(function() {
+            this.selected = $(this).text() == result[x]. stat_key;
+          });
+
           $("#team_stats_row_" + result[x].id).find('select').attr('id', 'stat_key-' + result[x].id);
         }
       });
