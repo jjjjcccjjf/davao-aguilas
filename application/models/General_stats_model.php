@@ -89,16 +89,16 @@ class General_stats_model extends Crud_model
     $this->db->where(['player_id' => $data['player_id'], 'stat_key' => $data['stat_key']]);
 
     # If there are 2 or more stats with the same name
-    $gen_stat = $this->db->get('general_stats')->result();
+    $existing_item = $this->db->get($this->table)->result();
 
-    $gen_stat_id = @$gen_stat[0]->id; # Exsisting Gen stat ID
+    $existing_item_id = @$existing_item[0]->id; # Exsisting Gen stat ID
 
     $this->db->flush_cache();
 
     # Handle whether the stat is existing or not
-    if($gen_stat_id != null && ($gen_stat_id != $id) ){ # if gen_stat_id has a value
+    if($existing_item_id != null && ($existing_item_id != $id) ){ # if gen_stat_id has a value
       # If Stat already exists
-      $this->db->update($this->table, $data, ['id' => $gen_stat_id]);
+      $this->db->update($this->table, $data, ['id' => $existing_item_id]);
       $update_status =  $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
 
       $this->db->where('id', $id);

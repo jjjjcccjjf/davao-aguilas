@@ -65,27 +65,4 @@ class General_stats extends Crud_controller
     }
   }
 
-  /**
-  * edit single
-  * @param  int $id [description]
-  */
-  function single_post($id)
-  {
-    $data = array_merge($this->input->post(), $this->model->upload('image_url'));
-
-    $res = $this->model->update($id, $data);
-
-    if ($res || $res === 0) {
-      $res = $this->model->get($id);
-      $this->response_header('Location', api_url($this) .  $id); # Set the newly created object's location
-      $this->response($res, 200);
-    } elseif ($res === null) {
-      $this->response(['message' => 'Not found'], 404);
-    } elseif ($res === false) {
-      $this->response(['message' => 'Stat already exists'], 404);
-    } else {
-      $this->response(['message' => 'Malformed syntax'], 400);
-    }
-  }
-
 }

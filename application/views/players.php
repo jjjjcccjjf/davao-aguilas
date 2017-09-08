@@ -275,6 +275,14 @@
               <div class="col-sm-2">
                 <button class="btn btn-success btn-xs" id="add_new_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
               </div>
+              <div class="col-sm-12">
+                <div class="alert alert-info fade in">
+                  <button data-dismiss="alert" class="close close-sm" type="button">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
+                </div>
+              </div>
             </div>
 
             <div id="player_stats_forms">  <!-- forms -->
@@ -720,38 +728,41 @@
     var player_stats_id = $("#" + elem_id).data('pstat_id'); // fixture id
     var stat_key = $("#stat_key-" + player_stats_id).val();
     var stat_value = $("#stat_value-" + player_stats_id).val();
+    var player_id = $("#player_stats_row_" + player_stats_id).data('from_player');
 
     $.ajax({
       url: player_stats_api_url + player_stats_id,
       type: 'POST',
-      data: { stat_key : stat_key, stat_value: stat_value },
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 200){
-          initializePlayerStats($("#player_stats_row_" + player_stats_id).data('from_player'));
-          // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+      data: { stat_key : stat_key, stat_value: stat_value,
+        player_id: player_id  },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            initializePlayerStats(player_id);
+            // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+          }
         }
-      }
+      });
+
     });
 
-  });
+    $('body').on('click', '.save-gstat-btn', function(){
+      var elem_id = $(this).attr('id');
+      var general_stats_id = $("#" + elem_id).data('gstat_id'); // fixture id
+      var stat_key = $("#stat_key-" + general_stats_id).val();
+      var stat_value = $("#stat_value-" + general_stats_id).val();
+      var player_id = $("#general_stats_row_" + general_stats_id).data('from_player');
 
-  $('body').on('click', '.save-gstat-btn', function(){
-    var elem_id = $(this).attr('id');
-    var general_stats_id = $("#" + elem_id).data('gstat_id'); // fixture id
-    var stat_key = $("#stat_key-" + general_stats_id).val();
-    var stat_value = $("#stat_value-" + general_stats_id).val();
-
-    $.ajax({
-      url: general_stats_api_url + general_stats_id,
-      type: 'POST',
-      data: { stat_key : stat_key, stat_value: stat_value, player_id: $("#general_stats_row_" + general_stats_id).data('from_player') },
-      success: function (data, textStatus, xhr) {
-        if(xhr.status == 200){
-          initializeGeneralStats($("#general_stats_row_" + general_stats_id).data('from_player'));
-          // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+      $.ajax({
+        url: general_stats_api_url + general_stats_id,
+        type: 'POST',
+        data: { stat_key : stat_key, stat_value: stat_value, player_id: player_id },
+        success: function (data, textStatus, xhr) {
+          if(xhr.status == 200){
+            initializeGeneralStats(player_id);
+            // customMessage('#custom_message', 'Item deleted successfully'); FIXME
+          }
         }
-      }
-    });
+      });
 
-  });
-  </script>
+    });
+    </script>
