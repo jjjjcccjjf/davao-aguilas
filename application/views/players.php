@@ -736,7 +736,7 @@
     $.ajax({
       url: general_stats_api_url + general_stats_id,
       type: 'POST',
-      data: { stat_key : stat_key, stat_value: stat_value },
+      data: { stat_key : stat_key, stat_value: stat_value, player_id: $("#general_stats_row_" + general_stats_id).data('from_player') },
       success: function (data, textStatus, xhr) {
         if(xhr.status == 200){
           initializeGeneralStats($("#general_stats_row_" + general_stats_id).data('from_player'));
