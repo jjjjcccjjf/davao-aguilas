@@ -56,6 +56,22 @@ class General_stats_model extends Crud_model
   }
 
   /**
+  * Inserts to the table with the associative array provided
+  * @param  array $data
+  * @return int   the last insert id
+  */
+  public function add($data)
+  {
+    # delete all blank
+    $this->db->where('stat_key', '');
+    $this->db->delete($this->table);
+    $this->db->flush_cache();
+
+    $this->db->insert($this->table, $data);
+    return $this->db->insert_id();
+  }
+
+  /**
    * [update description]
    * @param  [type] $id   general_stats ID
    * @param  [type] $data [description]
@@ -84,11 +100,6 @@ class General_stats_model extends Crud_model
       # If Stat already exists
       $this->db->update($this->table, $data, ['id' => $gen_stat_id]);
       $update_status =  $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
-
-      # delete all blank
-      $this->db->where('stat_key', '');
-      $this->db->delete($this->table);
-      $this->db->flush_cache();
 
       $this->db->where('id', $id);
       $this->db->delete($this->table);
