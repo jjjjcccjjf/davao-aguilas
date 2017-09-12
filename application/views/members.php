@@ -284,7 +284,7 @@
         }
 
         table += '</tbody></table>';
-
+        
         $(selector).append(table);
       });
 
@@ -292,10 +292,11 @@
 
     handleNull = function(value){
 
-      if(value != null && value != '' && value.length > 0){
-        return value;
-      }else{
+      if(value == null || value == '' || value.length == 0 || value == '(null)' ||
+      value == 'November 30, -0001'){
         return 'N\/A';
+      }else{
+        return value;
       }
     }
 
