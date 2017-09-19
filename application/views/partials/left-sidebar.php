@@ -31,6 +31,9 @@
       <li><a class="<?php echo ($this->uri->segment(2) == 'members') ? 'active' : ''; ?>" href="<?php echo base_url('admin/members'); ?>">
         <i class="fa fa-users"></i>Members / Mobile App Subscribers
       </a></li>
+      <li><a class="<?php echo ($this->uri->segment(2) == 'admin') ? 'active' : ''; ?>" href="<?php echo base_url('admin/admin'); ?>">
+        <i class="fa fa-lock"></i>Administrators
+      </a></li>
 
     </ul>
     <!-- sidebar menu end-->
