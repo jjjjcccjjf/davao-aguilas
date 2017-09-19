@@ -76,7 +76,12 @@ function clearAllForms() {
   $('form')[0].reset();
   $('input[type=file]').val('');
 
-  $('#notifs_form')[0].reset();
+  try{
+    $('#notifs_form')[0].reset();
+  }catch(err){
+    // console.log(err);
+  }
+
 }
 
 function showLoader() {
