@@ -79,7 +79,15 @@
           <div class="form-group">
             <label class="col-sm-2 control-label col-sm-2">New Password</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" name="password" id="_password" required></input>
+              <input type="password" class="form-control" name="password" id="_password"></input><br>
+
+              <div class="alert alert-info fade in">
+                <button data-dismiss="alert" class="close close-sm" type="button">
+                  <i class="fa fa-times"></i>
+                </button>
+                Leave blank if you don't want to change password.
+              </div>
+
             </div>
           </div>
 
@@ -141,17 +149,22 @@ $(document).ready(function(){
   ---------------------------------------------**/
   $("#edit_form").submit(function(e){
     var form_data = new FormData($(this)[0]);
-
+    var edit_id = $('#edit_id').html();
     showLoader();
 
     setTimeout(function () {
       $.ajax({
-        url: api_url + $('#edit_id').html(),
+        url: api_url + edit_id,
         type: 'POST',
         data: form_data,
-        async: false,
         success: function (data, textStatus, xhr) {
           if(xhr.status == 200){
+            console.log(api_url + edit_id + '/reset');
+            $.getJSON(api_url + edit_id + '/reset', function(result){
+              console.log(result);
+              $('.username').text("Welcome, " + result[0].username);
+            });
+
             hideLoader();
             initializeTable('#table_div', table_headers);
             clearAllForms();
