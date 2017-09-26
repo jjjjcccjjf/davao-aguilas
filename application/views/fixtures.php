@@ -1025,6 +1025,7 @@ $(document).ready(function(){
           type: 'POST',
           data: form_data,
           success: function (data, textStatus, xhr) {
+            console.log((xhr.responseText));
             if(xhr.status == 200){
               initializeTable('#table_div', table_headers);
               clearAllForms();
@@ -1035,7 +1036,10 @@ $(document).ready(function(){
           cache: false,
           contentType: false,
           processData: false
-        });
+        }).fail(function(data) {
+          var data =  data.responseJSON;
+          alert(data.message);
+        });;
 
         e.preventDefault();
       });

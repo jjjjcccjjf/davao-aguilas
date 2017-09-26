@@ -25,18 +25,50 @@ class Fixtures extends Crud_controller
     $res = $this->model->getFixtures($league_id, ucwords($type));
 
     // if($res['matches'] !== [] && $res['league_name'] !== null){ # Respond with 404 when the resource is not found
-      $this->response($res, 200); # REVIEW: Hmmmmmm
+    $this->response($res, 200); # REVIEW: Hmmmmmm
     // }else{
     //   $this->response([], 200);
     // }
   }
 
   /**
-   * combines fixture type1 with type2. type1 having priority
-   * @param  [type] $type1 'ongoing'
-   * @param  [type] $type2 'final'
-   * @return [type]        [description]
-   */
+  * edit single
+  * @param  int $id [description]
+  */
+  function single_post($id)
+  {
+    $data = array_merge($this->input->post(), $this->model->upload('image_url'));
+
+    $have_ongoing = false;
+
+    if($data['match_progress'] == 'Ongoing')
+    $have_ongoing = $this->model->checkOngoing();
+
+    if($have_ongoing){ # If there is ongoing, stop right there
+      $this->response(['message' => 'Cannot have more than one Ongoing matches at the same time.'], 400);
+    }else{
+      $res = $this->model->update($id, $data);
+
+      if ($res || $res === 0) {
+        $res = $this->model->get($id);
+        $this->response_header('Location', api_url($this) .  $id); # Set the newly created object's location
+        $this->response($res, 200);
+      } elseif ($res === null) {
+        $this->response(['message' => 'Not found'], 404);
+      } else {
+        $this->response(['message' => 'Malformed syntax'], 400);
+      }
+    }
+
+
+  }
+
+  /**
+  * combines fixture type1 with type2. type1 having priority
+  * @param  [type] $type1 'ongoing'
+  * @param  [type] $type2 'final'
+  * @return [type]        [description]
+  */
   function mixed_get($league_id, $type1, $type2)
   {
     $res = $this->client->request('GET', base_url() . "api/fixtures/leagues/$league_id/$type1");

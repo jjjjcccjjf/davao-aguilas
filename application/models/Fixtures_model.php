@@ -26,6 +26,16 @@ class Fixtures_model extends Crud_model
     return $res;
   }
 
+  # Check if there is an ongoing match
+  public function checkOngoing()
+  {
+
+    $this->db->where('match_progress', 'Ongoing');
+    $res = $this->db->get($this->table)->num_rows();
+
+    return $res;
+  }
+
   function getFixtures($league_id, $type){
 
     $this->db->where('match_progress', $type);
