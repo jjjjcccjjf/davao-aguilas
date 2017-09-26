@@ -305,6 +305,17 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <div class="col-sm-12">
+                <div class="alert alert-info fade in">
+                  <button data-dismiss="alert" class="close close-sm" type="button">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
+                </div>
+              </div>
+            </div>
+
             <div id="match_stats_forms">  <!-- forms -->
 
             </div> <!-- / forms -->
@@ -436,6 +447,14 @@
                     <button class="btn btn-success btn-xs add_first_half_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
                   </div>
                 </div>
+                <div class="col-sm-12">
+                  <div class="alert alert-info fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                      <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
+                  </div>
+                </div>
 
                 <div id="first_half_forms">  <!-- forms -->
                 </div> <!-- / forms -->
@@ -463,6 +482,15 @@
                 <div class="col-sm-12 text-center">
                   <div class="col-sm-12">
                     <h4>Second half Commentaries</h4>
+                  </div>
+                </div>
+                
+                <div class="col-sm-12">
+                  <div class="alert alert-info fade in">
+                    <button data-dismiss="alert" class="close close-sm" type="button">
+                      <i class="fa fa-times"></i>
+                    </button>
+                    <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
                   </div>
                 </div>
 
@@ -1250,14 +1278,15 @@ $(document).ready(function(){
         var home_score = $("#home_score-" + match_stat_id).val();
         var away_score = $("#away_score-" + match_stat_id).val();
         var stat_name = $("#stat_name-" + match_stat_id).val();
+        var fixture_id = $("#match_stat_row_" + match_stat_id).data('from_match');
 
         $.ajax({
           url: match_stat_api_url + match_stat_id,
           type: 'POST',
-          data: { home_score : home_score, away_score: away_score, stat_name: stat_name  },
+          data: { home_score : home_score, away_score: away_score, stat_name: stat_name, fixture_id: fixture_id  },
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
-              initializeMatchStats($("#match_stat_row_" + match_stat_id).data('from_match'));
+              initializeMatchStats(fixture_id);
               // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }
@@ -1271,14 +1300,16 @@ $(document).ready(function(){
         var minute_mark = $("#minute_mark-" + cpm_id).val();
         var icon_type = $("#icon_type-" + cpm_id).val();
         var body = $("#body-" + cpm_id).val();
+        var fixture_id = $("#cpm_row_" + cpm_id).data('from_match');
+
 
         $.ajax({
           url: cpm_api_url + cpm_id,
           type: 'POST',
-          data: { minute_mark : minute_mark, body: body, icon_type, icon_type },
+          data: { minute_mark : minute_mark, body: body, icon_type, icon_type, fixture_id: fixture_id },
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
-              initializeCpm($("#cpm_row_" + cpm_id).data('from_match'));
+              initializeCpm(fixture_id);
               // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }

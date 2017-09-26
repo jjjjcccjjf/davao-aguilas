@@ -119,6 +119,14 @@
             <div class="col-sm-2">
               <button class="btn btn-success btn-xs" id="add_match_btn" title="Add new"><i class="fa fa-plus"></i> Add new</button>
             </div>
+            <div class="col-sm-12">
+              <div class="alert alert-info fade in">
+                <button data-dismiss="alert" class="close close-sm" type="button">
+                  <i class="fa fa-times"></i>
+                </button>
+                <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
+              </div>
+            </div>
           </div>
 
           <div id="team_stats_forms">  <!-- forms -->
@@ -374,14 +382,16 @@ $(document).ready(function(){
       var team_stats_id = $("#" + elem_id).data('tstat_id'); // fixture id
       var stat_key = $("#stat_key-" + team_stats_id).val();
       var stat_value = $("#stat_value-" + team_stats_id).val();
+      var team_id = $("#team_stats_row_" + team_stats_id).data('from_match');
+
 
       $.ajax({
         url: team_stats_api_url + team_stats_id,
         type: 'POST',
-        data: { stat_key : stat_key, stat_value: stat_value },
+        data: { stat_key : stat_key, stat_value: stat_value, team_id: team_id },
         success: function (data, textStatus, xhr) {
           if(xhr.status == 200){
-            initializeTeamStats($("#team_stats_row_" + team_stats_id).data('from_match'));
+            initializeTeamStats(team_id);
             // customMessage('#custom_message', 'Item deleted successfully'); FIXME
           }
         }
