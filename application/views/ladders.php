@@ -247,10 +247,9 @@
       var form_data = new FormData($(this)[0]);
 
       $.ajax({
-        url: api_url + $('#edit_id').html(),
+        url: api_url + 'id/' + $('#edit_id').html(),
         type: 'POST',
         data: form_data,
-        async: false,
         success: function (data, textStatus, xhr) {
           if(xhr.status == 200){
             initializeTable('#table_div', table_headers);
@@ -296,7 +295,7 @@
     * @var int   id
     */
     editItem = function(id) {
-      $.getJSON(api_url + id, function(result){
+      $.getJSON(api_url + 'id/' + id, function(result){
         $('#_court_type').find('option:contains("'+ result[0].court_type +'")').prop('selected', true);
         $('#_team_id').find('option[value="' + result[0].team_id + '"]').prop('selected', true);
         $('#_league_id').find('option[value="' + result[0].league_id + '"]').prop('selected', true);

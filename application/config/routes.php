@@ -89,6 +89,7 @@ $route['api/ladders/leagues/(:num)/standings'] = 'api/ladders/standings/$1';
 $route['api/ladders/leagues/(:num)/home'] = 'api/ladders/home/$1';
 $route['api/ladders/leagues/(:num)/away'] = 'api/ladders/away/$1';
 $route['api/ladders/(:num)'] = 'api/ladders/single/$1';
+$route['api/ladders/id/(:num)'] = 'api/ladders/id/$1';
 $route['api/fixtures/(:num)'] = 'api/fixtures/single/$1';
 $route['api/commentary/(:num)'] = 'api/commentary/single/$1';
 $route['api/cpm/(:num)'] = 'api/cpm/single/$1';

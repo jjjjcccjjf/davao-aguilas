@@ -41,6 +41,37 @@ class Ladders_model extends Crud_model
     return $res;
   }
 
+  /**
+  * Get specific row via id
+  * @param  int     $id
+  * @return array   associative array of data
+  */
+  public function getLadder($id)
+  {
+    $this->db->where('id', $id);
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
+
+    return $res;
+  }
+
+
+  /**
+  * Simply updates the table matching the associative array provided
+  * @param  int    $id    id of row to update
+  * @param  array  $data  associative array of values to be updated
+  * @return bool
+  */
+  public function updateLadder($id, $data)
+  {
+    if ($this->getLadder($id) === [])
+    return null; # Return null if entry is not existing
+
+    $this->db->update($this->table, $data, ['id' => $id]);
+    return $this->db->affected_rows(); # Returns 1 if update is successful, returns 0 if update is already made, but query is successful
+  }
+
   public function getStandings($league_id)
   {
     $home = $this->getStandingsByCourtType($league_id, 'Home');
