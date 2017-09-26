@@ -355,6 +355,17 @@
               </div>
             </div>
 
+            <div class="form-group">
+              <div class="col-sm-12">
+                <div class="alert alert-info fade in">
+                  <button data-dismiss="alert" class="close close-sm" type="button">
+                    <i class="fa fa-times"></i>
+                  </button>
+                  <strong>Psst!</strong> Don't forget to <strong>save your changes</strong> before adding or editing another item!
+                </div>
+              </div>
+            </div>
+
             <div id="lineups_forms">  <!-- forms -->
 
             </div> <!-- / forms -->
@@ -484,7 +495,7 @@
                     <h4>Second half Commentaries</h4>
                   </div>
                 </div>
-                
+
                 <div class="col-sm-12">
                   <div class="alert alert-info fade in">
                     <button data-dismiss="alert" class="close close-sm" type="button">
@@ -1257,7 +1268,7 @@ $(document).ready(function(){
             <button onclick='showMatchStats(`+ result[x].id +`)' class='btn btn-xs btn-info' title='Match Statistics'><i class='fa fa-tasks'></i></button>
             <button onclick='editReport(`+ result[x].id +`)' class='btn btn-xs btn-success' title='Edit report'><i class='fa fa-book'></i></button>
             <button onclick='editCommentary(`+ result[x].id +`)' class='btn btn-xs btn-warning' title='Edit commentary'><i class='fa fa-keyboard-o'></i></button>
-            <button onclick='showLineups(`+ result[x].id +`)' class='btn btn-xs btn-default' title='Edit Lineup'><i class='fa fa-users'></i></button>
+            <button onclick='showLineups(`+ result[x].id +`)' class='btn btn-xs btn-info' title='Edit Lineup'><i class='fa fa-users'></i></button>
             </td>`;
 
             table += '</tr>';
@@ -1323,14 +1334,15 @@ $(document).ready(function(){
         var l_team_id = $("#l_team_id-" + lineups_id).val();
         var l_player_id = $("#l_player_id-" + lineups_id).val();
         var l_position = $("#l_position-" + lineups_id).val();
+        var fixture_id = $("#lineups_row_" + lineups_id).data('from_match');
 
         $.ajax({
           url: lineups_api_url + lineups_id,
           type: 'POST',
-          data: { team_id : l_team_id, player_id: l_player_id, position: l_position },
+          data: { team_id : l_team_id, player_id: l_player_id, position: l_position, fixture_id: fixture_id },
           success: function (data, textStatus, xhr) {
             if(xhr.status == 200){
-              initializeLineups($("#lineups_row_" + lineups_id).data('from_match'));
+              initializeLineups(fixture_id);
               // customMessage('#custom_message', 'Item deleted successfully'); FIXME
             }
           }
