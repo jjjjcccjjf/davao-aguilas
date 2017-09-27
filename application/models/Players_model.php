@@ -146,6 +146,26 @@ class Players_model extends Crud_model
   function formatFields($res){
     foreach ($res as $item){
       $item->image_url =  $this->full_up_path . $item->image_url;
+
+      $image_orientation = @exif_read_data( FCPATH . $this->uploads_folder . $item->full_body_image_url )['Orientation'];
+
+      if ($image_orientation && $image_orientation > 1) {
+        switch ($image_orientation) {
+          case 3:
+            $item->rotate_image = 180;
+            break;
+          case 6:
+            $item->rotate_image = -90;
+            break;
+          case 8:
+            $item->rotate_image = 90;
+            break;
+          default:
+            $item->rotate_image = 0;
+            break;
+        }
+      }
+
       $item->full_body_image_url =  $this->full_up_path . $item->full_body_image_url;
 
       $item->birth_date = date('Y-m-d', strtotime($item->birth_date));
