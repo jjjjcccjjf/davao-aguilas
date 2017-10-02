@@ -30,7 +30,7 @@ class Search_model extends CI_model
 
     $news_arr = [];
     foreach($res as $news){
-      $news_arr[] = ['id' => $news->id, 'title' => $news->title];
+      $news_arr[] = ['id' => $news->id, 'title' => $news->title, 'created_at' => $news->created_at ];
     }
 
     return $news_arr;
@@ -44,9 +44,12 @@ class Search_model extends CI_model
     $fixtures_arr = [];
 
     foreach($res as $fixture){
-      $fixtures_arr[$fixture->id] = $this->getTeamNameById($fixture->home_team_id) . " vs "
+      $fixtures_arr[$fixture->id] =
+      array('title' => $this->getTeamNameById($fixture->home_team_id) . " vs "
       . $this->getTeamNameById($fixture->away_team_id) . " on " .
-      date('l, d F Y', strtotime($fixture->match_schedule));
+      date('l, d F Y', strtotime($fixture->match_schedule)),
+      'created_at' => $fixture->created_at
+      );
     }
 
     return $fixtures_arr;
@@ -62,11 +65,14 @@ class Search_model extends CI_model
     $fixtures_arr = [];
 
     foreach($res as $fixture){
-      $fixtures_arr[$fixture->id] = $this->getTeamNameById($fixture->home_team_id) . " vs "
-      . $this->getTeamNameById($fixture->away_team_id) . " on " .
-      date('l, d F Y', strtotime($fixture->match_schedule));
+      $fixtures_arr[$fixture->id] =
+      array(
+        'title' => $this->getTeamNameById($fixture->home_team_id) . " vs "
+        . $this->getTeamNameById($fixture->away_team_id) . " on " .
+        date('l, d F Y', strtotime($fixture->match_schedule)),
+        'created_at' => $fixture->created_at
+      );
     }
-
 
     return $fixtures_arr;
   }

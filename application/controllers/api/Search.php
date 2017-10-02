@@ -24,14 +24,14 @@ class Search extends CI_Controller
     # Search each row on fixtures table if they have the certain fixture_id
     foreach($team_ids as $id){
       $fixtures[] = $this->model->checkFixture($id);
-
     }
+
     $fixtures[] = $this->model->checkOthers($keyword);
 
     $merged_fixtures = array_replace(...$fixtures);
 
     foreach($merged_fixtures as $key => $val){
-      $res['fixtures'][] = ['id' => $key, 'title' => $val];
+      $res['fixtures'][] = ['id' => $key, 'title' => $val['title'], 'created_at' => $val['created_at']];
     }
 
     $res['news'] = $this->model->getNewsIdsByTitle($keyword);
