@@ -11,6 +11,9 @@ class Fixtures_model extends Crud_model
 
     $this->upload_dir = 'teams'; # REVIEW: Hmmm. Is this ok? Since there's no uploading, might as well use this (?)
     $this->full_up_path = base_url() . "uploads/" . $this->upload_dir . "/";
+
+    $this->db->order_by('match_schedule', 'DESC');
+
   }
 
   /**
