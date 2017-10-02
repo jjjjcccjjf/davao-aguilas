@@ -43,6 +43,21 @@ class Players_model extends Crud_model
     return $res;
   }
 
+  /**
+  * Get specific row via id
+  * @param  int     $id
+  * @return array   associative array of data
+  */
+  public function getByJerseyNum($jersey_num)
+  {
+    $this->db->where('jersey_num', $jersey_num);
+    $res = $this->db->get($this->table)->result();
+
+    $this->formatFields($res);
+
+    return $res;
+  }
+
   public function getPlayersByTeamId($team_id)
   {
     $this->db->where('team_id', $team_id);
@@ -138,7 +153,7 @@ class Players_model extends Crud_model
         $featured_stats[]  = $stat;
       }
     }
-    
+
     return $featured_stats;
 
   }

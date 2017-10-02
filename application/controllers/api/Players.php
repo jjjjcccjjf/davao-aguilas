@@ -46,6 +46,17 @@ class Players extends Crud_controller
     }
   }
 
+  function jersey_num_get($jersey_num)
+  {
+    $res = $this->model->getByJerseyNum($jersey_num);
+    if($res || $res !== []){ # Respond with 404 when the resource is not found
+      $this->response($res, 200);
+    }else{
+      $this->response(['message' => 'Not found'], 404);
+    }
+  }
+
+
   /**
   * get players by team id
   * @param  [type] $team_id [description]
