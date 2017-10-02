@@ -549,7 +549,13 @@
 
     stat_names = '<select name="stat_key" class="form-control">';
     stat_names +=
-    `<?php foreach(PLAYER_STAT_NAMES as $option):?>
+    `<?php
+
+    # sort the stats
+    $pstats = PLAYER_STAT_NAMES;
+    sort($pstats);
+
+    foreach($pstats as $option):?>
     <option><?php echo $option ?></option>
     <?php endforeach; ?>
     `;
@@ -638,7 +644,13 @@
 
     stat_names = '<select name="stat_key" class="form-control">';
     stat_names +=
-    `<?php foreach(GENERAL_PLAYER_STATS as $option):?>
+    `<?php
+
+    # Sort the stats
+    $gstats = GENERAL_PLAYER_STATS;
+    sort($gstats);
+
+    foreach($gstats as $option):?>
     <option><?php echo $option ?></option>
     <?php endforeach; ?>
     `;
