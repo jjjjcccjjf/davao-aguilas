@@ -42,7 +42,7 @@ class Fixtures extends Crud_controller
     $have_ongoing = false;
 
     if($data['match_progress'] == 'Ongoing')
-    $have_ongoing = $this->model->checkOngoing();
+    $have_ongoing = $this->model->checkOngoing($id);
 
     if($have_ongoing){ # If there is ongoing, stop right there
       $this->response(['message' => 'Cannot have more than one Ongoing matches at the same time.'], 400);

@@ -30,10 +30,11 @@ class Fixtures_model extends Crud_model
   }
 
   # Check if there is an ongoing match
-  public function checkOngoing()
+  public function checkOngoing($id)
   {
 
     $this->db->where('match_progress', 'Ongoing');
+    $this->db->where('id !=', $id);
     $res = $this->db->get($this->table)->num_rows();
 
     return $res;
