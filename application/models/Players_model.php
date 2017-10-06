@@ -146,6 +146,8 @@ class Players_model extends Crud_model
       case 'Defender': $featured_array = DEFENDER_FEAT_STATS; break;
       case 'Midfielder': $featured_array = MIDFIELDER_FEAT_STATS; break;
       case 'Forward': $featured_array = FORWARD_FEAT_STATS; break;
+
+      default: $featured_array = []; break;
     }
 
     foreach($player_stats as $stat){
