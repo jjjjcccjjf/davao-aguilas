@@ -99,18 +99,10 @@ const MATCH_PROGRESS_TYPES = ['Upcoming', 'Ongoing', 'Final']; # We're using thi
 const MATCH_STAT_NAMES = ['Goals', 'Assists', 'Total Shots', 'Attacks', 'Corners', 'Fouls', 'Free Kicks']; # We're using this syntax because 5.6 doesn't support the one above!
 const ICON_TYPES = ['N/A', 'Substitute', 'Goal', 'Red Card', 'Yellow Card' ]; # We're using this syntax because 5.6 doesn't support the one above!
 const TEAM_STAT_NAMES =
-["Aerial Duels","Aerial Duels Lost","Aerial Duels Won",
-"Attempts from Set Pieces","Blocked Shots","Blocks","Catches","Clean Sheets",
-"Clearances Off the Line","Corners Taken","Corners Won","Crossing Accuracy",
-"Drops","Duels","Duels Lost","Duels Won","Foul Attempted Tackle","Foul Won Penalty",
-"GK Successful Distribution","GK Unsuccessful Distribution","Games Played","Goal Assists",
-"Goal Conversion","Goals","Goals Conceded","Goals Conceded Inside Box",
-"Goals Conceded Outside Box", "Goals from Inside Box","Goals from Outside Box","Ground Duels","Ground Duels Won","Grounds Duels Lost","Handballs Conceded","Headed Goals","Hit Woodwork","Interception","Key Passes","Last Man Tackle","Left Foot Goals","Offsides","Open Play Passes","Own Goals Accrued","Passing % Opp Half","Passing Accuracy","Penalties Conceded","Penalties Saved","Penalties Taken","Penalty Goals",
-"Points Dropped from Winnings","Points Gained from Losing","Possession Percentage",
-"Put Through\/Blocked","Recoveries","Red Card - 2nd Yellow","Right Foot Goals","Set Pieces Goals","Shooting Accuracy","Shots Off Target","Straight Red Cards","Successful Corners into Box","Successful Crosses & Corners","Successful Crosses Open","Successful Dribbles","Successful Launches","Successful Lay-offs","Successful Long Passes","Successful Open Play Passes","Successful Passes Opposition","Successful Passes Own Half","Successful Short Passes","Tackles Lost",
-"Tackles Success","Tackles Won","Throw Ins to Opposition","Throw Ins to Own Player","Total Clearances","Total Fouls Conceded","Total Fouls Won","Total Losses of Possession","Total Passes","Total Red Cards","Total Shots","Total Shots Conceded","Total Successful Passes","Total Unsuccessful Passes","Unsuccessful Corners","Unsuccessful Crosses",
-"Unsuccessful Crosses Ope...TODO","Unsuccessful Dribbles","Unsuccessful Launches",
-"Unsuccessful Lay-Offs","Unsuccessful Long Passes","Unsuccessful Passes Opp...TODO","Unsuccessful Passes Own...TODO","Unsuccessful Short Passes","Yellow Cards"];
+["Goals", "Shots pg", "Discipline", "Possession %", "Pass %",
+"Aerials Won", "Tackles pg", "Interceptions pg", "Fouls pg",
+"Offsides pg", "Shots OT pg", "Dribbles pg", "Fouled pg",
+"Total", "Out of Box", "Six Yard Box", "Penalty Area"];
  # We're using this syntax because 5.6 doesn't support the one above!
 const PLAYER_STAT_NAMES = ['Games Played', 'Games Started', 'Clean Sheets', 'Goals Conceded', 'Penalty Saves', 'Distribution Accuracy',
 'Total Saves', 'Total Clearances', 'Red Cards', 'Yellow Cards',
